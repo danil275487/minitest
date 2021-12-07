@@ -27,6 +27,12 @@ minetest.register_node("mt_core:sand", {
 	groups = { crumbly = 3, falling_node = 1 },
 })
 
+minetest.register_node("mt_core:gravel", {
+	description = "Gravel",
+	tiles = { "mt_atlas.png^[sheet:8x8:7,0" },
+	groups = { crumbly = 2, falling_node = 1 },
+})
+
 minetest.register_node("mt_core:oak_tree", {
 	description = "Oak Tree",
 	tiles = { "mt_atlas.png^[sheet:8x8:5,0",
