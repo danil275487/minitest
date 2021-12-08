@@ -6,6 +6,12 @@ minetest.register_node("mt_core:stone", {
 	groups = { cracky = 3 },
 })
 
+minetest.register_node("mt_core:stone_bricks", {
+	description = "Stone Bricks",
+	tiles = { "mt_atlas.png^[sheet:8x8:7,1" },
+	groups = { cracky = 3 },
+})
+
 minetest.register_node("mt_core:dirt", {
 	description = "Dirt",
 	tiles = { "mt_atlas.png^[sheet:8x8:1,0" },
@@ -40,6 +46,12 @@ minetest.register_node("mt_core:oak_tree", {
 							"mt_atlas.png^[sheet:8x8:4,0",
 	 },
 	groups = { choppy = 3},
+})
+
+minetest.register_node("mt_core:oak_planks", {
+	description = "Oak Planks",
+	tiles = { "mt_atlas.png^[sheet:8x8:6,1" },
+	groups = { choppy = 3 },
 })
 
 minetest.register_node("mt_core:oak_leaves", {
@@ -179,6 +191,52 @@ minetest.register_node("mt_core:tall_grass", {
 	}
 })
 
+minetest.register_node("mt_core:coal_ore", {
+	description = "Coal Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:1,1)" },
+	groups = { cracky = 3 },
+})
+
+minetest.register_node("mt_core:iron_ore", {
+	description = "Iron Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:2,1)" },
+	groups = { cracky = 2 },
+})
+
+minetest.register_node("mt_core:gold_ore", {
+	description = "Gold Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
+	groups = { cracky = 2 },
+})
+
+minetest.register_node("mt_core:gold_ore", {
+	description = "Gold Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
+	groups = { cracky = 2 },
+})
+
+minetest.register_node("mt_core:diamond_ore", {
+	description = "Diamond Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,1)" },
+	groups = { cracky = 1 },
+})
+
+minetest.register_node("mt_core:crystal_ore", {
+	description = "Crystal Ore",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:5,1)" },
+	groups = { cracky = 1 },
+})
+
+minetest.register_node("mt_core:glass", {
+	description = "Glass",
+	drawtype = "glasslike",
+	paramtype = "light",
+	tiles = { "mt_atlas.png^[sheet:8x8:5,3" },
+	groups = { oddly_breakable_by_hand = 3 },
+	use_texture_alpha = "clip",
+	is_ground_content = true
+})
+
 --Water
 minetest.register_node("mt_core:water_source", {
 	description = "Water",
@@ -255,40 +313,4 @@ minetest.register_node("mt_core:water_flowing", {
 	liquid_renewable = false,
 	liquid_viscosity = 1,
 	post_effect_color = {a = 100, r = 120, g = 105, b = 196}
-})
-
-minetest.register_node("mt_core:coal_ore", {
-	description = "Coal Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:1,1)" },
-	groups = { cracky = 3 },
-})
-
-minetest.register_node("mt_core:iron_ore", {
-	description = "Iron Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:2,1)" },
-	groups = { cracky = 2 },
-})
-
-minetest.register_node("mt_core:gold_ore", {
-	description = "Gold Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
-	groups = { cracky = 2 },
-})
-
-minetest.register_node("mt_core:gold_ore", {
-	description = "Gold Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
-	groups = { cracky = 2 },
-})
-
-minetest.register_node("mt_core:diamond_ore", {
-	description = "Diamond Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,1)" },
-	groups = { cracky = 1 },
-})
-
-minetest.register_node("mt_core:crystal_ore", {
-	description = "Crystal Ore",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:5,1)" },
-	groups = { cracky = 1 },
 })
