@@ -54,6 +54,42 @@ minetest.register_node("mt_core:oak_planks", {
 	groups = { choppy = 3 },
 })
 
+minetest.register_node("mt_core:crafting_bench", {
+	description = "Crafting bench",
+	tiles = { "mt_atlas.png^[sheet:8x8:2,3",
+							"mt_atlas.png^[sheet:8x8:6,1",
+							"mt_atlas.png^[sheet:8x8:1,3",
+	 },
+	 paramtype = "light",
+	 drawtype = "nodebox",
+	 node_box = {
+	type = "fixed",
+	fixed = {
+		{-0.5000, 0.2500, -0.5000, 0.5000, 0.5000, 0.5000},
+		{-0.5000, -0.5000, -0.5000, -0.3750, 0.2500, -0.3750},
+		{0.3750, -0.5000, -0.5000, 0.5000, 0.2500, -0.3750},
+		{-0.5000, -0.5000, 0.3750, -0.3750, 0.2500, 0.5000},
+		{0.3750, -0.5000, 0.3750, 0.5000, 0.2500, 0.5000}
+	}
+},
+	groups = { oddly_breakable_by_hand = 2 },
+	on_rightclick = function(pos, node, player, itemstack)
+		player:get_inventory():set_width("craft", 3)
+		player:get_inventory():set_size("craft", 9)
+
+		local form = [[
+		size[8.25,8.75]
+		real_coordinates[true]
+		list[current_player;main;0.5,4.5;6,2;6]
+		list[current_player;main;0.5,7.25;6,1;0]
+		list[current_player;craft;1.25,0.5;3,3;]
+		list[current_player;craftpreview;6,1.75;1,1;]
+		]]
+
+		minetest.show_formspec(player:get_player_name(), "main", form)
+	end,
+})
+
 minetest.register_node("mt_core:oak_leaves", {
 	description = "Oak Leaves",
 	tiles = { "mt_atlas.png^[sheet:8x8:6,0" },
