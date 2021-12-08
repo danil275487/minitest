@@ -62,6 +62,14 @@ minetest.register_node("mt_core:oak_leaves", {
 	groups = { snappy = 3},
 })
 
+minetest.register_node("mt_core:apple_leaves", {
+	description = "Leaves with apple",
+	tiles = { "mt_atlas.png^[sheet:8x8:6,0^(mt_atlas.png^[sheet:8x8:7,3)" },
+	drawtype = "allfaces_optional",
+	paramtype = "light",
+	groups = { snappy = 3},
+})
+
 minetest.register_node("mt_core:red_flower", {
 	description = "Flower",
 	tiles = { "mt_atlas.png^[sheet:8x8:6,2" },
