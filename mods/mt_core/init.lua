@@ -2,6 +2,7 @@
 dofile(minetest.get_modpath("mt_core") .. "/inventory.lua")
 dofile(minetest.get_modpath("mt_core") .. "/func.lua")
 dofile(minetest.get_modpath("mt_core") .. "/nodes.lua")
+dofile(minetest.get_modpath("mt_core") .. "/items.lua")
 dofile(minetest.get_modpath("mt_core") .. "/mapgen.lua")
 
 --Set up the sky
