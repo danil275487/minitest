@@ -48,11 +48,6 @@ minetest.register_craftitem("mt_core:gold_bar", {
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:6,2",
 })
 
-minetest.register_craftitem("mt_core:twig", {
-	description = "Twig",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:0,1",
-})
-
 minetest.register_craftitem("mt_core:stick", {
 	description = "Stick",
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,1",
