@@ -1,4 +1,4 @@
 --Easier schematic loading
 function mts(name)
-	return minetest.get_modpath("mt_core").."/schems/"..name..".mts"
+	return minetest.get_modpath("mt_mapgen").."/schems/"..name..".mts"
 end
