@@ -109,4 +109,5 @@ minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack
 	if placer and placer:is_player() then
 		return minetest.is_creative_enabled(placer:get_player_name())
 	end
-end)
+end
+)
