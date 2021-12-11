@@ -1,5 +1,6 @@
 --Load .lua files
 dofile(minetest.get_modpath("mt_nodes") .. "/liquids.lua")
+dofile(minetest.get_modpath("mt_nodes") .. "/chest.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
 
 --Nodes
