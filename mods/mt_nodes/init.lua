@@ -77,7 +77,7 @@ minetest.register_node("mt_nodes:crafting_bench", {
 		{0.3750, -0.5000, 0.3750, 0.5000, 0.2500, 0.5000}
 	}
 },
-	groups = { oddly_breakable_by_hand = 2 },
+	groups = { oddly_breakable_by_hand = 1, choppy = 3 },
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", "Crafting Bench")
@@ -102,7 +102,7 @@ minetest.register_node("mt_nodes:oak_leaves", {
 	tiles = { "mt_atlas.png^[sheet:8x8:6,0" },
 	drawtype = "allfaces_optional",
 	paramtype = "light",
-	groups = { snappy = 3},
+	groups = { snappy = 3 },
 	drop = ""
 })
 
@@ -111,7 +111,7 @@ minetest.register_node("mt_nodes:apple_leaves", {
 	tiles = { "mt_atlas.png^[sheet:8x8:6,0^(mt_atlas.png^[sheet:8x8:7,3)" },
 	drawtype = "allfaces_optional",
 	paramtype = "light",
-	groups = { snappy = 3},
+	groups = { snappy = 3 },
 	drop = "mt_items:apple"
 })
 
