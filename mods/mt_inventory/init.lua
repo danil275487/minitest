@@ -8,6 +8,7 @@ minetest.register_on_joinplayer(function(player)
 		list[current_player;main;0.5,3.25;6,2;6]
 		list[current_player;main;0.5,6;6,1;0]
 		list[current_player;craft;1.75,0.5;2,2;]
+		image[4.25,1.125;1,1;mt_inv_arrow.png^[transformR270]
 		list[current_player;craftpreview;5.5,1.125;1,1;]
 	]])
 end)

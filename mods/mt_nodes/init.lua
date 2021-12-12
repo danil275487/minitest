@@ -1,6 +1,7 @@
 --Load .lua files
 dofile(minetest.get_modpath("mt_nodes") .. "/liquids.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/chest.lua")
+dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
 
 --Nodes
 minetest.register_node("mt_nodes:stone", {
@@ -89,8 +90,9 @@ minetest.register_node("mt_nodes:crafting_bench", {
 		real_coordinates[true]
 		list[current_player;main;0.5,4.5;6,2;6]
 		list[current_player;main;0.5,7.25;6,1;0]
-		list[current_player;craft;1.25,0.5;3,3;]
-		list[current_player;craftpreview;6,1.75;1,1;]
+		list[current_player;craft;1.125,0.5;3,3;]
+		image[4.875,1.75;1,1;mt_inv_arrow.png^[transformR270]
+		list[current_player;craftpreview;6.125,1.75;1,1;]
 		]]
 		minetest.show_formspec(player:get_player_name(), "main", form)
 	end,

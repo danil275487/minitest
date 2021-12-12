@@ -138,7 +138,6 @@ function mt_hunger.eat(hp_change, replace_with_item, itemstack, user, pointed_th
 		level = level + hp_change
 		mt_hunger_update_level(user, level)
 	end
-	minetest.sound_play("mt_hunger_eat", {to_player = user:get_player_name(), gain = 0.7})
 	local pos = user:getpos()
 	pos.y = pos.y + 1.5
 	local itemname = itemstack:get_name()
