@@ -110,3 +110,64 @@ minetest.register_craftitem("mt_items:apple", {
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:4,4",
 	on_use = minetest.item_eat(2),
 })
+
+minetest.register_craftitem("mt_items:dough", {
+	description = "Dough",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:5,4",
+	on_use = minetest.item_eat(1),
+})
+
+minetest.register_craftitem("mt_items:seeds", {
+	description = "Seeds",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:6,4",
+})
+
+minetest.register_craftitem("mt_items:stone_pick_head", {
+	description = "Stone Pickaxe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:0,2",
+})
+
+minetest.register_craftitem("mt_items:iron_pick_head", {
+	description = "Iron Pickaxe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,2",
+})
+
+minetest.register_craftitem("mt_items:gold_pick_head", {
+	description = "Gold Pickaxe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:2,2",
+})
+
+minetest.register_craftitem("mt_items:diamond_pick_head", {
+	description = "Diamond Pickaxe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:3,2",
+})
+
+minetest.register_craftitem("mt_items:crystal_pick_head", {
+	description = "Crystal Pickaxe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:4,2",
+})
+
+minetest.register_craftitem("mt_items:stone_axe_head", {
+	description = "Stone Axe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:2,1",
+})
+
+minetest.register_craftitem("mt_items:iron_axe_head", {
+	description = "Iron Axe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:3,1",
+})
+
+minetest.register_craftitem("mt_items:gold_axe_head", {
+	description = "Gold Axe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:4,1",
+})
+
+minetest.register_craftitem("mt_items:diamond_axe_head", {
+	description = "Diamond Axe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:5,1",
+})
+
+minetest.register_craftitem("mt_items:crystal_axe_head", {
+	description = "Crystal Axe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:6,1",
+})
