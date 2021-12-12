@@ -5,11 +5,11 @@
 local function get_furnace_active_formspec(fuel_percent, item_percent)
 	return "size[8.25,8.75]"..
 		"real_coordinates[true]"..
-		"list[context;src;2.4125,0.5;1,1;]"..
-		"list[context;fuel;2.4125,3;1,1;]"..
-		"image[2.4125,1.75;1,1;mt_furnace_ui_fire_bg.png^[lowpart:"..(fuel_percent)..":mt_furnace_ui_fire.png]"..
-		"image[3.7125,1.75;1,1;mt_inv_arrow.png^[lowpart:"..(item_percent)..":mt_inv_arrow_full.png^[transformR270]"..
-		"list[context;dst;4.9125,1.75;1,1;]"..
+		"list[context;src;2.35,0.5;1,1;]"..
+		"list[context;fuel;2.35,3;1,1;]"..
+		"image[2.35,1.75;1,1;mt_furnace_ui_fire_bg.png^[lowpart:"..(fuel_percent)..":mt_furnace_ui_fire.png]"..
+		"image[3.60,1.75;1,1;mt_inv_arrow.png^[lowpart:"..(item_percent)..":mt_inv_arrow_full.png^[transformR270]"..
+		"list[context;dst;4.85,1.75;1,1;]"..
 		"list[current_player;main;0.5,4.5;6,2;6]"..
 		"list[current_player;main;0.5,7.25;6,1;0]"
 end
