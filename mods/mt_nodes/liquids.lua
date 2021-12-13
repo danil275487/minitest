@@ -33,7 +33,8 @@ minetest.register_node("mt_nodes:water_source", {
 	liquid_alternative_flowing = "mt_nodes:water_flowing",
 	liquid_alternative_source = "mt_nodes:water_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 100, r = 120, g = 105, b = 196}
+	post_effect_color = {a = 100, r = 120, g = 105, b = 196},
+	groups = { not_in_creative_inventory = 1 }
 })
 
 minetest.register_node("mt_nodes:water_flowing", {
@@ -73,7 +74,8 @@ minetest.register_node("mt_nodes:water_flowing", {
 	liquid_alternative_source = "mt_nodes:water_source",
 	liquid_renewable = false,
 	liquid_viscosity = 1,
-	post_effect_color = {a = 100, r = 120, g = 105, b = 196}
+	post_effect_color = {a = 100, r = 120, g = 105, b = 196},
+	groups = { not_in_creative_inventory = 1 }
 })
 
 
@@ -114,7 +116,8 @@ minetest.register_node("mt_nodes:lava_source", {
 	liquid_alternative_flowing = "mt_nodes:lava_flowing",
 	liquid_alternative_source = "mt_nodes:lava_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 64, r = 100, g = 100, b = 200}
+	post_effect_color = {a = 64, r = 100, g = 100, b = 200},
+	groups = { not_in_creative_inventory = 1 }
 })
 
 minetest.register_node("mt_nodes:lava_flowing", {
@@ -157,5 +160,6 @@ minetest.register_node("mt_nodes:lava_flowing", {
 	liquid_alternative_source = "mt_nodes:lava_source",
 	liquid_renewable = false,
 	liquid_viscosity = 1,
-	post_effect_color = {a = 100, r = 120, g = 105, b = 196}
+	post_effect_color = {a = 100, r = 120, g = 105, b = 196},
+	groups = { not_in_creative_inventory = 1 }
 })
