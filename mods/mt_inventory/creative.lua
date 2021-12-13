@@ -13,12 +13,6 @@ local inv_creative = minetest.create_detached_inventory("creative", {
 	end,
 })
 local inv_trash = minetest.create_detached_inventory("trash", {
-	allow_take = function(inv, listname, index, stack, player)
-		return 0
-	end,
-	allow_move = function(inv, from_list, from_index, to_list, to_index, count, player)
-		return 0
-	end,
 	on_put = function(inv, listname, index, stack, player)
 		inv:set_list("main", {})
 	end,
@@ -31,14 +25,16 @@ local ipp = 24
 function get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
 	return formspec_wrapper([[
-		size[8.25,7.5]
+		size[8.25,8.25]
 		real_coordinates[true]
 		list[detached:creative;main;0.5,0.5;6,4;${start}]
-		button[0.5,5.4125;0.5,0.5;inv_creative_prev;\<]
-		label[1.25,5.65;Page: ${page} / ${max_page}]
-		button[3.5,5.4125;0.5,0.5;inv_creative_next;\>]
-		list[current_player;main;0.5,6;6,1;0]
-		field[-10,-10;0,0;internal_paginator;;${page}]
+		button[0.5,5.5;1,1;inv_creative_prev;\<]
+		label[1.75,6;Page: ${page} / ${max_page}]
+		button[4,5.5;1,1;inv_creative_next;\>]
+		label[5.5,6;Trash:]
+		list[detached:trash;main;6.75,5.5;1,1]
+		list[current_player;main;0.5,6.75;6,1;0]
+		field[0,0;0,0;internal_paginator;;${page}]
 		button[0,0;1.5,0.5;inventory;Inventory]
 		button[1.5,0;1.5,0.5;creative;Creative]
 	]], {
@@ -49,7 +45,7 @@ function get_creative_formspec(page)
 end
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "kl_inventory:creative" and fields.quit == nil and fields.creative == nil then
+	if formname == "mt_inventory:creative" and fields.quit == nil and fields.creative == nil then
 		if fields.inventory then
 			minetest.show_formspec(player:get_player_name(), "", get_inventory_formspec())
 			return
@@ -66,7 +62,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if page > max_page then
 			page = 1
 		end
-		minetest.show_formspec(player:get_player_name(), "kl_inventory:creative", get_creative_formspec(page))
+		minetest.show_formspec(player:get_player_name(), "mt_inventory:creative", get_creative_formspec(page))
 	end
 end)
 

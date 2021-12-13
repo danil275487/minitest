@@ -29,7 +29,7 @@ end)
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "" and fields.creative and minetest.is_creative_enabled(player) then
-		minetest.show_formspec(player:get_player_name(), "kl_inventory:creative", get_creative_formspec(1))
+		minetest.show_formspec(player:get_player_name(), "mt_inventory:creative", get_creative_formspec(1))
 	end
 end)
 
