@@ -5,6 +5,7 @@ function get_inventory_formspec(playername)
 			button[0,0;1.5,0.5;inventory;Inventory]
 			button[1.5,0;1.5,0.5;creative;Creative]
 		]]
+	end
 	return formspec_wrapper([[
 		size[8.25,7.5]
 		real_coordinates[true]
@@ -17,7 +18,6 @@ function get_inventory_formspec(playername)
 	]], {
 		creative_btn = creative_button
 	})
-	end
 end
 
 minetest.register_on_joinplayer(function(player)
