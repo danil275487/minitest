@@ -11,7 +11,8 @@ function get_inventory_formspec(playername)
 		real_coordinates[true]
 		list[current_player;main;0.5,3.25;6,2;6]
 		list[current_player;main;0.5,6;6,1;0]
-		list[current_player;craft;1.75,0.5;2,2;]
+		list[current_player;craft;1.75,0.5;2,1;]
+		list[current_player;craft;1.75,1.75;2,1;3]
 		image[4.25,1.125;1,1;mt_inv_arrow.png^[transformR270]
 		list[current_player;craftpreview;5.5,1.125;1,1;]
 		${creative_btn}

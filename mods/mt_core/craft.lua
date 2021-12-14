@@ -342,6 +342,486 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "mt_items:stone_pick_wood_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_pick_stone_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_pick_iron_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_pick_gold_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_pick_diamond_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_pick_crystal_stick",
+	recipe = {
+		{"mt_items:stone_pick_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_wood_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_stone_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_iron_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_gold_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_diamond_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:stone_axe_crystal_stick",
+	recipe = {
+		{"mt_items:stone_axe_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_wood_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_stone_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_iron_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_gold_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_diamond_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_pick_crystal_stick",
+	recipe = {
+		{"mt_items:iron_pick_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_wood_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_stone_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_iron_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_gold_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_diamond_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:iron_axe_crystal_stick",
+	recipe = {
+		{"mt_items:iron_axe_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_wood_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_stone_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_iron_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_gold_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_diamond_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_pick_crystal_stick",
+	recipe = {
+		{"mt_items:gold_pick_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_wood_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_stone_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_iron_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_gold_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_diamond_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:gold_axe_crystal_stick",
+	recipe = {
+		{"mt_items:gold_axe_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_wood_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_stone_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_iron_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_gold_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_diamond_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_pick_crystal_stick",
+	recipe = {
+		{"mt_items:diamond_pick_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_wood_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_stone_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_iron_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_gold_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_diamond_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:diamond_axe_crystal_stick",
+	recipe = {
+		{"mt_items:diamond_axe_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_wood_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_stone_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_iron_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_gold_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_diamond_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_pick_crystal_stick",
+	recipe = {
+		{"mt_items:crystal_pick_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_wood_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_stone_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:stone_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_iron_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:iron_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_gold_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:gold_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_diamond_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:diamond_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_items:crystal_axe_crystal_stick",
+	recipe = {
+		{"mt_items:crystal_axe_head"},
+		{"mt_items:crystal_stick"},
+	}
+})
+
 --Smelting
 minetest.register_craft({
 	type = "cooking",
