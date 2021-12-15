@@ -1,5 +1,6 @@
 --Load .lua files
 dofile(minetest.get_modpath("mt_items") .. "/tools.lua")
+dofile(minetest.get_modpath("mt_items") .. "/buckets.lua")
 
 --Items
 minetest.register_craftitem("mt_items:rock", {
