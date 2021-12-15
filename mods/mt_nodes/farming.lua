@@ -64,7 +64,7 @@ function farming:add_plant(identifier, full_grown, names, interval, chance)
 		interval = interval,
 		chance = chance,
 		action = function(pos, node)
-			local low_speed = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "minecraft:farmland_wet"
+			local low_speed = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "mt_nodes:farmland_wet"
 			farming:grow_plant(identifier, pos, node, false, false, low_speed)
 		end,
 	})
