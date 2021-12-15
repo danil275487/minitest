@@ -2,6 +2,7 @@
 dofile(minetest.get_modpath("mt_nodes") .. "/liquids.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/chest.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
+dofile(minetest.get_modpath("mt_nodes") .. "/farming.lua")
 
 --Nodes
 minetest.register_node("mt_nodes:stone", {
@@ -19,7 +20,7 @@ minetest.register_node("mt_nodes:stone_bricks", {
 minetest.register_node("mt_nodes:dirt", {
 	description = "Dirt",
 	tiles = { "mt_atlas.png^[sheet:8x8:1,0" },
-	groups = { crumbly = 3 },
+	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 })
 
 minetest.register_node("mt_nodes:grass", {
@@ -28,7 +29,7 @@ minetest.register_node("mt_nodes:grass", {
 						  "mt_atlas.png^[sheet:8x8:1,0",
 						  "mt_atlas.png^[sheet:8x8:1,0^(mt_atlas.png^[sheet:8x8:2,0)"
 						  },
-	groups = { crumbly = 3 },
+	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 	drop = "mt_nodes:dirt"
 })
 
@@ -77,7 +78,7 @@ minetest.register_node("mt_nodes:crafting_bench", {
 		{0.3750, -0.5000, 0.3750, 0.5000, 0.2500, 0.5000}
 	}
 },
-	groups = { oddly_breakable_by_hand = 1, choppy = 3 },
+	groups = { oddly_breakable_by_hand = 1, choppy = 3, attached_node = 1 },
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", "Crafting Bench")
@@ -104,7 +105,12 @@ minetest.register_node("mt_nodes:oak_leaves", {
 	drawtype = "allfaces_optional",
 	paramtype = "light",
 	groups = { snappy = 3 },
-	drop = ""
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"mt_nodes:oak_sapling"},rarity = 7},
+		}
+	},
 })
 
 minetest.register_node("mt_nodes:apple_leaves", {
@@ -113,7 +119,13 @@ minetest.register_node("mt_nodes:apple_leaves", {
 	drawtype = "allfaces_optional",
 	paramtype = "light",
 	groups = { snappy = 3 },
-	drop = "mt_items:apple"
+	drop = {
+		max_items = 2,
+		items = {
+			{items = {"mt_nodes:oak_sapling"},rarity = 7},
+			{items = {"mt_items:apple"},rarity = 1},
+		}
+	}
 })
 
 minetest.register_node("mt_nodes:red_flower", {
@@ -132,7 +144,7 @@ minetest.register_node("mt_nodes:red_flower", {
 		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
 	}
 },
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
 minetest.register_node("mt_nodes:blue_flower", {
@@ -151,7 +163,7 @@ minetest.register_node("mt_nodes:blue_flower", {
 		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
 	}
 },
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
 minetest.register_node("mt_nodes:white_flower", {
@@ -170,7 +182,7 @@ minetest.register_node("mt_nodes:white_flower", {
 		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
 	}
 },
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
 minetest.register_node("mt_nodes:twig", {
@@ -189,7 +201,7 @@ minetest.register_node("mt_nodes:twig", {
 		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
 	}
 },
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
 minetest.register_node("mt_nodes:rocks", {
@@ -208,7 +220,7 @@ minetest.register_node("mt_nodes:rocks", {
 		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
 	}
 },
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 	drop = "mt_items:rock"
 })
 
@@ -222,12 +234,18 @@ minetest.register_node("mt_nodes:low_grass", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
 	},
-	drop = "mt_items:grass_heap"
+	drop = {
+		max_items = 2,
+		items = {
+			{items = {"mt_items:seeds"},rarity = 10},
+			{items = {"mt_items:grass_heap"},rarity = 1},
+		}
+	},
 })
 
 minetest.register_node("mt_nodes:tall_grass", {
@@ -240,12 +258,18 @@ minetest.register_node("mt_nodes:tall_grass", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = { dig_immediate = 3 },
+	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
 	},
-	drop = "mt_items:grass_heap"
+	drop = {
+		max_items = 2,
+		items = {
+			{items = {"mt_items:seeds"},rarity = 6},
+			{items = {"mt_items:grass_heap"},rarity = 1},
+		}
+	},
 })
 
 minetest.register_node("mt_nodes:coal_ore", {
@@ -265,21 +289,21 @@ minetest.register_node("mt_nodes:iron_ore", {
 minetest.register_node("mt_nodes:gold_ore", {
 	description = "Gold Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
-	groups = { cracky = 2, level = 1 },
+	groups = { cracky = 2 },
 	drop = "mt_items:gold_lump"
 })
 
 minetest.register_node("mt_nodes:diamond_ore", {
 	description = "Diamond Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,1)" },
-	groups = { cracky = 1, level = 1 },
+	groups = { cracky = 1 },
 	drop = "mt_items:diamond"
 })
 
 minetest.register_node("mt_nodes:crystal_ore", {
 	description = "Crystal Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:5,1)" },
-	groups = { cracky = 1, level = 2 },
+	groups = { cracky = 1 },
 	drop = "mt_items:crystal"
 })
 
@@ -292,4 +316,20 @@ minetest.register_node("mt_nodes:glass", {
 	use_texture_alpha = "clip",
 	is_ground_content = true,
 	drop = ""
+})
+
+minetest.register_node("mt_nodes:oak_sapling", {
+	description = "Oak Sapling",
+	drawtype = "plantlike",
+	tiles = { "mt_atlas.png^[sheet:8x8:4,4" },
+	inventory_image = "mt_atlas.png^[sheet:8x8:4,4",
+	wield_image = "mt_atlas.png^[sheet:8x8:4,4",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	on_timer = grow_sapling,
+	groups = { snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1 },
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(math.random(60, 480))
+	end,
 })

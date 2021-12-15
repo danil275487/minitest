@@ -120,6 +120,9 @@ minetest.register_craftitem("mt_items:dough", {
 minetest.register_craftitem("mt_items:seeds", {
 	description = "Seeds",
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:6,4",
+	on_place = function(itemstack, placer, pointed_thing)
+		return farming:place_seed(itemstack, placer, pointed_thing, "mt_nodes:wheat_plant_1")
+	end
 })
 
 minetest.register_craftitem("mt_items:stone_pick_head", {
@@ -170,4 +173,29 @@ minetest.register_craftitem("mt_items:diamond_axe_head", {
 minetest.register_craftitem("mt_items:crystal_axe_head", {
 	description = "Crystal Axe Head",
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:6,1",
+})
+
+minetest.register_craftitem("mt_items:stone_hoe_head", {
+	description = "Stone Hoe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:7,3",
+})
+
+minetest.register_craftitem("mt_items:iron_hoe_head", {
+	description = "Iron Hoe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:0,4",
+})
+
+minetest.register_craftitem("mt_items:gold_hoe_head", {
+	description = "Gold Hoe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,4",
+})
+
+minetest.register_craftitem("mt_items:diamond_hoe_head", {
+	description = "Diamond Hoe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:2,4",
+})
+
+minetest.register_craftitem("mt_items:crystal_hoe_head", {
+	description = "Crystal Hoe Head",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:3,4",
 })
