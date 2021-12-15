@@ -124,7 +124,7 @@ function farming:grow_plant(identifier, pos, node, stages, ignore_light, low_spe
 	if not stages then
 		stages = 1
 	end
-	stages = stages + math.ceil(intervals_counter)
+	--stages = stages + math.ceil(intervals_counter)
 	local new_node = {name = plant_info.names[step+stages]}
 	if new_node.name == nil then
 		new_node.name = plant_info.full_grown
@@ -332,4 +332,4 @@ minetest.register_node("mt_nodes:wheat_plant", {
 	groups = {dig_immediate=3, not_in_creative_inventory=1, plant=1,attached_node=1},
 })
 
-farming:add_plant("plant_wheat", "mt_nodes:wheat_plant", {"mt_nodes:wheat_plant_1", "mt_nodes:wheat_plant_2", "mt_nodes:wheat_plant_3"}, 5, 20)
+farming:add_plant("plant_wheat", "mt_nodes:wheat_plant", {"mt_nodes:wheat_plant_1", "mt_nodes:wheat_plant_2", "mt_nodes:wheat_plant_3"}, 30,10)
