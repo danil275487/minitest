@@ -53,3 +53,19 @@ minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack
 	end
 end
 )
+
+--Give initial items
+local give_if_not_gotten_already = function(inv, list, item)
+	if not inv:contains_item(list, item) then
+			inv:add_item(list, item)
+	end
+end
+
+local give_initial_stuff = function(player)
+	local inv = player:get_inventory()
+	give_if_not_gotten_already(inv, "main", "mt_items:stone_axe_wood_stick")
+end
+
+minetest.register_on_newplayer(function(player)
+	give_initial_stuff(player)
+end)
