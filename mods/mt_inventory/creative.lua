@@ -25,18 +25,22 @@ local ipp = 24
 function get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
 	return formspec_wrapper([[
-		size[8.25,8.25]
+		size[8.25,9]
 		real_coordinates[true]
-		list[detached:creative;main;0.5,0.5;6,4;${start}]
-		button[0.5,5.5;1,1;inv_creative_prev;\<]
-		label[1.75,6;Page: ${page} / ${max_page}]
-		button[4,5.5;1,1;inv_creative_next;\>]
-		label[5.5,6;Trash:]
-		list[detached:trash;main;6.75,5.5;1,1]
-		list[current_player;main;0.5,6.75;6,1;0]
+		background9[0,0.75;8.25,8.25;formspec_bg.png;false;12]
+		bgcolor[#00000080;true]
+		style_type[button;border=false;bgimg=formspec_bg.png;bgimg_pressed=formspec_bg_dark.png;bgimg_middle=12,12]
+		listcolors[#787878ff;#505050ff]
+		list[detached:creative;main;0.5,1.25;6,4;${start}]
+		button[0.5,6.25;1,1;inv_creative_prev;\<]
+		label[1.75,6.75;Page: ${page} / ${max_page}]
+		button[4,6.25;1,1;inv_creative_next;\>]
+		label[5.5,6.75;Trash:]
+		list[detached:trash;main;6.75,6.25;1,1]
+		list[current_player;main;0.5,7.5;6,1;0]
 		field[0,0;0,0;internal_paginator;;${page}]
-		button[0,0;1.5,0.5;inventory;Inventory]
-		button[1.5,0;1.5,0.5;creative;Creative]
+		button[0,0;2,0.75;inventory;Inventory]
+		button[2,0;2,0.75;creative;Creative]
 	]], {
 		start = start,
 		page = page,

@@ -2,19 +2,23 @@ function get_inventory_formspec(playername)
 	local creative_button = ""
 	if minetest.is_creative_enabled(playername) then
 		creative_button = [[
-			button[0,0;1.5,0.5;inventory;Inventory]
-			button[1.5,0;1.5,0.5;creative;Creative]
+			button[0,0;2,0.75;inventory;Inventory]
+			button[2,0;2,0.75;creative;Creative]
 		]]
 	end
 	return formspec_wrapper([[
-		size[8.25,7.5]
+		size[8.25,8.25,true]
 		real_coordinates[true]
-		list[current_player;main;0.5,3.25;6,2;6]
-		list[current_player;main;0.5,6;6,1;0]
-		list[current_player;craft;1.75,0.5;2,1;]
-		list[current_player;craft;1.75,1.75;2,1;3]
-		image[4.25,1.125;1,1;mt_inv_arrow.png^[transformR270]
-		list[current_player;craftpreview;5.5,1.125;1,1;]
+		background9[0,0.75;8.25,7.5;formspec_bg.png;false;12]
+		bgcolor[#00000080;true]
+		style_type[button;border=false;bgimg=formspec_bg.png;bgimg_pressed=formspec_bg_dark.png;bgimg_middle=12,12]
+		listcolors[#787878ff;#505050ff]
+		list[current_player;main;0.5,4;6,2;6]
+		list[current_player;main;0.5,6.75;6,1;0]
+		list[current_player;craft;1.75,1.25;2,1;]
+		list[current_player;craft;1.75,2.50;2,1;3]
+		image[4.25,1.875;1,1;mt_inv_arrow.png^[transformR270]
+		list[current_player;craftpreview;5.5,1.875;1,1;]
 		${creative_btn}
 	]], {
 		creative_btn = creative_button

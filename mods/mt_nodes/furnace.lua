@@ -5,6 +5,9 @@
 local function get_furnace_active_formspec(fuel_percent, item_percent)
 	return "size[8.25,8.75]"..
 		"real_coordinates[true]"..
+		"background9[0,0;0,0;formspec_bg.png;true;12]"..
+		"bgcolor[#00000080;true]"..
+		"listcolors[#787878ff;#505050ff]"..
 		"list[context;src;2.35,0.5;1,1;]"..
 		"list[context;fuel;2.35,3;1,1;]"..
 		"image[2.35,1.75;1,1;mt_furnace_ui_fire_bg.png^[lowpart:"..(fuel_percent)..":mt_furnace_ui_fire.png]"..
@@ -17,6 +20,9 @@ end
 local function get_furnace_inactive_formspec()
 	return "size[8.25,8.75]"..
 		"real_coordinates[true]"..
+		"background9[0,0;0,0;formspec_bg.png;true;12]"..
+		"bgcolor[#00000080;true]"..
+		"listcolors[#787878ff;#505050ff]"..
 		"list[context;src;2.35,0.5;1,1;]"..
 		"list[context;fuel;2.35,3;1,1;]"..
 		"image[2.35,1.75;1,1;mt_furnace_ui_fire_bg.png]"..
