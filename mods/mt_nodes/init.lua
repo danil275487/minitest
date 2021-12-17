@@ -4,6 +4,7 @@ dofile(minetest.get_modpath("mt_nodes") .. "/chest.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/farming.lua")
 
+
 --Nodes
 minetest.register_node("mt_nodes:stone", {
 	description = "Stone",
@@ -332,4 +333,65 @@ minetest.register_node("mt_nodes:oak_sapling", {
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(60, 480))
 	end,
+})
+
+minetest.register_node("mt_nodes:torch", {
+	description = "Torch",
+	drawtype = "plantlike",
+	paramtype2 = "meshoptions",
+	place_param2 = 1,
+	inventory_image = "mt_atlas.png^[sheet:8x8:6,3",
+	wield_image = "mt_atlas.png^[sheet:8x8:6,3",
+	tiles = { "mt_atlas.png^[sheet:8x8:6,3" },
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	liquids_pointable = false,
+	light_source = 12,
+	groups = {choppy=2, dig_immediate=3, attached_node=1},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.1, -0.5, -0.1, 0.1, 0.35, 0.1},
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		local under = pointed_thing.under
+		local node = minetest.get_node(under)
+		local def = minetest.registered_nodes[node.name]
+		if def and def.on_rightclick and
+			not (placer and placer:is_player() and
+			placer:get_player_control().sneak) then
+			return def.on_rightclick(under, node, placer, itemstack,pointed_thing) or itemstack
+		end
+
+		local above = pointed_thing.above
+		local wdir = minetest.dir_to_wallmounted(vector.subtract(under, above))
+		local fakestack = itemstack
+		if wdir == 0 then
+			return nil,
+			fakestack:set_name("air")
+		elseif wdir == 1 then
+			fakestack:set_name("mt_nodes:torch")
+		else
+			fakestack:set_name("mt_nodes:torch_wall")
+		end
+		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
+		itemstack:set_name("mt_nodes:torch")
+		return itemstack
+	end,
+})
+
+minetest.register_node("mt_nodes:torch_wall", {
+	drawtype = "torchlike",
+	tiles = { "mt_atlas.png^[sheet:8x8:7,4" },
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	light_source = 12,
+	groups = {choppy=2, dig_immediate=3, not_in_creative_inventory=1, attached_node=1},
+	drop = "mt_nodes:torch",
+	selection_box = {
+		type = "wallmounted",
+		wall_side = {-0.5, -0.35, -0.1, 0, 0.35, 0.1},
+	},
 })

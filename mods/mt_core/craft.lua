@@ -167,6 +167,14 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "mt_nodes:torch",
+	recipe = {
+		{"mt_items:coal"},
+		{"mt_items:stick"},
+	}
+})
+
+minetest.register_craft({
 	output = "mt_items:stick",
 	recipe = {
 		{"mt_nodes:twig"},
