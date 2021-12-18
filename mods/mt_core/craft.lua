@@ -179,7 +179,6 @@ minetest.register_craft({
 	recipe = {
 		{"mt_nodes:twig"},
 		{"mt_nodes:twig"},
-		{"mt_nodes:twig"},
 	}
 })
 
