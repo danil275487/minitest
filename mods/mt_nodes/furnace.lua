@@ -216,7 +216,7 @@ minetest.register_node("mt_nodes:furnace", {
 		"mt_atlas.png^[sheet:8x8:7,1", 
 		"mt_atlas.png^[sheet:8x8:7,1",
 		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,3"
+		"mt_atlas.png^[sheet:8x8:7,1^(mt_atlas.png^[sheet:8x8:3,3)"
 	},
 	paramtype2 = "facedir",
 	groups = {cracky=3},
@@ -251,10 +251,6 @@ minetest.register_node("mt_nodes:furnace", {
 		minetest.remove_node(pos)
 		return drops
 	end,
-
-	--allow_metadata_inventory_put = allow_metadata_inventory_put,
-	--allow_metadata_inventory_move = allow_metadata_inventory_move,
-	--allow_metadata_inventory_take = allow_metadata_inventory_take,
 })
 
 minetest.register_node("mt_nodes:furnace_active", {
@@ -265,7 +261,7 @@ minetest.register_node("mt_nodes:furnace_active", {
 		"mt_atlas.png^[sheet:8x8:7,1", 
 		"mt_atlas.png^[sheet:8x8:7,1",
 		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,3)"
+		"mt_atlas.png^[sheet:8x8:7,1^(mt_atlas.png^[sheet:8x8:4,3)"
 	},
 	paramtype2 = "facedir",
 	light_source = 8,
