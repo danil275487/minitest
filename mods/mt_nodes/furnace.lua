@@ -216,7 +216,7 @@ minetest.register_node("mt_nodes:furnace", {
 		"mt_atlas.png^[sheet:8x8:7,1", 
 		"mt_atlas.png^[sheet:8x8:7,1",
 		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:3,3"
+		"mt_atlas.png[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,3"
 	},
 	paramtype2 = "facedir",
 	groups = {cracky=3},
@@ -265,7 +265,7 @@ minetest.register_node("mt_nodes:furnace_active", {
 		"mt_atlas.png^[sheet:8x8:7,1", 
 		"mt_atlas.png^[sheet:8x8:7,1",
 		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:4,3"
+		"mt_atlas.png[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,3)"
 	},
 	paramtype2 = "facedir",
 	light_source = 8,

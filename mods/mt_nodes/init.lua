@@ -11,10 +11,22 @@ minetest.register_node("mt_nodes:stone", {
 	groups = { cracky = 3 },
 })
 
+minetest.register_node("mt_nodes:deep_stone", {
+	description = "Deep Stone",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,5" },
+	groups = { cracky = 2, level = 1 },
+})
+
 minetest.register_node("mt_nodes:stone_bricks", {
 	description = "Stone Bricks",
 	tiles = { "mt_atlas.png^[sheet:8x8:7,1" },
 	groups = { cracky = 3 },
+})
+
+minetest.register_node("mt_nodes:deep_stone_bricks", {
+	description = "Deep Stone Bricks",
+	tiles = { "mt_atlas.png^[sheet:8x8:0,5" },
+	groups = { cracky = 2, level = 1 },
 })
 
 minetest.register_node("mt_nodes:dirt", {
@@ -292,21 +304,21 @@ minetest.register_node("mt_nodes:iron_ore", {
 minetest.register_node("mt_nodes:gold_ore", {
 	description = "Gold Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:3,1)" },
-	groups = { cracky = 2 },
+	groups = { cracky = 2, level = 1 },
 	drop = "mt_items:gold_lump"
 })
 
 minetest.register_node("mt_nodes:diamond_ore", {
 	description = "Diamond Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:4,1)" },
-	groups = { cracky = 1 },
+	groups = { cracky = 1, level = 1 },
 	drop = "mt_items:diamond"
 })
 
 minetest.register_node("mt_nodes:crystal_ore", {
 	description = "Crystal Ore",
 	tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:5,1)" },
-	groups = { cracky = 1 },
+	groups = { cracky = 1, level = 2 },
 	drop = "mt_items:crystal"
 })
 

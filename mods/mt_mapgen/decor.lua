@@ -5,7 +5,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.05,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -16,7 +16,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.06,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -27,7 +27,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.07,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -38,7 +38,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.04,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -49,7 +49,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.07,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -60,7 +60,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.07,
-	biomes = {"forest"},
+	biomes = {"mt_mapgen:forest"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -71,7 +71,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.06,
-	biomes = {"forest", "plains"},
+	biomes = {"mt_mapgen:forest", "mt_mapgen:plains"},
 	y_min = 0,
 	y_max = 31000,
 })
@@ -81,7 +81,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.05,
-	biomes = {"forest"},
+	biomes = {"mt_mapgen:forest"},
 	y_min = 0,
 	y_max = 31000,
 	schematic = mts("tree"),

@@ -35,7 +35,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type = "scatter",
 	ore = "mt_nodes:diamond_ore",
-	wherein = "mt_nodes:stone",
+	wherein	= "mt_nodes:stone",
 	clust_scarcity = 35*35*35,
 	clust_num_ores = 10,
 	clust_size = 25,
@@ -46,7 +46,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type = "scatter",
 	ore = "mt_nodes:crystal_ore",
-	wherein = "mt_nodes:stone",
+	wherein	= "mt_nodes:stone",
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 5,
 	clust_size = 10,
@@ -55,18 +55,18 @@ minetest.register_ore({
 })
 
 minetest.register_ore({
-	ore_type	   = "blob",
-	ore			= "mt_nodes:gravel",
-	wherein		= "mt_nodes:stone",
+	ore_type	  = "blob",
+	ore		= "mt_nodes:gravel",
+	wherein	= "mt_nodes:stone",
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 25,
-	clust_size	 = 10,
-	y_min		  = -31000,
-	y_max		  = 31000,
+	clust_size = 10,
+	y_min = -31000,
+	y_max = 31000,
 	noise_params = {
-		offset  = 5,
-		scale   = 1,
-		spread  = {x=100, y=100, z=100},
+		offset = 5,
+		scale = 1,
+		spread = {x=100, y=100, z=100},
 		seed	= 17266,
 		octaves = 3,
 		persist = 0.6,
@@ -76,7 +76,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type	   = "blob",
 	ore			= "mt_nodes:dirt",
-	wherein		= "mt_nodes:stone",
+	wherein	= "mt_nodes:stone",
 	clust_scarcity = 25*25*25,
 	clust_num_ores = 25,
 	clust_size	 = 10,
