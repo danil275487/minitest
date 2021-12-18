@@ -55,7 +55,7 @@ minetest.register_decoration({
 })
 
 minetest.register_decoration({
-	decoration = "mt_nodes:stick",
+	decoration = "mt_nodes:twig",
 	deco_type = "simple",
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
