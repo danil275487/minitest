@@ -60,7 +60,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.07,
-	biomes = {"mt_mapgen:forest"},
+	biomes = "mt_mapgen:forest",
 	y_min = 0,
 	y_max = 31000,
 })
@@ -81,7 +81,7 @@ minetest.register_decoration({
 	place_on = "mt_nodes:grass",
 	sidelen = 16,
 	fill_ratio = 0.05,
-	biomes = {"mt_mapgen:forest"},
+	biomes = "mt_mapgen:forest",
 	y_min = 0,
 	y_max = 31000,
 	schematic = mts("tree"),
