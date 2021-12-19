@@ -1,6 +1,7 @@
 --Load .lua files
 dofile(minetest.get_modpath("mt_nodes") .. "/liquids.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
+dofile(minetest.get_modpath("mt_nodes") .. "/deepstone_furnace.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/farming.lua")
 
 
@@ -292,30 +293,35 @@ local ores = {
 		name = "Coal",
 		tile = "1,1",
 		groups = {cracky = 3},
+		deep_groups = {cracky = 2, level = 1},
 		drop = "mt_items:coal_lump",
 	},
 	iron = {
 		name = "Iron",
 		tile = "2,1",
 		groups = {cracky = 2},
+		deep_groups = {cracky = 2, level = 1},
 		drop = "mt_items:iron_lump",
 	},
 	gold = {
 		name = "Gold",
 		tile = "3,1",
 		groups = {cracky = 2, level = 1},
+		deep_groups = {cracky = 1, level = 1},
 		drop = "mt_items:gold_lump",
 	},
 	diamond = {
 		name = "Diamond",
 		tile = "4,1",
 		groups = {cracky = 1, level = 1},
+		deep_groups = {cracky = 1, level = 2},
 		drop = "mt_items:diamond",
 	},
 	crystal = {
 		name = "Crystal",
 		tile = "5,1",
 		groups = {cracky = 1, level = 2},
+		deep_groups = {cracky = 1, level = 3},
 		drop = "mt_items:crystal",
 	},
 }
@@ -325,6 +331,12 @@ for k,v in pairs(ores) do
 		description = v.name.." Ore",
 		tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:"..v.tile..")" },
 		groups = v.groups,
+		drop = v.drop
+	})
+	minetest.register_node("mt_nodes:deep_"..k.."_ore", {
+		description = "Deep "..v.name.." Ore",
+		tiles = { "mt_atlas.png^[sheet:8x8:0,5^(mt_atlas.png^[sheet:8x8:"..v.tile..")" },
+		groups = v.deep_groups,
 		drop = v.drop
 	})
 end

@@ -67,7 +67,7 @@ end
 
 minetest.register_craftitem("mt_items:bucket", {
 	description = "Bucket",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:7,4",
+	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,2",
 	groups = {tool = 1},
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
@@ -134,7 +134,7 @@ bucket.register_liquid(
 	"mt_nodes:water_source",
 	"mt_nodes:water_flowing",
 	"mt_items:water_bucket",
-	"mt_item_atlas.png^[sheet:8x8:0,5",
+	"mt_item_atlas.png^[sheet:8x8:2,2",
 	"Water Bucket",
 	{tool = 1, water_bucket = 1}
 )
@@ -143,7 +143,7 @@ bucket.register_liquid(
 	"mt_nodes:lava_source",
 	"mt_nodes:lava_flowing",
 	"mt_items:lava_bucket",
-	"mt_item_atlas.png^[sheet:8x8:1,5",
+	"mt_item_atlas.png^[sheet:8x8:3,2",
 	"Water Bucket",
 	{tool = 1, lava_bucket = 1}
 )
