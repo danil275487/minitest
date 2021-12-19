@@ -78,6 +78,86 @@ minetest.register_node("mt_nodes:water_flowing", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
+minetest.register_node("mt_nodes:river_water_source", {
+	description = "River Water",
+	drawtype = "liquid",
+	tiles = {
+		{
+			name = "mt_river_water.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 1,
+				aspect_h = 1,
+				length = 2.5,
+			},
+		},
+		{
+			name = "mt_river_water.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 1,
+				aspect_h = 1,
+				length = 2.5,
+			},
+		},
+	},
+	paramtype = "light",
+	walkable = false,
+	pointable = false,
+	buildable_to = true,
+	drowning = 1,
+	liquid_range = 2,
+	liquidtype = "source",
+	liquid_alternative_flowing = "mt_nodes:river_water_flowing",
+	liquid_alternative_source = "mt_nodes:river_water_source",
+	liquid_viscosity = 1,
+	post_effect_color = {a = 100, r = 103, g = 182, b = 189},
+	groups = { not_in_creative_inventory = 1, water = 1 }
+})
+
+minetest.register_node("mt_nodes:river_water_flowing", {
+	description = "River Water",
+	drawtype = "flowingliquid",
+	tiles = {"mt_river_water.png"},
+	special_tiles = {
+		{
+			name = "mt_river_water.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 1,
+				aspect_h = 1,
+				length = 2.5,
+			},
+		},
+		{
+			name = "mt_river_water.png",
+			backface_culling = true,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 1,
+				aspect_h = 1,
+				length = 2.5,
+			},
+		},
+	},
+	paramtype = "light",
+	paramtype2 = "flowingliquid",
+	walkable = false,
+	pointable = false,
+	buildable_to = true,
+	drowning = 1,
+	liquid_range = 2,
+	liquidtype = "flowing",
+	liquid_alternative_flowing = "mt_nodes:river_water_flowing",
+	liquid_alternative_source = "mt_nodes:river_water_source",
+	liquid_renewable = false,
+	liquid_viscosity = 1,
+	post_effect_color = {a = 100, r = 103, g = 182, b = 189},
+	groups = { not_in_creative_inventory = 1, water = 1 }
+})
 
 minetest.register_node("mt_nodes:lava_source", {
 	description = "Lava",

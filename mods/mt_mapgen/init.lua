@@ -7,3 +7,4 @@ dofile(minetest.get_modpath("mt_mapgen") .. "/flat.lua")
 -- Basic map aliases
 minetest.register_alias("mapgen_stone", "mt_nodes:stone")
 minetest.register_alias("mapgen_water_source", "mt_nodes:water_source")
+minetest.register_alias("mapgen_river_water_source", "mt_nodes:river_water_source")
