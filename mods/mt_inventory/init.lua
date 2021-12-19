@@ -9,9 +9,9 @@ function get_inventory_formspec(playername)
 	return formspec_wrapper([[
 		size[8.25,8.25,true]
 		real_coordinates[true]
-		background9[0,0.75;8.25,7.5;formspec_bg.png;false;12]
+		background9[0,0.75;8.25,7.5;mt_formspec_bg.png;false;12]
 		bgcolor[#00000080;true]
-		style_type[button;border=false;bgimg=formspec_bg.png;bgimg_pressed=formspec_bg_dark.png;bgimg_middle=12,12]
+		style_type[button;border=false;bgimg=mt_formspec_bg.png;bgimg_pressed=mt_formspec_bg_dark.png;bgimg_middle=12,12]
 		listcolors[#787878ff;#505050ff]
 		list[current_player;main;0.5,4;6,2;6]
 		list[current_player;main;0.5,6.75;6,1;0]

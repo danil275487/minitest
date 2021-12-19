@@ -59,12 +59,24 @@ minetest.register_biome({
 })
 
 minetest.register_biome({
-	name = "mt_mapgen:deep_underground",
+	name = "mt_mapgen:underground2",
 	node_stone = "mt_nodes:stone",
 	node_cave_liquid = "mt_nodes:lava_source",
 	node_dungeon = "mt_nodes:stone_bricks",
 	node_dungeon_alt = "mt_nodes:stone",
 	y_max = -75,
+	y_min = -275,
+	heat_point = 50,
+	humidity_point = 50,
+})
+
+minetest.register_biome({
+	name = "mt_mapgen:deep_underground",
+	node_stone = "mt_nodes:deep_stone",
+	node_cave_liquid = "mt_nodes:lava_source",
+	node_dungeon = "mt_nodes:deep_stone_bricks",
+	node_dungeon_alt = "mt_nodes:deep_stone",
+	y_max = -275,
 	y_min = -31000,
 	heat_point = 50,
 	humidity_point = 50,

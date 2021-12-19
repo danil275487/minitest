@@ -102,7 +102,7 @@ minetest.register_node("mt_nodes:crafting_bench", {
 		local form = [[
 		size[8.25,8.75]
 		real_coordinates[true]
-		background9[0,0;0,0;formspec_bg.png;true;12]
+		background9[0,0;0,0;mt_formspec_bg.png;true;12]
 		bgcolor[#00000080;true]
 		listcolors[#787878ff;#505050ff]
 		list[current_player;main;0.5,4.5;6,2;6]
@@ -446,7 +446,7 @@ minetest.register_node("mt_nodes:chest", {
 		meta:set_string("formspec",
 			"size[8.25,8.75]"..
 			"real_coordinates[true]"..
-			"background9[0,0;0,0;formspec_bg.png;true;12]"..
+			"background9[0,0;0,0;mt_formspec_bg.png;true;12]"..
 			"bgcolor[#00000080;true]"..
 			"listcolors[#787878ff;#505050ff]"..
 			"list[current_player;main;0.5,4.5;6,2;6]"..

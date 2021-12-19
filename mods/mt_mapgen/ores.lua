@@ -54,11 +54,68 @@ minetest.register_ore({
 	y_max = -250,
 })
 
+
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "mt_nodes:deep_coal_ore",
+	wherein = "mt_nodes:deep_stone",
+	clust_scarcity = 15*15*15,
+	clust_num_ores = 25,
+	clust_size = 10,
+	y_min = -31000,
+	y_max = -125,
+})
+
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "mt_nodes:deep_iron_ore",
+	wherein = "mt_nodes:deep_stone",
+	clust_scarcity = 20*20*20,
+	clust_num_ores = 20,
+	clust_size = 15,
+	y_min = -31000,
+	y_max = -125,
+})
+
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "mt_nodes:deep_gold_ore",
+	wherein = "mt_nodes:deep_stone",
+	clust_scarcity = 25*25*25,
+	clust_num_ores = 15,
+	clust_size = 10,
+	y_min = -31000,
+	y_max = -125,
+})
+
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "mt_nodes:deep_diamond_ore",
+	wherein	= "mt_nodes:deep_stone",
+	clust_scarcity = 35*35*35,
+	clust_num_ores = 15,
+	clust_size = 25,
+	y_min = -31000,
+	y_max = -125,
+})
+
+
+minetest.register_ore({
+	ore_type = "scatter",
+	ore = "mt_nodes:deep_crystal_ore",
+	wherein	= "mt_nodes:deep_stone",
+	clust_scarcity = 25*25*25,
+	clust_num_ores = 10,
+	clust_size = 10,
+	y_min = -31000,
+	y_max = -125,
+})
+
 minetest.register_ore({
 	ore_type	  = "blob",
 	ore		= "mt_nodes:gravel",
-	wherein	= "mt_nodes:stone",
-	clust_scarcity = 25*25*25,
+	wherein	= {"mt_nodes:stone", "mt_nodes:deep_stone"},
+	clust_scarcity = 10*10*10,
 	clust_num_ores = 25,
 	clust_size = 10,
 	y_min = -31000,
@@ -76,8 +133,8 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type	   = "blob",
 	ore			= "mt_nodes:dirt",
-	wherein	= "mt_nodes:stone",
-	clust_scarcity = 25*25*25,
+	wherein	= {"mt_nodes:stone", "mt_nodes:deep_stone"},
+	clust_scarcity = 10*10*10,
 	clust_num_ores = 25,
 	clust_size	 = 10,
 	y_min		  = -31000,
@@ -95,8 +152,8 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type	   = "blob",
 	ore			= "mt_nodes:sand",
-	wherein		= "mt_nodes:stone",
-	clust_scarcity = 25*25*25,
+	wherein	= {"mt_nodes:stone", "mt_nodes:deep_stone"},
+	clust_scarcity = 10*10*10,
 	clust_num_ores = 25,
 	clust_size	 = 7,
 	y_min		  = -31000,

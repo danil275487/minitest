@@ -47,53 +47,35 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "mt_nodes:coal_ore",
-	recipe = {
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_items:coal_lump","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-	}
-})
+local ores = {
+	coal_lump = {result = "coal"},
+	iron_lump = {result = "iron"},
+	gold_lump = {result = "gold"},
+	diamond = {result = "diamond"},
+	crystal = {result = "crystal"},
+}
+
+for k,v in pairs(ores) do
+	minetest.register_craft({
+		output = "mt_nodes:"..v.result.."_ore",
+		recipe = {
+			{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
+			{"mt_nodes:stone","mt_items:"..k,"mt_nodes:stone"},
+			{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
+		}
+	})
+	minetest.register_craft({
+		output = "mt_nodes:deep_"..v.result.."_ore",
+		recipe = {
+			{"mt_nodes:deep_stone","mt_nodes:deep_stone","mt_nodes:deep_stone"},
+			{"mt_nodes:deep_stone","mt_items:"..k,"mt_nodes:deep_stone"},
+			{"mt_nodes:deep_stone","mt_nodes:deep_stone","mt_nodes:deep_stone"},
+		}
+	})
+end
 
 minetest.register_craft({
-	output = "mt_nodes:iron_ore",
-	recipe = {
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_items:iron_lump","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-	}
-})
-
-minetest.register_craft({
-	output = "mt_nodes:gold_ore",
-	recipe = {
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_items:gold_lump","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-	}
-})
-
-minetest.register_craft({
-	output = "mt_nodes:diamond_ore",
-	recipe = {
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_items:diamond","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-	}
-})
-
-minetest.register_craft({
-	output = "mt_nodes:crystal_ore",
-	recipe = {
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_items:crystal","mt_nodes:stone"},
-		{"mt_nodes:stone","mt_nodes:stone","mt_nodes:stone"},
-	}
-})
-
-minetest.register_craft({
-	output = "mt_nodes:oak_oak_planks",
+	output = "mt_nodes:oak_planks",
 	recipe = {
 		{"mt_items:oak_plank","mt_items:oak_plank"},
 		{"mt_items:oak_plank","mt_items:oak_plank"},
@@ -105,6 +87,14 @@ minetest.register_craft({
 	recipe = {
 		{"mt_nodes:stone","mt_nodes:stone"},
 		{"mt_nodes:stone","mt_nodes:stone"},
+	}
+})
+
+minetest.register_craft({
+	output = "mt_nodes:deep_stone_bricks",
+	recipe = {
+		{"mt_nodes:deep_stone","mt_nodes:deep_stone"},
+		{"mt_nodes:deep_stone","mt_nodes:deep_stone"},
 	}
 })
 
@@ -166,6 +156,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "mt_nodes:deep_furnace",
+	recipe = {
+		{"mt_nodes:deep_stone","mt_nodes:deep_stone","mt_nodes:deep_stone"},
+		{"mt_nodes:deep_stone","","mt_nodes:deep_stone"},
+		{"mt_nodes:deep_stone","mt_nodes:deep_stone","mt_nodes:deep_stone"},
+	}
+})
+
+
+minetest.register_craft({
 	output = "mt_nodes:torch",
 	recipe = {
 		{"mt_items:coal"},
@@ -219,6 +219,13 @@ for k,v in pairs(materials) do
 		recipe = {
 			{v.material,v.material},
 			{v.material,""},
+		}
+	})
+	minetest.register_craft({
+		output = "mt_items:"..v.output.."_axe_head",
+		recipe = {
+			{v.material,v.material},
+			{"",v.material},
 		}
 	})
 	minetest.register_craft({
@@ -414,4 +421,40 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "mt_items:stick",
 	burntime = 5,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:seeds",
+	burntime = 1,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:wheat",
+	burntime = 3,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:torch",
+	burntime = 5,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:apple",
+	burntime = 5,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:bread",
+	burntime = 4,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "mt_items:lava_bucket",
+	burntime = 35,
 })

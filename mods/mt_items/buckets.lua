@@ -144,6 +144,6 @@ bucket.register_liquid(
 	"mt_nodes:lava_flowing",
 	"mt_items:lava_bucket",
 	"mt_item_atlas.png^[sheet:8x8:3,2",
-	"Water Bucket",
+	"Lava Bucket",
 	{tool = 1, lava_bucket = 1}
 )
