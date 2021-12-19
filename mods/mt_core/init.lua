@@ -3,13 +3,15 @@ dofile(minetest.get_modpath("mt_core") .. "/func.lua")
 dofile(minetest.get_modpath("mt_core") .. "/hand.lua")
 dofile(minetest.get_modpath("mt_core") .. "/craft.lua")
 
---Set up the sky
+--Set up player relatee stuff and sky
 minetest.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
 		textures = {"mt_char.png", "mt_char_back.png" },
 		visual_size = { x = 0.85, y = 1.95 },
 	})
+	player:hud_set_hotbar_image("mt_hotbar.png")
+	player:hud_set_hotbar_selected_image("mt_hotbar_selected.png")
 	player:set_sky({
 		base_color = "#67b6bd",
 		type = "regular",
@@ -68,4 +70,12 @@ end
 
 minetest.register_on_newplayer(function(player)
 	give_initial_stuff(player)
+end)
+
+--Little funny easter egg :)
+--DM me in Discord if you want to drop a apple on death.
+minetest.register_on_dieplayer(function(entity, reason)
+	if entity:get_player_name() == "Danil_2461" then
+		minetest.item_drop(ItemStack("mt_items:apple"), entity, entity:get_pos())
+	end
 end)
