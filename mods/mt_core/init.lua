@@ -87,9 +87,10 @@ minetest.register_on_dieplayer(function(entity, reason)
 		local inv = entity:get_inventory()
 		for _, list_name in ipairs(inv:get_list("main")) do
 			local pos = entity:get_pos()
-			pos.y = pos.y + 1
-			pos.x = pos.x + math.random(-5,5)
-			minetest.item_drop(list_name, entity, entity:get_pos())
+			pos.x = pos.x + math.random(-2,2)
+			pos.z = pos.z + math.random(-2,2)
+			pos.y = pos.y + math.random(0,2)
+			minetest.item_drop(list_name, entity, pos)
 		end
 		inv:set_list("main", {})
 	end
