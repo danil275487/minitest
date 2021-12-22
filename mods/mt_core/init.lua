@@ -4,6 +4,7 @@ dofile(minetest.get_modpath("mt_core") .. "/hand.lua")
 dofile(minetest.get_modpath("mt_core") .. "/craft.lua")
 
 --Set up player relatee stuff and sky
+mt_core = {}
 minetest.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
@@ -77,5 +78,19 @@ end)
 minetest.register_on_dieplayer(function(entity, reason)
 	if entity:get_player_name() == "Danil_2461" then
 		minetest.item_drop(ItemStack("mt_items:apple"), entity, entity:get_pos())
+	end
+end)
+
+--Drop items on death
+minetest.register_on_dieplayer(function(entity, reason)
+	if entity:is_player() then
+		local inv = entity:get_inventory()
+		for _, list_name in ipairs(inv:get_list("main")) do
+			local pos = entity:get_pos()
+			pos.y = pos.y + 1
+			pos.x = pos.x + math.random(-5,5)
+			minetest.item_drop(list_name, entity, entity:get_pos())
+		end
+		inv:set_list("main", {})
 	end
 end)
