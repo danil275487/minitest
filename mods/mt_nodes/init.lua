@@ -3,7 +3,7 @@ dofile(minetest.get_modpath("mt_nodes") .. "/liquids.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/furnace.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/deepstone_furnace.lua")
 dofile(minetest.get_modpath("mt_nodes") .. "/farming.lua")
-
+dofile(minetest.get_modpath("mt_nodes") .. "/stairs.lua")
 
 --Nodes
 minetest.register_node("mt_nodes:stone", {
