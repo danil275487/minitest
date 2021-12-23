@@ -85,6 +85,7 @@ end)
 minetest.register_on_dieplayer(function(entity, reason)
 	if entity:is_player() then
 		local inv = entity:get_inventory()
+		local player_name = entity:get_player_name()
 		for _, list_name in ipairs(inv:get_list("main")) do
 			local pos = entity:get_pos()
 			pos.x = pos.x + math.random(-2,2)
@@ -93,5 +94,15 @@ minetest.register_on_dieplayer(function(entity, reason)
 			minetest.item_drop(list_name, entity, pos)
 		end
 		inv:set_list("main", {})
+		minetest.chat_send_player(player_name, "You died.")
+		minetest.chat_send_player(player_name, "Your score: "..mt_score)
+		mt_score = 0
 	end
+end)
+
+--Score system
+mt_score = 0
+
+minetest.register_on_dignode(function(pos, oldnode, digger)
+	mt_score = mt_score + 5
 end)
