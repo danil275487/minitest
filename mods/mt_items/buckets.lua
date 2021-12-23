@@ -17,8 +17,6 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 			inventory_image = inventory_image,
 			stack_max = 1,
 			liquids_pointable = true,
-			groups = groups,
-
 			on_place = function(itemstack, user, pointed_thing)
 				-- Must be pointing to node
 				if pointed_thing.type ~= "node" then
@@ -68,7 +66,6 @@ end
 minetest.register_craftitem("mt_items:bucket", {
 	description = "Bucket",
 	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,2",
-	groups = {tool = 1},
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
 		if pointed_thing.type == "object" then
@@ -127,7 +124,7 @@ minetest.register_craftitem("mt_items:bucket", {
 			end
 			return user:get_wielded_item()
 		end
-	end,
+	end
 })
 
 bucket.register_liquid(
@@ -135,8 +132,7 @@ bucket.register_liquid(
 	"mt_nodes:water_flowing",
 	"mt_items:water_bucket",
 	"mt_item_atlas.png^[sheet:8x8:2,2",
-	"Water Bucket",
-	{tool = 1, water_bucket = 1}
+	"Water Bucket"
 )
 
 bucket.register_liquid(
@@ -144,8 +140,7 @@ bucket.register_liquid(
 	"mt_nodes:river_water_flowing",
 	"mt_items:river_water_bucket",
 	"mt_item_atlas.png^[sheet:8x8:4,2",
-	"River Water Bucket",
-	{tool = 1, water_bucket = 1}
+	"River Water Bucket"
 )
 
 bucket.register_liquid(
@@ -153,6 +148,5 @@ bucket.register_liquid(
 	"mt_nodes:lava_flowing",
 	"mt_items:lava_bucket",
 	"mt_item_atlas.png^[sheet:8x8:3,2",
-	"Lava Bucket",
-	{tool = 1, lava_bucket = 1}
+	"Lava Bucket"
 )
