@@ -106,3 +106,16 @@ mt_score = 0
 minetest.register_on_dignode(function(pos, oldnode, digger)
 	mt_score = mt_score + 5
 end)
+
+--Crosshair
+minetest.register_on_joinplayer(function(player)
+	player:hud_add({
+		name = "crosshair",
+		hud_elem_type = "image",
+		text = "mt_crosshair.png",
+		position = {x = 0.5, y = 0.5},
+		scale = {x = 1, y = 1},
+		alignment = {x = 0, y = 0},
+		offset = {x = 0, y = 0},
+	})
+end)
