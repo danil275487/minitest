@@ -196,6 +196,14 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "mt_items:bottle",
+	recipe = {
+		{"mt_nodes:glass","","mt_nodes:glass"},
+		{"","mt_nodes:glass",""},
+	}
+})
+
 local materials = {
 	rock = {material = "mt_items:rock", output = "stone"},
 	deep_stone = {material = "mt_nodes:deep_stone", output = "deep_stone"},
@@ -305,6 +313,29 @@ for k,v in pairs(heads) do
 			}
 		})
 	end
+end
+
+local potions = {
+	heal = {material = "mt_items:red_flower", output = "heal_potion"},
+	speed = {material = "mt_items:blue_flower", output = "speed_potion"},
+	jump = {material = "mt_items:white_flower", output = "jump_potion"},
+}
+
+for k,v in pairs(materials) do
+	minetest.register_craft({
+		output = "mt_items:"..v.output,
+		recipe = {
+			{v.material},
+			{"mt_items:water_bottle"},
+		}
+	})
+	minetest.register_craft({
+		output = "mt_items:river_"..v.output,
+		recipe = {
+			{v.material},
+			{"mt_items:river_water_bottle"},
+		}
+	})
 end
 
 --Smelting
