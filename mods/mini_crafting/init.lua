@@ -316,23 +316,23 @@ for k,v in pairs(heads) do
 end
 
 local potions = {
-	heal = {material = "mini_items:red_flower", output = "heal_potion"},
-	speed = {material = "mini_items:blue_flower", output = "speed_potion"},
-	jump = {material = "mini_items:white_flower", output = "jump_potion"},
+	heal = {material = "red_flower", output = "heal_potion"},
+	speed = {material = "blue_flower", output = "speed_potion"},
+	jump = {material = "white_flower", output = "jump_potion"},
 }
 
-for k,v in pairs(materials) do
+for k,v in pairs(potions) do
 	minetest.register_craft({
 		output = "mini_potions:"..v.output,
 		recipe = {
-			{v.material},
+			{"mini_nodes:"..v.material},
 			{"mini_potions:water_bottle"},
 		}
 	})
 	minetest.register_craft({
 		output = "mini_potions:river_"..v.output,
 		recipe = {
-			{v.material},
+			{"mini_nodes:"..v.material},
 			{"mini_potions:river_water_bottle"},
 		}
 	})

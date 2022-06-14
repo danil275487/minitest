@@ -1,18 +1,21 @@
 minetest.register_craftitem("mini_potions:bottle", {
 	description = "Bottle",
 	inventory_image = "mini_bottle.png",
+	liquids_pointable = true,
 	on_use = function(itemstack,user,pointed_thing)
 		local node = minetest.get_node(pointed_thing.under)
 		local inv = user:get_inventory()
-		if node.name == "mini_liquids:water_source"
-		or node.name == "mini_liquids:water_flowing" then
-			inv:add_item("main", "mini_potions:water_bottle")
-		elseif node.name == "mini_liquids:river_water_source"
-		or node.name == "mini_liquids:river_water_flowing" then
-			inv:add_item("main", "mini_potions:river_water_bottle")
+		if minetest.get_item_group(node.name, "water") == 1 then
+			if node.name == "mini_liquids:water_source" or node.name == "mini_liquids:water_flowing" then
+				inv:add_item("main", ItemStack("mini_potions:water_bottle"))
+			elseif node.name == "mini_liquids:river_water_source" or node.name == "mini_liquids:river_water_flowing" then
+				inv:add_item("main", ItemStack("mini_potions:river_water_bottle"))
+			end
+			itemstack:take_item()
+			return itemstack
+		else
+			return itemstack
 		end
-		local count = itemstack:get_count()
-		return "mini_potions:bottle "..count-1
 	end
 })
 
