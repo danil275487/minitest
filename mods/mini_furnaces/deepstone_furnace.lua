@@ -211,12 +211,12 @@ end
 minetest.register_node("mini_furnaces:deep_furnace", {
 	description =  "Deep Stone Furnace",
 	tiles = {
-		"mt_atlas.png^[sheet:8x8:0,5", 
-		"mt_atlas.png^[sheet:8x8:0,5",
-		"mt_atlas.png^[sheet:8x8:1,5", 
-		"mt_atlas.png^[sheet:8x8:1,5",
-		"mt_atlas.png^[sheet:8x8:1,5", 
-		"mt_atlas.png^[sheet:8x8:1,5^(mt_atlas.png^[sheet:8x8:3,3)"
+		"mini_deep_stone.png",
+		"mini_deep_stone.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png^mini_furnace.png"
 	},
 	paramtype2 = "facedir",
 	groups = { cracky=2, level = 1 },
@@ -256,12 +256,12 @@ minetest.register_node("mini_furnaces:deep_furnace", {
 minetest.register_node("mini_furnaces:deep_furnace_active", {
 	description =  "Deep Stone Furnace",
 	tiles = {
-		"mt_atlas.png^[sheet:8x8:0,5", 
-		"mt_atlas.png^[sheet:8x8:0,5",
-		"mt_atlas.png^[sheet:8x8:1,5", 
-		"mt_atlas.png^[sheet:8x8:1,5",
-		"mt_atlas.png^[sheet:8x8:1,5", 
-		"mt_atlas.png^[sheet:8x8:1,5^(mt_atlas.png^[sheet:8x8:4,3)"
+		"mini_deep_stone.png",
+		"mini_deep_stone.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png",
+		"mini_deep_stone_bricks.png^mini_furnace_lit.png"
 	},
 	paramtype2 = "facedir",
 	light_source = 8,

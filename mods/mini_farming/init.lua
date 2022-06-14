@@ -189,7 +189,7 @@ minetest.register_lbm({
 --Farmlands
 minetest.register_node("mini_farming:farmland", {
 	description = "Farmland",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,4", "mt_atlas.png^[sheet:8x8:1,0" },
+	tiles = { "mini_farmland.png" },
 	drop = "mini_nodes:dirt",
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -200,7 +200,7 @@ minetest.register_node("mini_farming:farmland", {
 
 minetest.register_node("mini_farming:farmland_wet", {
 	description = "Farmland",
-	tiles = { "mt_atlas.png^[sheet:8x8:5,4", "mt_atlas.png^[sheet:8x8:1,0" },
+	tiles = { "mini_farmland_wet.png" },
 	drop = "mini_nodes:dirt",
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -296,9 +296,9 @@ for i = 1, 3 do
 		walkable = false,
 		drawtype = "plantlike",
 		drop = "mini_items:seeds",
-		tiles = {"mt_atlas.png^[sheet:8x8:"..(i-1)..",4"},
-		inventory_image = "mt_atlas.png^[sheet:8x8:"..(i-1)..",4",
-		wield_image = "mt_atlas.png^[sheet:8x8:"..(i-1)..",4",
+		tiles = {"mini_wheat_plant_"..i..".png"},
+		inventory_image = "mini_wheat_plant_"..i..".png",
+		wield_image = "mini_wheat_plant_"..i..".png",
 		selection_box = {
 			type = "fixed",
 			fixed = {
@@ -317,9 +317,9 @@ minetest.register_node("mini_farming:wheat_plant", {
 	place_param2 = 3,
 	walkable = false,
 	drawtype = "plantlike",
-	tiles = {"mt_atlas.png^[sheet:8x8:3,4"},
-	inventory_image = "mt_atlas.png^[sheet:8x8:3,4",
-	wield_image = "mt_atlas.png^[sheet:8x8:3,4",
+	tiles = {"mini_wheat_plant_4.png"},
+	inventory_image = "mini_wheat_plant_4.png",
+	wield_image = "mini_wheat_plant_4.png",
 	drop = {
 		max_items = 4,
 		items = {

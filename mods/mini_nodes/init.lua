@@ -1,76 +1,76 @@
 --Nodes
 minetest.register_node("mini_nodes:stone", {
 	description = "Stone",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,1" },
+	tiles = { "mini_stone.png" },
 	groups = { cracky = 3 },
 })
 
 minetest.register_node("mini_nodes:deep_stone", {
 	description = "Deep Stone",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,5" },
+	tiles = { "mini_deep_stone.png" },
 	groups = { cracky = 2, level = 1 },
 })
 
 minetest.register_node("mini_nodes:stone_bricks", {
 	description = "Stone Bricks",
-	tiles = { "mt_atlas.png^[sheet:8x8:7,1" },
+	tiles = { "mini_stone_bricks.png" },
 	groups = { cracky = 3 },
 })
 
 minetest.register_node("mini_nodes:deep_stone_bricks", {
 	description = "Deep Stone Bricks",
-	tiles = { "mt_atlas.png^[sheet:8x8:1,5" },
+	tiles = { "mini_deep_stone_bricks.png" },
 	groups = { cracky = 2, level = 1 },
 })
 
 minetest.register_node("mini_nodes:dirt", {
 	description = "Dirt",
-	tiles = { "mt_atlas.png^[sheet:8x8:1,0" },
+	tiles = { "mini_dirt.png" },
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 })
 
 minetest.register_node("mini_nodes:grass", {
 	description = "Grassy Dirt",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,0",
-						  "mt_atlas.png^[sheet:8x8:1,0",
-						  "mt_atlas.png^[sheet:8x8:1,0^(mt_atlas.png^[sheet:8x8:2,0)"
-						  },
+	tiles = {"mini_grass.png",
+			"mini_dirt.png",
+			"mini_dirt.png^mini_grass_side.png"
+			},
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 	drop = "mini_nodes:dirt"
 })
 
 minetest.register_node("mini_nodes:sand", {
 	description = "Sand",
-	tiles = { "mt_atlas.png^[sheet:8x8:3,0" },
+	tiles = { "mini_sand.png" },
 	groups = { crumbly = 3, falling_node = 1 },
 })
 
 minetest.register_node("mini_nodes:gravel", {
 	description = "Gravel",
-	tiles = { "mt_atlas.png^[sheet:8x8:7,0" },
+	tiles = { "mini_gravel.png" },
 	groups = { crumbly = 2, falling_node = 1 },
 })
 
 minetest.register_node("mini_nodes:oak_tree", {
 	description = "Oak Tree",
-	tiles = { "mt_atlas.png^[sheet:8x8:5,0",
-							"mt_atlas.png^[sheet:8x8:5,0",
-							"mt_atlas.png^[sheet:8x8:4,0",
+	tiles = { "mini_oak_tree_top.png",
+							"mini_oak_tree_top.png",
+							"mini_oak_tree.png",
 	 },
 	groups = { choppy = 3 },
 })
 
 minetest.register_node("mini_nodes:oak_planks", {
 	description = "Oak Planks",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,1" },
+	tiles = { "mini_oak_planks.png" },
 	groups = { choppy = 3 },
 })
 
 minetest.register_node("mini_nodes:crafting_bench", {
 	description = "Crafting Bench",
-	tiles = { "mt_atlas.png^[sheet:8x8:2,3",
-							"mt_atlas.png^[sheet:8x8:6,1",
-							"mt_atlas.png^[sheet:8x8:1,3",
+	tiles = { "mini_crafting_bench_top.png",
+							"mini_oak_planks.png",
+							"mini_crafting_bench.png",
 	 },
 	 paramtype = "light",
 	 drawtype = "nodebox",
@@ -110,7 +110,7 @@ minetest.register_node("mini_nodes:crafting_bench", {
 
 minetest.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,0" },
+	tiles = { "mini_oak_leaves.png" },
 	drawtype = "allfaces_optional",
 	paramtype = "light",
 	groups = { snappy = 3 },
@@ -124,7 +124,7 @@ minetest.register_node("mini_nodes:oak_leaves", {
 
 minetest.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,0^(mt_atlas.png^[sheet:8x8:7,3)" },
+	tiles = { "mini_oak_leaves.png^mini_apple_leaves.png" },
 	drawtype = "allfaces_optional",
 	paramtype = "light",
 	groups = { snappy = 3 },
@@ -139,9 +139,9 @@ minetest.register_node("mini_nodes:apple_leaves", {
 
 minetest.register_node("mini_nodes:red_flower", {
 	description = "Flower",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,2" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:6,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:6,2",
+	tiles = { "mini_red_flower.png" },
+	inventory_image = "mini_red_flower.png",
+	wield_image = "mini_red_flower.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -158,9 +158,9 @@ minetest.register_node("mini_nodes:red_flower", {
 
 minetest.register_node("mini_nodes:blue_flower", {
 	description = "Flower",
-	tiles = { "mt_atlas.png^[sheet:8x8:7,2" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:7,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:7,2",
+	tiles = { "mini_blue_flower.png" },
+	inventory_image = "mini_blue_flower.png",
+	wield_image = "mini_blue_flower.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -177,9 +177,9 @@ minetest.register_node("mini_nodes:blue_flower", {
 
 minetest.register_node("mini_nodes:white_flower", {
 	description = "Flower",
-	tiles = { "mt_atlas.png^[sheet:8x8:0,3" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:0,3",
-	wield_image = "mt_atlas.png^[sheet:8x8:0,3",
+	tiles = { "mini_white_flower.png" },
+	inventory_image = "mini_white_flower.png",
+	wield_image = "mini_white_flower.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -196,9 +196,9 @@ minetest.register_node("mini_nodes:white_flower", {
 
 minetest.register_node("mini_nodes:twig", {
 	description = "Twig",
-	tiles = { "mt_atlas.png^[sheet:8x8:4,2" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:4,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:4,2",
+	tiles = { "mini_twig.png" },
+	inventory_image = "mini_twig.png",
+	wield_image = "mini_twig.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -215,9 +215,9 @@ minetest.register_node("mini_nodes:twig", {
 
 minetest.register_node("mini_nodes:rocks", {
 	description = "Rocks",
-	tiles = { "mt_atlas.png^[sheet:8x8:5,2" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:5,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:5,2",
+	tiles = { "mini_rocks.png" },
+	inventory_image = "mini_rocks.png",
+	wield_image = "mini_rocks.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -234,10 +234,10 @@ minetest.register_node("mini_nodes:rocks", {
 })
 
 minetest.register_node("mini_nodes:low_grass", {
-	description = "Grass",
-	tiles = {"mt_atlas.png^[sheet:8x8:2,2"},
-	inventory_image = "mt_atlas.png^[sheet:8x8:2,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:2,2",
+	description = "Tall Grass",
+	tiles = {"mini_low_grass.png"},
+	inventory_image = "mini_low_grass.png",
+	wield_image = "mini_low_grass.png",
 	drawtype = "plantlike",
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -258,10 +258,10 @@ minetest.register_node("mini_nodes:low_grass", {
 })
 
 minetest.register_node("mini_nodes:tall_grass", {
-	description = "Grass",
-	tiles = {"mt_atlas.png^[sheet:8x8:3,2"},
-	inventory_image = "mt_atlas.png^[sheet:8x8:3,2",
-	wield_image = "mt_atlas.png^[sheet:8x8:3,2",
+	description = "Tall Grass",
+	tiles = {"mini_tall_grass.png"},
+	inventory_image = "mini_tall_grass.png",
+	wield_image = "mini_tall_grass.png",
 	drawtype = "plantlike",
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -284,35 +284,30 @@ minetest.register_node("mini_nodes:tall_grass", {
 local ores = {
 	coal = {
 		name = "Coal",
-		tile = "1,1",
 		groups = {cracky = 3},
 		deep_groups = {cracky = 2, level = 1},
 		drop = "mini_items:coal_lump",
 	},
 	iron = {
 		name = "Iron",
-		tile = "2,1",
 		groups = {cracky = 2},
 		deep_groups = {cracky = 2, level = 1},
 		drop = "mini_items:iron_lump",
 	},
 	gold = {
 		name = "Gold",
-		tile = "3,1",
 		groups = {cracky = 2, level = 1},
 		deep_groups = {cracky = 1, level = 1},
 		drop = "mini_items:gold_lump",
 	},
 	diamond = {
 		name = "Diamond",
-		tile = "4,1",
 		groups = {cracky = 1, level = 1},
 		deep_groups = {cracky = 1, level = 2},
 		drop = "mini_items:diamond",
 	},
 	crystal = {
 		name = "Crystal",
-		tile = "5,1",
 		groups = {cracky = 1, level = 2},
 		deep_groups = {cracky = 1, level = 3},
 		drop = "mini_items:crystal",
@@ -322,13 +317,13 @@ local ores = {
 for k,v in pairs(ores) do
 	minetest.register_node("mini_nodes:"..k.."_ore", {
 		description = v.name.." Ore",
-		tiles = { "mt_atlas.png^[sheet:8x8:0,1^(mt_atlas.png^[sheet:8x8:"..v.tile..")" },
+		tiles = { "mini_stone.png^mini_"..k.."_ore.png" },
 		groups = v.groups,
 		drop = v.drop
 	})
 	minetest.register_node("mini_nodes:deep_"..k.."_ore", {
 		description = "Deep "..v.name.." Ore",
-		tiles = { "mt_atlas.png^[sheet:8x8:0,5^(mt_atlas.png^[sheet:8x8:"..v.tile..")" },
+		tiles = { "mini_deep_stone.png^mini_"..k.."_ore.png" },
 		groups = v.deep_groups,
 		drop = v.drop
 	})
@@ -338,7 +333,7 @@ minetest.register_node("mini_nodes:glass", {
 	description = "Glass",
 	drawtype = "glasslike",
 	paramtype = "light",
-	tiles = { "mt_atlas.png^[sheet:8x8:5,3" },
+	tiles = { "mini_glass.png" },
 	groups = { oddly_breakable_by_hand = 3 },
 	use_texture_alpha = "clip",
 	is_ground_content = true,
@@ -348,9 +343,9 @@ minetest.register_node("mini_nodes:glass", {
 minetest.register_node("mini_nodes:oak_sapling", {
 	description = "Oak Sapling",
 	drawtype = "plantlike",
-	tiles = { "mt_atlas.png^[sheet:8x8:4,4" },
-	inventory_image = "mt_atlas.png^[sheet:8x8:4,4",
-	wield_image = "mt_atlas.png^[sheet:8x8:4,4",
+	tiles = { "mini_oak_sapling.png" },
+	inventory_image = "mini_oak_sapling.png",
+	wield_image = "mini_oak_sapling.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -366,9 +361,9 @@ minetest.register_node("mini_nodes:torch", {
 	drawtype = "plantlike",
 	paramtype2 = "meshoptions",
 	place_param2 = 1,
-	inventory_image = "mt_atlas.png^[sheet:8x8:6,3",
-	wield_image = "mt_atlas.png^[sheet:8x8:6,3",
-	tiles = { "mt_atlas.png^[sheet:8x8:6,3" },
+	inventory_image = "mini_torch.png",
+	wield_image = "mini_torch.png",
+	tiles = { "mini_torch.png" },
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -408,7 +403,7 @@ minetest.register_node("mini_nodes:torch", {
 
 minetest.register_node("mini_nodes:torch_wall", {
 	drawtype = "torchlike",
-	tiles = { "mt_atlas.png^[sheet:8x8:7,4" },
+	tiles = { "mini_torch_wall.png" },
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
@@ -420,38 +415,4 @@ minetest.register_node("mini_nodes:torch_wall", {
 		type = "wallmounted",
 		wall_side = {-0.5, -0.35, -0.1, 0, 0.35, 0.1},
 	},
-})
-
-minetest.register_node("mini_nodes:chest", {
-	description = "Chest",
-	tiles ={
-		"mt_atlas.png^[sheet:8x8:6,1",
-		"mt_atlas.png^[sheet:8x8:6,1",
-		"mt_atlas.png^[sheet:8x8:1,2",
-		"mt_atlas.png^[sheet:8x8:1,2",
-		"mt_atlas.png^[sheet:8x8:1,2",
-		"mt_atlas.png^[sheet:8x8:0,2"
-		},
-	paramtype2 = "facedir",
-	groups = { choppy=3 },
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",
-			"size[8.25,8.75]"..
-			"real_coordinates[true]"..
-			"background9[0,0;0,0;mt_formspec_bg.png;true;12]"..
-			"bgcolor[#00000080;true]"..
-			"listcolors[#787878ff;#505050ff]"..
-			"list[current_player;main;0.5,4.5;6,2;6]"..
-			"list[current_player;main;0.5,7.25;6,1;0]"..
-			"list[current_name;main;0.5,0.5;6,3;]")
-		meta:set_string("infotext", "Chest")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 6*3)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
 })

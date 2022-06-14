@@ -211,12 +211,12 @@ end
 minetest.register_node("mini_furnaces:furnace", {
 	description =  "Furnace",
 	tiles = {
-		"mt_atlas.png^[sheet:8x8:0,1", 
-		"mt_atlas.png^[sheet:8x8:0,1",
-		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:7,1",
-		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:7,1^(mt_atlas.png^[sheet:8x8:3,3)"
+		"mini_stone.png",
+		"mini_stone.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png^mini_furnace.png"
 	},
 	paramtype2 = "facedir",
 	groups = {cracky=3},
@@ -256,12 +256,12 @@ minetest.register_node("mini_furnaces:furnace", {
 minetest.register_node("mini_furnaces:furnace_active", {
 	description =  "Furnace",
 	tiles = {
-		"mt_atlas.png^[sheet:8x8:0,1", 
-		"mt_atlas.png^[sheet:8x8:0,1",
-		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:7,1",
-		"mt_atlas.png^[sheet:8x8:7,1", 
-		"mt_atlas.png^[sheet:8x8:7,1^(mt_atlas.png^[sheet:8x8:4,3)"
+		"mini_stone.png",
+		"mini_stone.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png",
+		"mini_stone_bricks.png^mini_furnace_lit.png"
 	},
 	paramtype2 = "facedir",
 	light_source = 8,

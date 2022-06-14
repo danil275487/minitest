@@ -1,6 +1,6 @@
 minetest.register_craftitem("mini_potions:bottle", {
 	description = "Bottle",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:0,3",
+	inventory_image = "mini_bottle.png",
 	on_use = function(itemstack,user,pointed_thing)
 		local node = minetest.get_node(pointed_thing.under)
 		local inv = user:get_inventory()
@@ -18,7 +18,7 @@ minetest.register_craftitem("mini_potions:bottle", {
 
 minetest.register_craftitem("mini_potions:water_bottle", {
 	description = "Bottle with Water",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:1,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_water_bottle.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
@@ -29,7 +29,7 @@ minetest.register_craftitem("mini_potions:water_bottle", {
 
 minetest.register_craftitem("mini_potions:river_water_bottle", {
 	description = "Bottle with River Water",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:2,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_river_water_bottle.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
@@ -40,7 +40,7 @@ minetest.register_craftitem("mini_potions:river_water_bottle", {
 
 minetest.register_craftitem("mini_potions:heal_potion", {
 	description = "Healing Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:3,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_heal_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		local hp = user:get_hp()
 		user:set_hp(hp+10)
@@ -53,7 +53,7 @@ minetest.register_craftitem("mini_potions:heal_potion", {
 
 minetest.register_craftitem("mini_potions:speed_potion", {
 	description = "Speed Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:4,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_speed_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -74,7 +74,7 @@ minetest.register_craftitem("mini_potions:speed_potion", {
 
 minetest.register_craftitem("mini_potions:jump_potion", {
 	description = "Jump Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:5,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_jump_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -95,7 +95,7 @@ minetest.register_craftitem("mini_potions:jump_potion", {
 
 minetest.register_craftitem("mini_potions:river_heal_potion", {
 	description = "Healing Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:3,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_heal_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		local hp = user:get_hp()
 		user:set_hp(hp+15)
@@ -108,7 +108,7 @@ minetest.register_craftitem("mini_potions:river_heal_potion", {
 
 minetest.register_craftitem("mini_potions:river_speed_potion", {
 	description = "Speed Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:4,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_speed_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -129,7 +129,7 @@ minetest.register_craftitem("mini_potions:river_speed_potion", {
 
 minetest.register_craftitem("mini_potions:river_jump_potion", {
 	description = "Jump Potion",
-	inventory_image = "mt_item_atlas.png^[sheet:8x8:5,3^(mt_item_atlas.png^[sheet:8x8:0,3)",
+	inventory_image = "mini_jump_potion.png^mini_bottle.png",
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({

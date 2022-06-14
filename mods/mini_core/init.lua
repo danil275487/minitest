@@ -2,7 +2,7 @@
 dofile(minetest.get_modpath("mini_core") .. "/func.lua")
 dofile(minetest.get_modpath("mini_core") .. "/hand.lua")
 
---Set up player relatee stuff and sky
+--Set up player related stuff and sky
 mt_core = {}
 minetest.register_on_joinplayer(function(player)
 	player:set_properties({
@@ -94,27 +94,5 @@ minetest.register_on_dieplayer(function(entity, reason)
 		end
 		inv:set_list("main", {})
 		minetest.chat_send_player(player_name, "You died.")
-		minetest.chat_send_player(player_name, "Your score: "..mt_score)
-		mt_score = 0
 	end
-end)
-
---Score system
-mt_score = 0
-
-minetest.register_on_dignode(function(pos, oldnode, digger)
-	mt_score = mt_score + 5
-end)
-
---Crosshair
-minetest.register_on_joinplayer(function(player)
-	player:hud_add({
-		name = "crosshair",
-		hud_elem_type = "image",
-		text = "mt_crosshair.png",
-		position = {x = 0.5, y = 0.5},
-		scale = {x = 1, y = 1},
-		alignment = {x = -0.5, y = -0.5},
-		offset = {x = 0, y = 0},
-	})
 end)
