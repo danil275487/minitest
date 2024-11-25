@@ -1,20 +1,20 @@
 GIMP Palette
 Name: c64
-Columns: 4
+Columns: 16
 #
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
- 54  57  63	Untitled
+255 255 255	
+148 224 137	
+191 206 114	
+103 182 189	
+159 159 159	
+ 85 160  73	
+184 105  98	
+120 120 120	
+120 105 196	
+139  84  41	
+139  63 150	
+136  57  50	
+ 80  80  80	
+ 87  66   0	
+ 64  49 141	
+  0   0   0	

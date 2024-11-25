@@ -1,0 +1,4 @@
+[Graphical]
+
+# Gives leaves a bushy 3D model. Requires a beefy computer.
+mini_bushy_leaves (Bushy leaves) bool false

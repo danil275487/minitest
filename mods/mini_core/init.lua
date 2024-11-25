@@ -8,13 +8,23 @@ minetest.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
 		textures = {"mt_char.png", "mt_char_back.png" },
-		visual_size = { x = 0.85, y = 1.95 },
+		visual_size = { x = 0.875, y = 1.875 },
+		collisionbox = { -0.4375, 0, -0.4375, 0.4375, 1.875, 0.4375 },
+		eye_height = 1.75,
 	})
+	player:set_fov(65, false)
 	player:hud_set_hotbar_image("mt_hotbar.png")
 	player:hud_set_hotbar_selected_image("mt_hotbar_selected.png")
+
+	--physics
+	player:set_physics_override({
+		sneak_glitch = true
+	})
+
+	--visual
 	player:set_sky({
-		base_color = "#67b6bd",
 		type = "regular",
+		body_orbit_tilt = 20,
 		sky_color = {
 			day_sky = "#67b6bd",
 			day_horizon = "#67b6bd",
@@ -26,7 +36,10 @@ minetest.register_on_joinplayer(function(player)
 			night_horizon = "#40318d",
 			
 			indoors = "#787878",
-			}
+		},
+		fog = {
+			fog_start = 0.2
+		}
 	})
 	player:set_sun({
 		texture = "mt_sun.png",
@@ -36,15 +49,41 @@ minetest.register_on_joinplayer(function(player)
 		texture = "mt_moon.png",
 	})
 	player:set_stars({
-		count = "2500",
+		count = "5000",
 		star_color = "#ffffffff",
-		scale = "0.5",
+		scale = "0.1",
 	})
 	player:set_clouds({
 		density = 0.3,
 		color = "#ffffffff",
-		thickness = 5,
-		speed = {x=5,z=0}
+		shadow = "#9f9f9f",
+		height = 250,
+		thickness = 48,
+		speed = {x=5,z=0},
+		density = 0.5
+	})
+	player:set_lighting({
+		saturation = 1,
+		shadows = {
+			intensity = 1,
+			tint = "#787878"
+		},
+		exposure = {
+			luminance_min = -4,
+			luminance_max = -2,
+			exposure_correlation = 0,
+			speed_dark_bright = 200,
+			speed_bright_dark = 100,
+			center_weight_power = 3
+		},
+		bloom = {
+			intensity = 0.05,
+			strength_factor = 2,
+			radius = 1
+		},
+		volumetric_light = {
+			strength = 0.2
+		}
 	})
 end)
 
@@ -56,27 +95,10 @@ minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack
 end
 )
 
---Give initial items
-local give_if_not_gotten_already = function(inv, list, item)
-	if not inv:contains_item(list, item) then
-			inv:add_item(list, item)
-	end
-end
-
-local give_initial_stuff = function(player)
-	local inv = player:get_inventory()
-	give_if_not_gotten_already(inv, "main", "mini_tools:stone_axe_wood_stick")
-end
-
 minetest.register_on_newplayer(function(player)
-	give_initial_stuff(player)
-end)
-
---Little funny easter egg :)
---DM me in Discord if you want to drop a apple on death.
-minetest.register_on_dieplayer(function(entity, reason)
-	if entity:get_player_name() == "Danil_2461" then
-		minetest.item_drop(ItemStack("mini_items:apple"), entity, entity:get_pos())
+	local inv = player:get_inventory()
+	if not inv:contains_item("main", "mini_tools:stone_axe_wood_stick") then
+		inv:add_item("main", "mini_tools:stone_axe_wood_stick")
 	end
 end)
 

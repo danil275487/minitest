@@ -219,6 +219,7 @@ minetest.register_node("mini_furnaces:furnace", {
 		"mini_stone_bricks.png^mini_furnace.png"
 	},
 	paramtype2 = "facedir",
+	paramtype = "light",
 	groups = {cracky=3},
 	can_dig = can_dig,
 	on_timer = furnace_node_timer,
@@ -264,6 +265,7 @@ minetest.register_node("mini_furnaces:furnace_active", {
 		"mini_stone_bricks.png^mini_furnace_lit.png"
 	},
 	paramtype2 = "facedir",
+	paramtype = "light",
 	light_source = 8,
 	drop = "mini_furnaces:furnace",
 	groups = {cracky=3, not_in_creative_inventory=1},

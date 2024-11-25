@@ -108,11 +108,21 @@ minetest.register_node("mini_nodes:crafting_bench", {
 	end,
 })
 
+local function is_bushy()
+	if 	core.settings:get("mini_bushy_leaves") then
+		return "mesh"
+	else
+		return "allfaces_optional"
+	end
+end
+
 minetest.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
 	tiles = { "mini_oak_leaves.png" },
-	drawtype = "allfaces_optional",
+	drawtype = is_bushy(),
+	mesh = "mini_leaves.obj",
 	paramtype = "light",
+	waving = 2,
 	groups = { snappy = 3 },
 	drop = {
 		max_items = 1,
@@ -125,8 +135,10 @@ minetest.register_node("mini_nodes:oak_leaves", {
 minetest.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
 	tiles = { "mini_oak_leaves.png^mini_apple_leaves.png" },
-	drawtype = "allfaces_optional",
+	drawtype = is_bushy(),
+	mesh = "mini_leaves.obj",
 	paramtype = "light",
+	waving = 2,
 	groups = { snappy = 3 },
 	drop = {
 		max_items = 2,
@@ -139,10 +151,12 @@ minetest.register_node("mini_nodes:apple_leaves", {
 
 minetest.register_node("mini_nodes:red_flower", {
 	description = "Flower",
+	use_texture_alpha = "clip",
 	tiles = { "mini_red_flower.png" },
 	inventory_image = "mini_red_flower.png",
 	wield_image = "mini_red_flower.png",
 	paramtype = "light",
+	waving = 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -158,10 +172,12 @@ minetest.register_node("mini_nodes:red_flower", {
 
 minetest.register_node("mini_nodes:blue_flower", {
 	description = "Flower",
+	use_texture_alpha = "clip",
 	tiles = { "mini_blue_flower.png" },
 	inventory_image = "mini_blue_flower.png",
 	wield_image = "mini_blue_flower.png",
 	paramtype = "light",
+	waving = 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -177,10 +193,12 @@ minetest.register_node("mini_nodes:blue_flower", {
 
 minetest.register_node("mini_nodes:white_flower", {
 	description = "Flower",
+	use_texture_alpha = "clip",
 	tiles = { "mini_white_flower.png" },
 	inventory_image = "mini_white_flower.png",
 	wield_image = "mini_white_flower.png",
 	paramtype = "light",
+	waving = 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -196,6 +214,7 @@ minetest.register_node("mini_nodes:white_flower", {
 
 minetest.register_node("mini_nodes:twig", {
 	description = "Twig",
+	use_texture_alpha = "clip",
 	tiles = { "mini_twig.png" },
 	inventory_image = "mini_twig.png",
 	wield_image = "mini_twig.png",
@@ -215,6 +234,7 @@ minetest.register_node("mini_nodes:twig", {
 
 minetest.register_node("mini_nodes:rocks", {
 	description = "Rocks",
+	use_texture_alpha = "clip",
 	tiles = { "mini_rocks.png" },
 	inventory_image = "mini_rocks.png",
 	wield_image = "mini_rocks.png",
@@ -240,6 +260,7 @@ minetest.register_node("mini_nodes:low_grass", {
 	wield_image = "mini_low_grass.png",
 	drawtype = "plantlike",
 	paramtype = "light",
+	waving = 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
@@ -264,6 +285,7 @@ minetest.register_node("mini_nodes:tall_grass", {
 	wield_image = "mini_tall_grass.png",
 	drawtype = "plantlike",
 	paramtype = "light",
+	waving = 1,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
