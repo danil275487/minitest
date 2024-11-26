@@ -110,9 +110,9 @@ minetest.register_node("mini_nodes:crafting_bench", {
 
 local function is_bushy()
 	if 	core.settings:get("mini_bushy_leaves") then
-		return {"mesh","mini_oak_leaves_bushy.png"}
+		return {"mesh","mini_oak_leaves_bushy.png","[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4=mini_apple_leaves.png"}
 	else
-		return {"allfaces_optional","mini_oak_leaves.png"}
+		return {"allfaces_optional","mini_oak_leaves.png","mini_oak_leaves.png^mini_apple_leaves.png"}
 	end
 end
 
@@ -134,7 +134,7 @@ minetest.register_node("mini_nodes:oak_leaves", {
 
 minetest.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
-	tiles = { "[combine:16x16:0,0="..is_bushy()[2]..":4,4=mini_apple_leaves.png" },
+	tiles = { is_bushy()[3] },
 	drawtype = is_bushy()[1],
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
