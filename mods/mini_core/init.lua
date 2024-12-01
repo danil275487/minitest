@@ -1,10 +1,10 @@
 --Load .lua files
-dofile(minetest.get_modpath("mini_core") .. "/func.lua")
-dofile(minetest.get_modpath("mini_core") .. "/hand.lua")
+dofile(core.get_modpath("mini_core") .. "/func.lua")
+dofile(core.get_modpath("mini_core") .. "/hand.lua")
 
 --Set up player related stuff and sky
 mt_core = {}
-minetest.register_on_joinplayer(function(player)
+core.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
 		textures = {"mt_char.png", "mt_char_back.png" },
@@ -88,14 +88,14 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 --Infinite materials in creative
-minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 	if placer and placer:is_player() then
-		return minetest.is_creative_enabled(placer:get_player_name())
+		return core.is_creative_enabled(placer:get_player_name())
 	end
 end
 )
 
-minetest.register_on_newplayer(function(player)
+core.register_on_newplayer(function(player)
 	local inv = player:get_inventory()
 	if not inv:contains_item("main", "mini_tools:stone_axe_wood_stick") then
 		inv:add_item("main", "mini_tools:stone_axe_wood_stick")
@@ -103,7 +103,7 @@ minetest.register_on_newplayer(function(player)
 end)
 
 --Drop items on death
-minetest.register_on_dieplayer(function(entity, reason)
+core.register_on_dieplayer(function(entity, reason)
 	if entity:is_player() then
 		local inv = entity:get_inventory()
 		local player_name = entity:get_player_name()
@@ -112,9 +112,9 @@ minetest.register_on_dieplayer(function(entity, reason)
 			pos.x = pos.x + math.random(-2,2)
 			pos.z = pos.z + math.random(-2,2)
 			pos.y = pos.y + math.random(0,2)
-			minetest.item_drop(list_name, entity, pos)
+			core.item_drop(list_name, entity, pos)
 		end
 		inv:set_list("main", {})
-		minetest.chat_send_player(player_name, "You died.")
+		core.chat_send_player(player_name, "You died.")
 	end
 end)

@@ -1,5 +1,5 @@
 -- Biomes
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:forest",
 	node_top = "mini_nodes:grass",
 	depth_top = 1,
@@ -15,7 +15,7 @@ minetest.register_biome({
 	humidity_point = 50,
 })
 
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:plains",
 	node_top = "mini_nodes:grass",
 	depth_top = 1,
@@ -31,7 +31,7 @@ minetest.register_biome({
 	humidity_point = 68,
 })
 
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:beach",
 	node_top = "mini_nodes:sand",
 	depth_top = 3,
@@ -47,7 +47,7 @@ minetest.register_biome({
 	humidity_point = 31,
 })
 
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:underground",
 	node_cave_liquid = "mini_liquids:water_source",
 	node_dungeon = "mini_nodes:stone_bricks",
@@ -58,7 +58,7 @@ minetest.register_biome({
 	humidity_point = 50,
 })
 
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:underground2",
 	node_stone = "mini_nodes:stone",
 	node_cave_liquid = "mini_liquids:lava_source",
@@ -70,7 +70,7 @@ minetest.register_biome({
 	humidity_point = 50,
 })
 
-minetest.register_biome({
+core.register_biome({
 	name = "mini_mapgen:deep_underground",
 	node_stone = "mini_nodes:deep_stone",
 	node_cave_liquid = "mini_liquids:lava_source",

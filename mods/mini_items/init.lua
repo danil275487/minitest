@@ -1,90 +1,90 @@
 --Items
-minetest.register_craftitem("mini_items:rock", {
+core.register_craftitem("mini_items:rock", {
 	description = "Rock",
 	inventory_image = "mini_rock.png",
 })
 
-minetest.register_craftitem("mini_items:grass_heap", {
+core.register_craftitem("mini_items:grass_heap", {
 	description = "Grass Heap",
 	inventory_image = "mini_grass_heap.png",
 })
 
-minetest.register_craftitem("mini_items:coal_lump", {
+core.register_craftitem("mini_items:coal_lump", {
 	description = "Coal Lump",
 	inventory_image = "mini_coal_lump.png",
 })
 
-minetest.register_craftitem("mini_items:iron_lump", {
+core.register_craftitem("mini_items:iron_lump", {
 	description = "Iron Lump",
 	inventory_image = "mini_iron_lump.png",
 })
 
-minetest.register_craftitem("mini_items:gold_lump", {
+core.register_craftitem("mini_items:gold_lump", {
 	description = "Gold Lump",
 	inventory_image = "mini_gold_lump.png",
 })
 
-minetest.register_craftitem("mini_items:diamond", {
+core.register_craftitem("mini_items:diamond", {
 	description = "Diamond",
 	inventory_image = "mini_diamond.png",
 })
 
-minetest.register_craftitem("mini_items:crystal", {
+core.register_craftitem("mini_items:crystal", {
 	description = "Crystal",
 	inventory_image = "mini_crystal.png",
 })
 
-minetest.register_craftitem("mini_items:oak_plank", {
+core.register_craftitem("mini_items:oak_plank", {
 	description = "Oak Plank",
 	inventory_image = "mini_oak_plank.png",
 })
 
-minetest.register_craftitem("mini_items:iron_bar", {
+core.register_craftitem("mini_items:iron_bar", {
 	description = "Iron Bar",
 	inventory_image = "mini_iron_bar.png",
 })
 
-minetest.register_craftitem("mini_items:gold_bar", {
+core.register_craftitem("mini_items:gold_bar", {
 	description = "Gold Bar",
 	inventory_image = "mini_gold_bar.png",
 })
 
-minetest.register_craftitem("mini_items:wheat", {
+core.register_craftitem("mini_items:wheat", {
 	description = "Wheat",
 	inventory_image = "mini_wheat.png",
 })
 
-minetest.register_craftitem("mini_items:bread", {
+core.register_craftitem("mini_items:bread", {
 	description = "Bread",
 	inventory_image = "mini_bread.png",
-	on_use = minetest.item_eat(4),
+	on_use = core.item_eat(4),
 })
 
-minetest.register_craftitem("mini_items:cooked_meat", {
+core.register_craftitem("mini_items:cooked_meat", {
 	description = "Cooked Meat",
 	inventory_image = "mini_cooked_meat.png",
-	on_use = minetest.item_eat(5),
+	on_use = core.item_eat(5),
 })
 
-minetest.register_craftitem("mini_items:raw_meat", {
+core.register_craftitem("mini_items:raw_meat", {
 	description = "Raw Meat",
 	inventory_image = "mini_raw_meat.png",
-	on_use = minetest.item_eat(1),
+	on_use = core.item_eat(1),
 })
 
-minetest.register_craftitem("mini_items:apple", {
+core.register_craftitem("mini_items:apple", {
 	description = "Apple",
 	inventory_image = "mini_apple.png",
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 })
 
-minetest.register_craftitem("mini_items:dough", {
+core.register_craftitem("mini_items:dough", {
 	description = "Dough",
 	inventory_image = "mini_dough.png",
-	on_use = minetest.item_eat(1),
+	on_use = core.item_eat(1),
 })
 
-minetest.register_craftitem("mini_items:seeds", {
+core.register_craftitem("mini_items:seeds", {
 	description = "Seeds",
 	inventory_image = "mini_seeds.png",
 	on_place = function(itemstack, placer, pointed_thing)
@@ -92,7 +92,7 @@ minetest.register_craftitem("mini_items:seeds", {
 	end
 })
 
-minetest.register_craftitem("mini_items:stick", {
+core.register_craftitem("mini_items:stick", {
 	description = "Stick",
 	inventory_image = "mini_wood_stick.png",
 })
@@ -107,19 +107,19 @@ local materials = {
 }
 
 for k,v in pairs(materials) do
-	minetest.register_craftitem("mini_items:"..k.."_stick", {
+	core.register_craftitem("mini_items:"..k.."_stick", {
 		description = v.name.." Stick",
 		inventory_image = "mini_"..k.."_stick.png",
 	})
-	minetest.register_craftitem("mini_items:"..k.."_pick_head", {
+	core.register_craftitem("mini_items:"..k.."_pick_head", {
 		description = v.name.." Pickaxe Head",
 		inventory_image = "mini_"..k.."_pick_head.png",
 	})
-	minetest.register_craftitem("mini_items:"..k.."_axe_head", {
+	core.register_craftitem("mini_items:"..k.."_axe_head", {
 		description = v.name.." Axe Head",
 		inventory_image = "mini_"..k.."_axe_head.png",
 	})
-	minetest.register_craftitem("mini_items:"..k.."_hoe_head", {
+	core.register_craftitem("mini_items:"..k.."_hoe_head", {
 		description = v.name.." Hoe Head",
 		inventory_image = "mini_"..k.."_hoe_head.png",
 	})

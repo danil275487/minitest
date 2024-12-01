@@ -12,7 +12,7 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 	bucket.liquids[flowing] = bucket.liquids[source]
 
 	if itemname ~= nil then
-		minetest.register_craftitem(":"..itemname, {
+		core.register_craftitem(":"..itemname, {
 			description = name,
 			inventory_image = inventory_image,
 			stack_max = 1,
@@ -23,8 +23,8 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 					return
 				end
 
-				local node = minetest.get_node_or_nil(pointed_thing.under)
-				local ndef = node and minetest.registered_nodes[node.name]
+				local node = core.get_node_or_nil(pointed_thing.under)
+				local ndef = node and core.registered_nodes[node.name]
 
 				-- Call on_rightclick if the pointed node defines it
 				if ndef and ndef.on_rightclick and
@@ -47,8 +47,8 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 					-- check if the node above can be replaced
 
 					lpos = pointed_thing.above
-					node = minetest.get_node_or_nil(lpos)
-					local above_ndef = node and minetest.registered_nodes[node.name]
+					node = core.get_node_or_nil(lpos)
+					local above_ndef = node and core.registered_nodes[node.name]
 
 					if not above_ndef or not above_ndef.buildable_to then
 						-- do not remove the bucket with the liquid
@@ -56,14 +56,14 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 					end
 				end
 
-				minetest.set_node(lpos, {name = source})
+				core.set_node(lpos, {name = source})
 				return ItemStack("mini_buckets:bucket")
 			end
 		})
 	end
 end
 
-minetest.register_craftitem("mini_buckets:bucket", {
+core.register_craftitem("mini_buckets:bucket", {
 	description = "Bucket",
 	inventory_image = "mini_bucket.png",
 	liquids_pointable = true,
@@ -76,7 +76,7 @@ minetest.register_craftitem("mini_buckets:bucket", {
 			return
 		end
 		-- Check if pointing to a liquid source
-		local node = minetest.get_node(pointed_thing.under)
+		local node = core.get_node(pointed_thing.under)
 		local liquiddef = bucket.liquids[node.name]
 		local item_count = user:get_wielded_item():get_count()
 
@@ -97,7 +97,7 @@ minetest.register_craftitem("mini_buckets:bucket", {
 				else
 					local pos = user:get_pos()
 					pos.y = math.floor(pos.y + 0.5)
-					minetest.add_item(pos, liquiddef.itemname)
+					core.add_item(pos, liquiddef.itemname)
 				end
 
 				-- set to return empty buckets minus 1
@@ -109,16 +109,16 @@ minetest.register_craftitem("mini_buckets:bucket", {
 			local source_neighbor = false
 			if liquiddef.force_renew then
 				source_neighbor =
-					minetest.find_node_near(pointed_thing.under, 1, liquiddef.source)
+					core.find_node_near(pointed_thing.under, 1, liquiddef.source)
 			end
 			if not (source_neighbor and liquiddef.force_renew) then
-				minetest.add_node(pointed_thing.under, {name = "air"})
+				core.add_node(pointed_thing.under, {name = "air"})
 			end
 
 			return ItemStack(giving_back)
 		else
 			-- non-liquid nodes will have their on_punch triggered
-			local node_def = minetest.registered_nodes[node.name]
+			local node_def = core.registered_nodes[node.name]
 			if node_def then
 				node_def.on_punch(pointed_thing.under, node, user, pointed_thing)
 			end

@@ -75,7 +75,7 @@ local sticks = {
 
 for k,v in pairs(heads) do
 	for k2,v2 in pairs(sticks) do
-		minetest.register_tool("mini_tools:"..k.."_pick_"..k2.."_stick", {
+		core.register_tool("mini_tools:"..k.."_pick_"..k2.."_stick", {
 			description = v.desc.." Pickaxe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_pick_head.png",
 			tool_capabilities = {
@@ -85,7 +85,7 @@ for k,v in pairs(heads) do
 				},
 			},
 		})
-		minetest.register_tool("mini_tools:"..k.."_axe_"..k2.."_stick", {
+		core.register_tool("mini_tools:"..k.."_axe_"..k2.."_stick", {
 			description = v.desc.." Axe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_axe_head.png",
 			tool_capabilities = {
@@ -95,7 +95,7 @@ for k,v in pairs(heads) do
 				},
 			},
 		})
-		minetest.register_tool("mini_tools:"..k.."_hoe_"..k2.."_stick", {
+		core.register_tool("mini_tools:"..k.."_hoe_"..k2.."_stick", {
 			description = v.desc.." Hoe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_hoe_head.png",
 			tool_capabilities = {

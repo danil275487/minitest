@@ -1,5 +1,5 @@
 -- Ores
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:coal_ore",
 	wherein = "mini_nodes:stone",
@@ -10,7 +10,7 @@ minetest.register_ore({
 	y_max = 256,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:iron_ore",
 	wherein = "mini_nodes:stone",
@@ -21,7 +21,7 @@ minetest.register_ore({
 	y_max = -25,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:gold_ore",
 	wherein = "mini_nodes:stone",
@@ -32,7 +32,7 @@ minetest.register_ore({
 	y_max = -50,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:diamond_ore",
 	wherein	= "mini_nodes:stone",
@@ -43,7 +43,7 @@ minetest.register_ore({
 	y_max = -125,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:crystal_ore",
 	wherein	= "mini_nodes:stone",
@@ -55,7 +55,7 @@ minetest.register_ore({
 })
 
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:deep_coal_ore",
 	wherein = "mini_nodes:deep_stone",
@@ -66,7 +66,7 @@ minetest.register_ore({
 	y_max = -125,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:deep_iron_ore",
 	wherein = "mini_nodes:deep_stone",
@@ -77,7 +77,7 @@ minetest.register_ore({
 	y_max = -125,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:deep_gold_ore",
 	wherein = "mini_nodes:deep_stone",
@@ -88,7 +88,7 @@ minetest.register_ore({
 	y_max = -125,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:deep_diamond_ore",
 	wherein	= "mini_nodes:deep_stone",
@@ -100,7 +100,7 @@ minetest.register_ore({
 })
 
 
-minetest.register_ore({
+core.register_ore({
 	ore_type = "scatter",
 	ore = "mini_nodes:deep_crystal_ore",
 	wherein	= "mini_nodes:deep_stone",
@@ -111,7 +111,7 @@ minetest.register_ore({
 	y_max = -125,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type	  = "blob",
 	ore		= "mini_nodes:gravel",
 	wherein	= {"mini_nodes:stone", "mini_nodes:deep_stone"},
@@ -130,7 +130,7 @@ minetest.register_ore({
 	}
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type	   = "blob",
 	ore			= "mini_nodes:dirt",
 	wherein	= {"mini_nodes:stone", "mini_nodes:deep_stone"},
@@ -149,7 +149,7 @@ minetest.register_ore({
 	}
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type	   = "blob",
 	ore			= "mini_nodes:sand",
 	wherein	= {"mini_nodes:stone", "mini_nodes:deep_stone"},

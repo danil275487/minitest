@@ -1,6 +1,6 @@
 function get_inventory_formspec(playername)
 	local creative_button = ""
-	if minetest.is_creative_enabled(playername) then
+	if core.is_creative_enabled(playername) then
 		creative_button = [[
 			button[0,0;2,0.75;inventory;Inventory]
 			button[2,0;2,0.75;creative;Creative]
@@ -25,17 +25,17 @@ function get_inventory_formspec(playername)
 	})
 end
 
-minetest.register_on_joinplayer(function(player)
+core.register_on_joinplayer(function(player)
 	player:get_inventory():set_width("main", 6)
 	player:get_inventory():set_size("main", 18)
 	player:hud_set_hotbar_itemcount(6)
 	player:set_inventory_formspec(get_inventory_formspec(player:get_player_name()))
 end)
 
-minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "" and fields.creative and minetest.is_creative_enabled(player) then
-		minetest.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(1))
+core.register_on_player_receive_fields(function(player, formname, fields)
+	if formname == "" and fields.creative and core.is_creative_enabled(player) then
+		core.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(1))
 	end
 end)
 
-dofile(minetest.get_modpath('mini_inventory')..'/creative.lua')
+dofile(core.get_modpath('mini_inventory')..'/creative.lua')

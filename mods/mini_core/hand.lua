@@ -1,8 +1,8 @@
 --Register hand
-if minetest.settings:get_bool("creative_mode") then
+if core.settings:get_bool("creative_mode") then
 	local digtime = 42
 	local caps = {times = {42, 42, 42}, uses = 0, maxlevel = 256}
-	minetest.register_item(":", {
+	core.register_item(":", {
 		type = "none",
 		wield_image = "mt_hand.png",
 		wield_scale = {x = 0.5, y = 1, z = 4},
@@ -26,7 +26,7 @@ if minetest.settings:get_bool("creative_mode") then
 		}
 	})
 else
-	minetest.register_item(":", {
+	core.register_item(":", {
 		type = "none",
 		wield_image = "mt_hand.png",
 		wield_scale = {x = 0.5, y = 1, z = 4},

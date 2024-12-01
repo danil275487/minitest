@@ -1,5 +1,5 @@
 function register_stair_and_slab(subname, recipeitem, groups, tiles, description, texture_alpha)
-	minetest.register_node("mini_stairs:"..subname.."_stair", {
+	core.register_node("mini_stairs:"..subname.."_stair", {
 		description = description.." Stairs",
 		drawtype = "nodebox",
 		tiles = tiles,
@@ -15,7 +15,7 @@ function register_stair_and_slab(subname, recipeitem, groups, tiles, description
 		},
 	})
 	if recipeitem then
-		minetest.register_craft({
+		core.register_craft({
 			output = "mini_stairs:"..subname.."_stair",
 			recipe = {
 				{"", "", recipeitem},
@@ -23,7 +23,7 @@ function register_stair_and_slab(subname, recipeitem, groups, tiles, description
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
-		minetest.register_craft({
+		core.register_craft({
 			output = "mini_stairs:"..subname.."_stair",
 			recipe = {
 				{recipeitem,"",""},
@@ -32,7 +32,7 @@ function register_stair_and_slab(subname, recipeitem, groups, tiles, description
 			},
 		})
 	end
-	minetest.register_node("mini_stairs:"..subname.."_slab", {
+	core.register_node("mini_stairs:"..subname.."_slab", {
 		description = description.." Slab",
 		drawtype = "nodebox",
 		tiles = tiles,
@@ -48,7 +48,7 @@ function register_stair_and_slab(subname, recipeitem, groups, tiles, description
 	})
 
 	if recipeitem then
-		minetest.register_craft({
+		core.register_craft({
 			output = "mini_stairs:"..subname.."_slab",
 			recipe = {
 				{recipeitem, recipeitem, recipeitem},

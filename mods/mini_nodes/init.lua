@@ -1,35 +1,35 @@
 --Nodes
-minetest.register_node("mini_nodes:stone", {
+core.register_node("mini_nodes:stone", {
 	description = "Stone",
 	tiles = { "mini_stone.png" },
 	groups = { cracky = 3 },
 })
 
-minetest.register_node("mini_nodes:deep_stone", {
+core.register_node("mini_nodes:deep_stone", {
 	description = "Deep Stone",
 	tiles = { "mini_deep_stone.png" },
 	groups = { cracky = 2, level = 1 },
 })
 
-minetest.register_node("mini_nodes:stone_bricks", {
+core.register_node("mini_nodes:stone_bricks", {
 	description = "Stone Bricks",
 	tiles = { "mini_stone_bricks.png" },
 	groups = { cracky = 3 },
 })
 
-minetest.register_node("mini_nodes:deep_stone_bricks", {
+core.register_node("mini_nodes:deep_stone_bricks", {
 	description = "Deep Stone Bricks",
 	tiles = { "mini_deep_stone_bricks.png" },
 	groups = { cracky = 2, level = 1 },
 })
 
-minetest.register_node("mini_nodes:dirt", {
+core.register_node("mini_nodes:dirt", {
 	description = "Dirt",
 	tiles = { "mini_dirt.png" },
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 })
 
-minetest.register_node("mini_nodes:grass", {
+core.register_node("mini_nodes:grass", {
 	description = "Grassy Dirt",
 	tiles = {"mini_grass.png",
 			"mini_dirt.png",
@@ -39,19 +39,19 @@ minetest.register_node("mini_nodes:grass", {
 	drop = "mini_nodes:dirt"
 })
 
-minetest.register_node("mini_nodes:sand", {
+core.register_node("mini_nodes:sand", {
 	description = "Sand",
 	tiles = { "mini_sand.png" },
 	groups = { crumbly = 3, falling_node = 1 },
 })
 
-minetest.register_node("mini_nodes:gravel", {
+core.register_node("mini_nodes:gravel", {
 	description = "Gravel",
 	tiles = { "mini_gravel.png" },
 	groups = { crumbly = 2, falling_node = 1 },
 })
 
-minetest.register_node("mini_nodes:oak_tree", {
+core.register_node("mini_nodes:oak_tree", {
 	description = "Oak Tree",
 	tiles = { "mini_oak_tree_top.png",
 							"mini_oak_tree_top.png",
@@ -60,13 +60,13 @@ minetest.register_node("mini_nodes:oak_tree", {
 	groups = { choppy = 3 },
 })
 
-minetest.register_node("mini_nodes:oak_planks", {
+core.register_node("mini_nodes:oak_planks", {
 	description = "Oak Planks",
 	tiles = { "mini_oak_planks.png" },
 	groups = { choppy = 3 },
 })
 
-minetest.register_node("mini_nodes:crafting_bench", {
+core.register_node("mini_nodes:crafting_bench", {
 	description = "Crafting Bench",
 	tiles = { "mini_crafting_bench_top.png",
 							"mini_oak_planks.png",
@@ -86,7 +86,7 @@ minetest.register_node("mini_nodes:crafting_bench", {
 },
 	groups = { oddly_breakable_by_hand = 1, choppy = 3, attached_node = 1 },
 	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_string("infotext", "Crafting Bench")
 	end,
 	on_rightclick = function(pos, node, player, itemstack)
@@ -104,7 +104,7 @@ minetest.register_node("mini_nodes:crafting_bench", {
 		image[4.875,1.75;1,1;mt_inv_arrow.png^[transformR270]
 		list[current_player;craftpreview;6.125,1.75;1,1;]
 		]]
-		minetest.show_formspec(player:get_player_name(), "main", form)
+		core.show_formspec(player:get_player_name(), "main", form)
 	end,
 })
 
@@ -116,7 +116,7 @@ local function is_bushy()
 	end
 end
 
-minetest.register_node("mini_nodes:oak_leaves", {
+core.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
 	tiles = { is_bushy()[2] },
 	drawtype = is_bushy()[1],
@@ -132,7 +132,7 @@ minetest.register_node("mini_nodes:oak_leaves", {
 	},
 })
 
-minetest.register_node("mini_nodes:apple_leaves", {
+core.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
 	tiles = { is_bushy()[3] },
 	drawtype = is_bushy()[1],
@@ -149,7 +149,7 @@ minetest.register_node("mini_nodes:apple_leaves", {
 	}
 })
 
-minetest.register_node("mini_nodes:red_flower", {
+core.register_node("mini_nodes:red_flower", {
 	description = "Flower",
 	use_texture_alpha = "clip",
 	tiles = { "mini_red_flower.png" },
@@ -170,7 +170,7 @@ minetest.register_node("mini_nodes:red_flower", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
-minetest.register_node("mini_nodes:blue_flower", {
+core.register_node("mini_nodes:blue_flower", {
 	description = "Flower",
 	use_texture_alpha = "clip",
 	tiles = { "mini_blue_flower.png" },
@@ -191,7 +191,7 @@ minetest.register_node("mini_nodes:blue_flower", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
-minetest.register_node("mini_nodes:white_flower", {
+core.register_node("mini_nodes:white_flower", {
 	description = "Flower",
 	use_texture_alpha = "clip",
 	tiles = { "mini_white_flower.png" },
@@ -212,7 +212,7 @@ minetest.register_node("mini_nodes:white_flower", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
-minetest.register_node("mini_nodes:twig", {
+core.register_node("mini_nodes:twig", {
 	description = "Twig",
 	use_texture_alpha = "clip",
 	tiles = { "mini_twig.png" },
@@ -232,7 +232,7 @@ minetest.register_node("mini_nodes:twig", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
 
-minetest.register_node("mini_nodes:rocks", {
+core.register_node("mini_nodes:rocks", {
 	description = "Rocks",
 	use_texture_alpha = "clip",
 	tiles = { "mini_rocks.png" },
@@ -253,7 +253,7 @@ minetest.register_node("mini_nodes:rocks", {
 	drop = "mini_items:rock"
 })
 
-minetest.register_node("mini_nodes:low_grass", {
+core.register_node("mini_nodes:low_grass", {
 	description = "Tall Grass",
 	tiles = {"mini_low_grass.png"},
 	inventory_image = "mini_low_grass.png",
@@ -278,7 +278,7 @@ minetest.register_node("mini_nodes:low_grass", {
 	},
 })
 
-minetest.register_node("mini_nodes:tall_grass", {
+core.register_node("mini_nodes:tall_grass", {
 	description = "Tall Grass",
 	tiles = {"mini_tall_grass.png"},
 	inventory_image = "mini_tall_grass.png",
@@ -337,13 +337,13 @@ local ores = {
 }
 
 for k,v in pairs(ores) do
-	minetest.register_node("mini_nodes:"..k.."_ore", {
+	core.register_node("mini_nodes:"..k.."_ore", {
 		description = v.name.." Ore",
 		tiles = { "mini_stone.png^mini_"..k.."_ore.png" },
 		groups = v.groups,
 		drop = v.drop
 	})
-	minetest.register_node("mini_nodes:deep_"..k.."_ore", {
+	core.register_node("mini_nodes:deep_"..k.."_ore", {
 		description = "Deep "..v.name.." Ore",
 		tiles = { "mini_deep_stone.png^mini_"..k.."_ore.png" },
 		groups = v.deep_groups,
@@ -351,7 +351,7 @@ for k,v in pairs(ores) do
 	})
 end
 
-minetest.register_node("mini_nodes:glass", {
+core.register_node("mini_nodes:glass", {
 	description = "Glass",
 	drawtype = "glasslike",
 	paramtype = "light",
@@ -362,7 +362,7 @@ minetest.register_node("mini_nodes:glass", {
 	drop = ""
 })
 
-minetest.register_node("mini_nodes:oak_sapling", {
+core.register_node("mini_nodes:oak_sapling", {
 	description = "Oak Sapling",
 	drawtype = "plantlike",
 	tiles = { "mini_oak_sapling.png" },
@@ -374,11 +374,11 @@ minetest.register_node("mini_nodes:oak_sapling", {
 	on_timer = grow_sapling,
 	groups = { snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1 },
 	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(math.random(60, 480))
+		core.get_node_timer(pos):start(math.random(60, 480))
 	end,
 })
 
-minetest.register_node("mini_nodes:torch", {
+core.register_node("mini_nodes:torch", {
 	description = "Torch",
 	drawtype = "plantlike",
 	paramtype2 = "meshoptions",
@@ -398,8 +398,8 @@ minetest.register_node("mini_nodes:torch", {
 	},
 	on_place = function(itemstack, placer, pointed_thing)
 		local under = pointed_thing.under
-		local node = minetest.get_node(under)
-		local def = minetest.registered_nodes[node.name]
+		local node = core.get_node(under)
+		local def = core.registered_nodes[node.name]
 		if def and def.on_rightclick and
 			not (placer and placer:is_player() and
 			placer:get_player_control().sneak) then
@@ -407,7 +407,7 @@ minetest.register_node("mini_nodes:torch", {
 		end
 
 		local above = pointed_thing.above
-		local wdir = minetest.dir_to_wallmounted(vector.subtract(under, above))
+		local wdir = core.dir_to_wallmounted(vector.subtract(under, above))
 		local fakestack = itemstack
 		if wdir == 0 then
 			return nil,
@@ -417,13 +417,13 @@ minetest.register_node("mini_nodes:torch", {
 		else
 			fakestack:set_name("mini_nodes:torch_wall")
 		end
-		itemstack = minetest.item_place(fakestack, placer, pointed_thing, wdir)
+		itemstack = core.item_place(fakestack, placer, pointed_thing, wdir)
 		itemstack:set_name("mini_nodes:torch")
 		return itemstack
 	end,
 })
 
-minetest.register_node("mini_nodes:torch_wall", {
+core.register_node("mini_nodes:torch_wall", {
 	drawtype = "torchlike",
 	tiles = { "mini_torch_wall.png" },
 	paramtype = "light",

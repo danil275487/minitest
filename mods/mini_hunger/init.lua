@@ -77,7 +77,7 @@ local function mt_hunger_globaltimer(dtime)
 	health_timer = health_timer + dtime
 	action_timer = action_timer + dtime
 	if action_timer > MT_HUNGER_MOVE_TICK then
-		for _,player in ipairs(minetest.get_connected_players()) do
+		for _,player in ipairs(core.get_connected_players()) do
 			local controls = player:get_player_control()
 			if controls.jump then
 				exhaust_player(player, MT_HUNGER_EXHAUST_JUMP)
@@ -88,7 +88,7 @@ local function mt_hunger_globaltimer(dtime)
 		action_timer = 0
 	end
 	if mt_hunger_timer > MT_HUNGER_TICK then
-		for _,player in ipairs(minetest.get_connected_players()) do
+		for _,player in ipairs(core.get_connected_players()) do
 			local h = get_int_attribute(player, "mt_hunger:level")
 			if h > MT_HUNGER_TICK_MIN then
 				mt_hunger_update_level(player, h - 1)
@@ -97,7 +97,7 @@ local function mt_hunger_globaltimer(dtime)
 		mt_hunger_timer = 0
 	end
 	if health_timer > MT_HUNGER_HEALTH_TICK then
-		for _,player in ipairs(minetest.get_connected_players()) do
+		for _,player in ipairs(core.get_connected_players()) do
 			local air = player:get_breath() or 0
 			local hp = player:get_hp()
 			local h = get_int_attribute(player, "mt_hunger:level")
@@ -141,9 +141,9 @@ function mt_hunger.eat(hp_change, replace_with_item, itemstack, user, pointed_th
 	local pos = user:getpos()
 	pos.y = pos.y + 1.5
 	local itemname = itemstack:get_name()
-	local texture  = minetest.registered_items[itemname].inventory_image
+	local texture  = core.registered_items[itemname].inventory_image
 	local dir = user:get_look_dir()
-	minetest.add_particlespawner({
+	core.add_particlespawner({
 		amount = 5,
 		time = 0.1,
 		minpos = pos,
@@ -175,8 +175,8 @@ function mt_hunger.eat(hp_change, replace_with_item, itemstack, user, pointed_th
 	return itemstack
 end
 
-if minetest.setting_getbool("enable_damage") and minetest.is_yes(minetest.setting_get("enable_mt_hunger") or "1") then
-	minetest.register_on_joinplayer(function(player)
+if core.setting_getbool("enable_damage") and core.is_yes(core.setting_get("enable_mt_hunger") or "1") then
+	core.register_on_joinplayer(function(player)
 		local level = MT_HUNGER_VISUAL_MAX
 		if get_int_attribute(player, "mt_hunger:level") then
 			level = math.min(get_int_attribute(player, "mt_hunger:level"), MT_HUNGER_VISUAL_MAX)
@@ -198,20 +198,20 @@ if minetest.setting_getbool("enable_damage") and minetest.is_yes(minetest.settin
 		})
 		player:set_attribute("mt_hunger:hud_id", id)
 	end)
-	minetest.register_globalstep(mt_hunger_globaltimer)
-	minetest.register_on_placenode(function(pos, oldnode, player, ext)
+	core.register_globalstep(mt_hunger_globaltimer)
+	core.register_on_placenode(function(pos, oldnode, player, ext)
 		exhaust_player(player, MT_HUNGER_EXHAUST_PLACE)
 	end)
-	minetest.register_on_dignode(function(pos, oldnode, player, ext)
+	core.register_on_dignode(function(pos, oldnode, player, ext)
 		exhaust_player(player, MT_HUNGER_EXHAUST_DIG)
 	end)
-	minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
+	core.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
 		exhaust_player(player, MT_HUNGER_EXHAUST_CRAFT)
 	end)
-	minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
+	core.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
 		exhaust_player(hitter, MT_HUNGER_EXHAUST_PUNCH)
 	end)
-	minetest.register_on_respawnplayer(function(player)
+	core.register_on_respawnplayer(function(player)
 		mt_hunger_update_level(player, MT_HUNGER_VISUAL_MAX)
 	end)
 end

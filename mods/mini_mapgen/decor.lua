@@ -1,5 +1,5 @@
 -- Decorations
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:red_flower",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -10,7 +10,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:blue_flower",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -21,7 +21,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:white_flower",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -32,7 +32,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:low_grass",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -43,7 +43,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:tall_grass",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -54,7 +54,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:twig",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -65,7 +65,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	decoration = "mini_nodes:rocks",
 	deco_type = "simple",
 	place_on = "mini_nodes:grass",
@@ -76,7 +76,7 @@ minetest.register_decoration({
 	y_max = 31000,
 })
 
-minetest.register_decoration({
+core.register_decoration({
 	deco_type = "schematic",
 	place_on = "mini_nodes:grass",
 	sidelen = 16,

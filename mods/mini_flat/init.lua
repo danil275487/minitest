@@ -1,7 +1,7 @@
-if minetest.get_mapgen_setting('mg_name') == "singlenode" then
+if core.get_mapgen_setting('mg_name') == "singlenode" then
 	local data = {}
-	minetest.register_on_generated(function(minp, maxp, blockseed)
-		local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+	core.register_on_generated(function(minp, maxp, blockseed)
+		local vm, emin, emax = core.get_mapgen_object("voxelmanip")
 		local area = VoxelArea:new{MinEdge = emin, MaxEdge = emax}
 		vm:get_data(data)
 
@@ -15,7 +15,7 @@ if minetest.get_mapgen_setting('mg_name') == "singlenode" then
 					}
 					local posi = area:index(pos.x, pos.y, pos.z)
 					if (pos.x >= -31000 and pos.x <= 31000) and (pos.z >= -31000 and pos.z <= 31000) and (pos.y >= -31000 and pos.y <= -1) then
-						data[posi] = minetest.get_content_id("mini_nodes:stone")
+						data[posi] = core.get_content_id("mini_nodes:stone")
 					end
 				end
 			end

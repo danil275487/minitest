@@ -1,5 +1,5 @@
 --Liquids
-minetest.register_node("mini_liquids:water_source", {
+core.register_node("mini_liquids:water_source", {
 	description = "Water",
 	drawtype = "liquid",
 	tiles = {
@@ -39,7 +39,7 @@ minetest.register_node("mini_liquids:water_source", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
-minetest.register_node("mini_liquids:water_flowing", {
+core.register_node("mini_liquids:water_flowing", {
 	description = "Water",
 	drawtype = "flowingliquid",
 	tiles = {"mt_water.png"},
@@ -82,7 +82,7 @@ minetest.register_node("mini_liquids:water_flowing", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
-minetest.register_node("mini_liquids:river_water_source", {
+core.register_node("mini_liquids:river_water_source", {
 	description = "River Water",
 	drawtype = "liquid",
 	tiles = {
@@ -123,7 +123,7 @@ minetest.register_node("mini_liquids:river_water_source", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
-minetest.register_node("mini_liquids:river_water_flowing", {
+core.register_node("mini_liquids:river_water_flowing", {
 	description = "River Water",
 	drawtype = "flowingliquid",
 	tiles = {"mt_river_water.png"},
@@ -167,7 +167,7 @@ minetest.register_node("mini_liquids:river_water_flowing", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
-minetest.register_node("mini_liquids:lava_source", {
+core.register_node("mini_liquids:lava_source", {
 	description = "Lava",
 	drawtype = "liquid",
 	tiles = {
@@ -209,7 +209,7 @@ minetest.register_node("mini_liquids:lava_source", {
 	groups = { not_in_creative_inventory = 1 }
 })
 
-minetest.register_node("mini_liquids:lava_flowing", {
+core.register_node("mini_liquids:lava_flowing", {
 	description = "Lava",
 	drawtype = "flowingliquid",
 	tiles = {"mt_lava.png"},

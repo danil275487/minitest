@@ -3,8 +3,8 @@ local plant_lists = {}
 local plant_nodename_to_id_list = {}
 
 local function get_intervals_counter(pos, interval, chance)
-	local meta = minetest.get_meta(pos)
-	local time_speed = tonumber(minetest.settings:get('time_speed') or 72)
+	local meta = core.get_meta(pos)
+	local time_speed = tonumber(core.settings:get('time_speed') or 72)
 	local current_game_time
 	if time_speed == nil then
 		return 1
@@ -13,7 +13,7 @@ local function get_intervals_counter(pos, interval, chance)
 		return 1
 	end
 	local time_multiplier = 86400 / time_speed
-	current_game_time = .0 + ((minetest.get_day_count() + minetest.get_timeofday()) * time_multiplier)
+	current_game_time = .0 + ((core.get_day_count() + core.get_timeofday()) * time_multiplier)
 
 	local approx_interval = math.max(interval, 1) * math.max(chance, 1)
 
@@ -35,8 +35,8 @@ local function get_intervals_counter(pos, interval, chance)
 end
 
 local function get_avg_light_level(pos)
-	local node_light = tonumber(minetest.get_node_light(pos) or 0)
-	local meta = minetest.get_meta(pos)
+	local node_light = tonumber(core.get_node_light(pos) or 0)
+	local meta = core.get_meta(pos)
 	local counter = meta:get_int("avg_light_count")
 	local summary = meta:get_int("avg_light_summary")
 	if counter > 99 then
@@ -58,13 +58,13 @@ function farming:add_plant(identifier, full_grown, names, interval, chance)
 	plant_lists[identifier].names = names
 	plant_lists[identifier].interval = interval
 	plant_lists[identifier].chance = chance
-	minetest.register_abm({
+	core.register_abm({
 		label = string.format("Farming plant growth (%s)", identifier),
 		nodenames = names,
 		interval = interval,
 		chance = chance,
 		action = function(pos, node)
-			local low_speed = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "mini_farming:farmland_wet"
+			local low_speed = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "mini_farming:farmland_wet"
 			farming:grow_plant(identifier, pos, node, false, false, low_speed)
 		end,
 	})
@@ -94,10 +94,10 @@ function farming:grow_plant(identifier, pos, node, stages, ignore_light, low_spe
 			intervals_counter = intervals_counter / 10
 		end
 	end
-	if not minetest.get_node_light(pos) and not ignore_light and intervals_counter < 1.5 then
+	if not core.get_node_light(pos) and not ignore_light and intervals_counter < 1.5 then
 		return false
 	end
-	if minetest.get_node_light(pos) < 10 and not ignore_light and intervals_counter < 1.5 then
+	if core.get_node_light(pos) < 10 and not ignore_light and intervals_counter < 1.5 then
 		return false
 	end
 
@@ -131,7 +131,7 @@ function farming:grow_plant(identifier, pos, node, stages, ignore_light, low_spe
 	end
 	new_node.param = node.param
 	new_node.param2 = node.param2
-	minetest.set_node(pos, new_node)
+	core.set_node(pos, new_node)
 	return true
 end
 
@@ -145,33 +145,33 @@ function farming:place_seed(itemstack, placer, pointed_thing, plantname)
 	end
 
 	-- Use pointed node's on_rightclick function first, if present
-	local node = minetest.get_node(pt.under)
+	local node = core.get_node(pt.under)
 	if placer and not placer:get_player_control().sneak then
-		if minetest.registered_nodes[node.name] and minetest.registered_nodes[node.name].on_rightclick then
-			return minetest.registered_nodes[node.name].on_rightclick(pt.under, node, placer, itemstack) or itemstack
+		if core.registered_nodes[node.name] and core.registered_nodes[node.name].on_rightclick then
+			return core.registered_nodes[node.name].on_rightclick(pt.under, node, placer, itemstack) or itemstack
 		end
 	end
 
 	local pos = {x=pt.above.x, y=pt.above.y-1, z=pt.above.z}
-	local farmland = minetest.get_node(pos)
+	local farmland = core.get_node(pos)
 	pos= {x=pt.above.x, y=pt.above.y, z=pt.above.z}
-	local place_s = minetest.get_node(pos)
+	local place_s = core.get_node(pos)
 
 	if string.find(farmland.name, "mini_farming:farmland") and string.find(place_s.name, "air")  then
-		minetest.add_node(pos, {name=plantname, param2 = minetest.registered_nodes[plantname].place_param2})
+		core.add_node(pos, {name=plantname, param2 = core.registered_nodes[plantname].place_param2})
 		local intervals_counter = get_intervals_counter(pos, 1, 1)
 	else
 		return
 	end
 
-	if not minetest.is_creative_enabled(placer:get_player_name()) then
+	if not core.is_creative_enabled(placer:get_player_name()) then
 		itemstack:take_item()
 	end
 	return itemstack
 end
 
 
-minetest.register_lbm({
+core.register_lbm({
 	label = "Add growth for unloaded farming plants",
 	name = "mini_farming:farming_growth",
 	nodenames = {"group:plant"},
@@ -181,42 +181,42 @@ minetest.register_lbm({
 		if not identifier then
 			return
 		end
-		local low_speed = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "mini_farming:farmland_wet"
+		local low_speed = core.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name ~= "mini_farming:farmland_wet"
 		farming:grow_plant(identifier, pos, node, false, false, low_speed)
 	end,
 })
 
 --Farmlands
-minetest.register_node("mini_farming:farmland", {
+core.register_node("mini_farming:farmland", {
 	description = "Farmland",
 	tiles = { "mini_farmland.png" },
 	drop = "mini_nodes:dirt",
 	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_int("wet", 0)
 	end,
 	groups = { crumbly = 3 },
 })
 
-minetest.register_node("mini_farming:farmland_wet", {
+core.register_node("mini_farming:farmland_wet", {
 	description = "Farmland",
 	tiles = { "mini_farmland_wet.png" },
 	drop = "mini_nodes:dirt",
 	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_int("wet", 7)
 	end,
 	groups = { crumbly = 3 },
 })
 
-minetest.register_abm({
+core.register_abm({
 	label = "Farmland hydration",
 	nodenames = {"mini_farming:farmland", "mini_farming:farmland_wet"},
 	interval = 15,
 	chance = 4,
 	action = function(pos, node)
 		-- Get wetness value
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local wet = meta:get_int("wet")
 		if not wet then
 			if node.name == "mini_farming:farmland" then
@@ -227,18 +227,18 @@ minetest.register_abm({
 		end
 
 		-- Turn back into dirt when covered by solid node
-		local above_node = minetest.get_node_or_nil({x=pos.x,y=pos.y+1,z=pos.z})
+		local above_node = core.get_node_or_nil({x=pos.x,y=pos.y+1,z=pos.z})
 		if above_node then
-			if minetest.get_item_group(above_node.name, "solid") ~= 0 then
+			if core.get_item_group(above_node.name, "solid") ~= 0 then
 				node.name = "mini_nodes:dirt"
-				minetest.set_node(pos, node)
+				core.set_node(pos, node)
 				return
 			end
 		end
 
 		-- Check an area of 9×2×9 around the node for nodename (9×9 on same level and 9×9 below)
 		local check_surroundings = function(pos, nodename)
-			local nodes = minetest.find_nodes_in_area({x=pos.x-4,y=pos.y,z=pos.z-4}, {x=pos.x+4,y=pos.y+1,z=pos.z+4}, {nodename})
+			local nodes = core.find_nodes_in_area({x=pos.x-4,y=pos.y,z=pos.z-4}, {x=pos.x+4,y=pos.y+1,z=pos.z+4}, {nodename})
 			return #nodes > 0
 		end
 
@@ -246,7 +246,7 @@ minetest.register_abm({
 			if node.name ~= "mini_farming:farmland_wet" then
 				-- Make it wet
 				node.name = "mini_farming:farmland_wet"
-				minetest.set_node(pos, node)
+				core.set_node(pos, node)
 			end
 		else -- No water nearby.
 			-- The decay branch (make farmland dry or turn back to dirt)
@@ -254,22 +254,22 @@ minetest.register_abm({
 			-- No decay near unloaded areas since these might include water.
 			if not check_surroundings(pos, "ignore") then
 				if wet <= 0 then
-					local n_def = minetest.registered_nodes[node.name] or nil
-					local nn = minetest.get_node_or_nil({x=pos.x,y=pos.y+1,z=pos.z})
+					local n_def = core.registered_nodes[node.name] or nil
+					local nn = core.get_node_or_nil({x=pos.x,y=pos.y+1,z=pos.z})
 					if not nn or not nn.name then
 						return
 					end
-					local nn_def = minetest.registered_nodes[nn.name] or nil
+					local nn_def = core.registered_nodes[nn.name] or nil
 
-					if nn_def and minetest.get_item_group(nn.name, "plant") == 0 then
+					if nn_def and core.get_item_group(nn.name, "plant") == 0 then
 						node.name = "mini_nodes:dirt"
-						minetest.set_node(pos, node)
+						core.set_node(pos, node)
 						return
 					end
 				else
 					if wet == 7 then
 						node.name = "mini_farming:farmland"
-						minetest.swap_node(pos, node)
+						core.swap_node(pos, node)
 					end
 					-- Slowly count down wetness
 					meta:set_int("wet", wet-1)
@@ -287,7 +287,7 @@ local sel_heights = {
 }
 
 for i = 1, 3 do
-	minetest.register_node("mini_farming:wheat_plant_"..i, {
+	core.register_node("mini_farming:wheat_plant_"..i, {
 		description = "Wheat",
 		paramtype = "light",
 		paramtype2 = "meshoptions",
@@ -309,7 +309,7 @@ for i = 1, 3 do
 	})
 end
 
-minetest.register_node("mini_farming:wheat_plant", {
+core.register_node("mini_farming:wheat_plant", {
 	description = "Wheat",
 	sunlight_propagates = true,
 	paramtype = "light",

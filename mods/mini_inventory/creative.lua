@@ -1,7 +1,7 @@
-local F = minetest.formspec_escape
+local F = core.formspec_escape
 
 -- Create a detached inventory
-local inv_creative = minetest.create_detached_inventory("creative", {
+local inv_creative = core.create_detached_inventory("creative", {
 	allow_move = function(inv, from_list, from_index, to_list, to_index, count, player)
 		return 0
 	end,
@@ -12,7 +12,7 @@ local inv_creative = minetest.create_detached_inventory("creative", {
 		return -1
 	end,
 })
-local inv_trash = minetest.create_detached_inventory("trash", {
+local inv_trash = core.create_detached_inventory("trash", {
 	on_put = function(inv, listname, index, stack, player)
 		inv:set_list("main", {})
 	end,
@@ -48,10 +48,10 @@ function get_creative_formspec(page)
 	})
 end
 
-minetest.register_on_player_receive_fields(function(player, formname, fields)
+core.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "mini_inventory:creative" and fields.quit == nil and fields.creative == nil then
 		if fields.inventory then
-			minetest.show_formspec(player:get_player_name(), "", get_inventory_formspec())
+			core.show_formspec(player:get_player_name(), "", get_inventory_formspec())
 			return
 		end
 		local page = fields.internal_paginator
@@ -66,13 +66,13 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if page > max_page then
 			page = 1
 		end
-		minetest.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(page))
+		core.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(page))
 	end
 end)
 
-minetest.register_on_mods_loaded(function()
+core.register_on_mods_loaded(function()
 	local items = {}
-	for itemstring, def in pairs(minetest.registered_items) do
+	for itemstring, def in pairs(core.registered_items) do
 		if itemstring ~= ""
 		and itemstring ~= "unknown"
 		and itemstring ~= "ignore"
@@ -87,8 +87,8 @@ minetest.register_on_mods_loaded(function()
 	2. Craftitems/Tools
 	Because the parts are probably what you wanna see first. ]]
 	local function compare(item1, item2)
-		local def1 = minetest.registered_items[item1]
-		local def2 = minetest.registered_items[item2]
+		local def1 = core.registered_items[item1]
+		local def2 = core.registered_items[item2]
 		local tool1 = def1.type == "tool"
 		local tool2 = def2.type == "tool"
 		local craftitem1 = def1.type == "craft"
