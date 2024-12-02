@@ -64,7 +64,7 @@ function create_soil(pos, inv)
 	return false
 end
 
-hoe_on_place_function = function(wear_divisor)
+function hoe_on_place_function(wear_divisor)
 	return function(itemstack, user, pointed_thing)
 		-- Call on_rightclick if the pointed node defines it
 		local node = core.get_node(pointed_thing.under)
@@ -80,5 +80,14 @@ hoe_on_place_function = function(wear_divisor)
 			end
 			return itemstack
 		end
+	end
+end
+
+--Return proper mesh and texture for leaves depending on "Bushy leaves" option
+function is_bushy()
+	if 	core.settings:get("mini_bushy_leaves") then
+		return {"mesh","mini_oak_leaves_bushy.png","[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4=mini_apple_leaves.png"}
+	else
+		return {"allfaces_optional","mini_oak_leaves.png","mini_oak_leaves.png^mini_apple_leaves.png"}
 	end
 end

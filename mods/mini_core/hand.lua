@@ -4,7 +4,7 @@ if core.settings:get_bool("creative_mode") then
 	local caps = {times = {42, 42, 42}, uses = 0, maxlevel = 256}
 	core.register_item(":", {
 		type = "none",
-		wield_image = "mt_hand.png",
+		wield_image = "mini_hand.png",
 		wield_scale = {x = 0.5, y = 1, z = 4},
 		range = 9,
 		tool_capabilities = {
@@ -28,7 +28,7 @@ if core.settings:get_bool("creative_mode") then
 else
 	core.register_item(":", {
 		type = "none",
-		wield_image = "mt_hand.png",
+		wield_image = "mini_hand.png",
 		wield_scale = {x = 0.5, y = 1, z = 4},
 		tool_capabilities = {
 			full_punch_interval = 0.9,

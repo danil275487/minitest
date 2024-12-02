@@ -3,18 +3,18 @@ dofile(core.get_modpath("mini_core") .. "/func.lua")
 dofile(core.get_modpath("mini_core") .. "/hand.lua")
 
 --Set up player related stuff and sky
-mt_core = {}
+mini_core = {}
 core.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
-		textures = {"mt_char.png", "mt_char_back.png" },
+		textures = {"mini_char.png", "mini_char_back.png" },
 		visual_size = { x = 0.875, y = 1.875 },
 		collisionbox = { -0.4375, 0, -0.4375, 0.4375, 1.875, 0.4375 },
 		eye_height = 1.75,
 	})
 	player:set_fov(65, false)
-	player:hud_set_hotbar_image("mt_hotbar.png")
-	player:hud_set_hotbar_selected_image("mt_hotbar_selected.png")
+	player:hud_set_hotbar_image("mini_hotbar.png")
+	player:hud_set_hotbar_selected_image("mini_hotbar_selected.png")
 
 	--physics
 	player:set_physics_override({
@@ -42,11 +42,11 @@ core.register_on_joinplayer(function(player)
 		}
 	})
 	player:set_sun({
-		texture = "mt_sun.png",
+		texture = "mini_sun.png",
 		sunrise_visible = false,
 	})
 	player:set_moon({
-		texture = "mt_moon.png",
+		texture = "mini_moon.png",
 	})
 	player:set_stars({
 		count = "5000",

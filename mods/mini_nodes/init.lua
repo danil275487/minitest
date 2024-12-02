@@ -108,14 +108,6 @@ core.register_node("mini_nodes:crafting_bench", {
 	end,
 })
 
-local function is_bushy()
-	if 	core.settings:get("mini_bushy_leaves") then
-		return {"mesh","mini_oak_leaves_bushy.png","[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4=mini_apple_leaves.png"}
-	else
-		return {"allfaces_optional","mini_oak_leaves.png","mini_oak_leaves.png^mini_apple_leaves.png"}
-	end
-end
-
 core.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
 	tiles = { is_bushy()[2] },
