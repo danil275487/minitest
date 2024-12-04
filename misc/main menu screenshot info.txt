@@ -1,6 +1,6 @@
 seed: 1354268097
 
-screenshot_20241130_193015:
+screenshot_20241130_193015: (1st screenshot in readme)
  pos: -37.1, 3.5, -90.8
  yaw: 136.5
  pitch: 8.4
@@ -10,7 +10,7 @@ screenshot_20241130_193130:
  yaw: 288.0
  pitch: 18.9
 
-screenshot_20241130_193250:
+screenshot_20241130_193250: (3rd screenshot in readme)
  pos: -24.7, 9.9, 98.7
  yaw: 331.7
  pitch: 1.9
@@ -20,7 +20,7 @@ screenshot_20241130_193316:
  yaw: 219.1
  pitch: 1.7
 
-screenshot_20241130_193352:
+screenshot_20241130_193352: (2nd screenshot in readme)
  pos: -52.8, -16.1, 94.6
  yaw: 235.9
  pitch: 89.5

@@ -50,7 +50,7 @@ core.register_on_joinplayer(function(player)
 	})
 	player:set_stars({
 		count = "5000",
-		star_color = "#ffffffff",
+		star_color = "#67b6bd",
 		scale = "0.1",
 	})
 	player:set_clouds({
@@ -59,7 +59,7 @@ core.register_on_joinplayer(function(player)
 		shadow = "#9f9f9f",
 		height = 250,
 		thickness = 48,
-		speed = {x=5,z=0},
+		speed = {x=5,z=3},
 		density = 0.5
 	})
 	player:set_lighting({
