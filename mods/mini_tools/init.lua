@@ -95,6 +95,8 @@ for k,v in pairs(heads) do
 				},
 			},
 		})
+		--[[
+		--No hoes for now...
 		core.register_tool("mini_tools:"..k.."_hoe_"..k2.."_stick", {
 			description = v.desc.." Hoe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_hoe_head.png",
@@ -104,5 +106,6 @@ for k,v in pairs(heads) do
 			},
 			on_place = hoe_on_place_function(v2.durability+(v.durability/5)),
 		})
+		--]]
 	end
 end

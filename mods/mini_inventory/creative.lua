@@ -6,19 +6,12 @@ local inv_creative = core.create_detached_inventory("creative", {
 		return 0
 	end,
 	allow_put = function(inv, listname, index, stack, player)
-		return 0
+		return -1
 	end,
 	allow_take = function(inv, listname, index, stack, player)
 		return -1
 	end,
 })
-local inv_trash = core.create_detached_inventory("trash", {
-	on_put = function(inv, listname, index, stack, player)
-		inv:set_list("main", {})
-	end,
-})
-inv_trash:set_size("main", 1)
-
 local max_page = 1
 local ipp = 24
 
@@ -35,8 +28,6 @@ function get_creative_formspec(page)
 		button[0.5,6.25;1,1;inv_creative_prev;\<]
 		label[1.75,6.75;Page: ${page} / ${max_page}]
 		button[4,6.25;1,1;inv_creative_next;\>]
-		label[5.5,6.75;Trash:]
-		list[detached:trash;main;6.75,6.25;1,1]
 		list[current_player;main;0.5,7.5;6,1;0]
 		field[0,0;0,0;internal_paginator;;${page}]
 		button[0,0;2,0.75;inventory;Inventory]

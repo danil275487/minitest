@@ -98,29 +98,31 @@ core.register_craftitem("mini_items:stick", {
 })
 
 local materials = {
-	stone = {name = "Stone"},
-	deep_stone = {name = "Deep Stone"},
-	iron = {name = "Iron"},
-	gold = {name = "Gold"},
-	diamond = {name = "Diamond"},
-	crystal = {name = "Crystal"},
+	stone = "Stone",
+	deep_stone = "Deep Stone",
+	iron = "Iron",
+	gold = "Gold",
+	diamond = "Diamond",
+	crystal = "Crystal",
 }
 
 for k,v in pairs(materials) do
 	core.register_craftitem("mini_items:"..k.."_stick", {
-		description = v.name.." Stick",
+		description = v.." Stick",
 		inventory_image = "mini_"..k.."_stick.png",
 	})
 	core.register_craftitem("mini_items:"..k.."_pick_head", {
-		description = v.name.." Pickaxe Head",
+		description = v.." Pickaxe Head",
 		inventory_image = "mini_"..k.."_pick_head.png",
 	})
 	core.register_craftitem("mini_items:"..k.."_axe_head", {
-		description = v.name.." Axe Head",
+		description = v.." Axe Head",
 		inventory_image = "mini_"..k.."_axe_head.png",
 	})
+	--[[
 	core.register_craftitem("mini_items:"..k.."_hoe_head", {
-		description = v.name.." Hoe Head",
+		description = v.." Hoe Head",
 		inventory_image = "mini_"..k.."_hoe_head.png",
 	})
+	--]]
 end

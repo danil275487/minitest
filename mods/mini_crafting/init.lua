@@ -250,69 +250,60 @@ for k,v in pairs(materials) do
 	})
 end
 
-local heads = {
-	stone = {},
-	deep_stone = {},
-	iron = {},
-	gold = {},
-	diamond = {},
-	crystal = {},
-}
-local sticks = {
-	stone = {},
-	deep_stone = {},
-	iron = {},
-	gold = {},
-	diamond = {},
-	crystal = {},
+local materials = {
+	stone,
+	deep_stone,
+	iron,
+	gold,
+	diamond,
+	crystal
 }
 
-for k,v in pairs(heads) do
-	for k2,v2 in pairs(sticks) do
+for i in pairs(materials) do
 		core.register_craft({
-			output = "mini_tools:"..k.."_pick_"..k2.."_stick",
+			output = "mini_tools:"..i.."_pick_"..i.."_stick",
 			recipe = {
-				{"mini_items:"..k.."_pick_head"},
-				{"mini_items:"..k2.."_stick"},
+				{"mini_items:"..i.."_pick_head"},
+				{"mini_items:"..i.."_stick"},
 			}
 		})
 		core.register_craft({
-			output = "mini_tools:"..k.."_axe_"..k2.."_stick",
+			output = "mini_tools:"..i.."_axe_"..i.."_stick",
 			recipe = {
-				{"mini_items:"..k.."_axe_head"},
-				{"mini_items:"..k2.."_stick"},
+				{"mini_items:"..i.."_axe_head"},
+				{"mini_items:"..i.."_stick"},
 			}
 		})
 		core.register_craft({
-			output = "mini_tools:"..k.."_hoe_"..k2.."_stick",
+			output = "mini_tools:"..i.."_hoe_"..i.."_stick",
 			recipe = {
-				{"mini_items:"..k.."_hoe_head"},
-				{"mini_items:"..k2.."_stick"},
+				{"mini_items:"..i.."_hoe_head"},
+				{"mini_items:"..i.."_stick"},
 			}
 		})
 
 		core.register_craft({
-			output = "mini_tools:"..k.."_pick_wood_stick",
+			output = "mini_tools:"..i.."_pick_wood_stick",
 			recipe = {
-				{"mini_items:"..k.."_pick_head"},
+				{"mini_items:"..i.."_pick_head"},
 				{"mini_items:stick"},
 			}
 		})
 		core.register_craft({
-			output = "mini_tools:"..k.."_axe_wood_stick",
+			output = "mini_tools:"..i.."_axe_wood_stick",
 			recipe = {
-				{"mini_items:"..k.."_axe_head"},
+				{"mini_items:"..i.."_axe_head"},
 				{"mini_items:stick"},
 			}
 		})
+		--[[
 		core.register_craft({
-			output = "mini_tools:"..k.."_hoe_wood_stick",
+			output = "mini_tools:"..i.."_hoe_wood_stick",
 			recipe = {
-				{"mini_items:"..k.."_hoe_head"},
+				{"mini_items:"..i.."_hoe_head"},
 				{"mini_items:stick"},
 			}
-		})
-	end
+		})--]]
 end
 
 local potions = {

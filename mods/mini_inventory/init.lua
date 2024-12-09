@@ -1,4 +1,4 @@
-function get_inventory_formspec(playername)
+local function get_inventory_formspec(playername)
 	local creative_button = ""
 	if core.is_creative_enabled(playername) then
 		creative_button = [[

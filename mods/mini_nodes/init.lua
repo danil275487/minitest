@@ -54,8 +54,8 @@ core.register_node("mini_nodes:gravel", {
 core.register_node("mini_nodes:oak_tree", {
 	description = "Oak Tree",
 	tiles = { "mini_oak_tree_top.png",
-							"mini_oak_tree_top.png",
-							"mini_oak_tree.png",
+		"mini_oak_tree_top.png",
+		"mini_oak_tree.png",
 	 },
 	groups = { choppy = 3 },
 })
@@ -69,21 +69,21 @@ core.register_node("mini_nodes:oak_planks", {
 core.register_node("mini_nodes:crafting_bench", {
 	description = "Crafting Bench",
 	tiles = { "mini_crafting_bench_top.png",
-							"mini_oak_planks.png",
-							"mini_crafting_bench.png",
+		"mini_oak_planks.png",
+		"mini_crafting_bench.png",
 	 },
-	 paramtype = "light",
-	 drawtype = "nodebox",
-	 node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, 0.2500, -0.5000, 0.5000, 0.5000, 0.5000},
-		{-0.5000, -0.5000, -0.5000, -0.3750, 0.2500, -0.3750},
-		{0.3750, -0.5000, -0.5000, 0.5000, 0.2500, -0.3750},
-		{-0.5000, -0.5000, 0.3750, -0.3750, 0.2500, 0.5000},
-		{0.3750, -0.5000, 0.3750, 0.5000, 0.2500, 0.5000}
-	}
-},
+	paramtype = "light",
+	drawtype = "nodebox",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, 0.25, -0.5, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, -0.375, 0.25, -0.375},
+			{0.375, -0.5, -0.5, 0.5, 0.25, -0.375},
+			{-0.5, -0.5, 0.375, -0.375, 0.25, 0.5},
+			{0.375, -0.5, 0.375, 0.5, 0.25, 0.5}
+		}
+	},
 	groups = { oddly_breakable_by_hand = 1, choppy = 3, attached_node = 1 },
 	on_construct = function(pos)
 		local meta = core.get_meta(pos)
@@ -110,8 +110,8 @@ core.register_node("mini_nodes:crafting_bench", {
 
 core.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
-	tiles = { is_bushy()[2] },
-	drawtype = is_bushy()[1],
+	tiles = { is_bushy().tiles },
+	drawtype = is_bushy().drawtype,
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
 	waving = 2,
@@ -126,8 +126,8 @@ core.register_node("mini_nodes:oak_leaves", {
 
 core.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
-	tiles = { is_bushy()[3] },
-	drawtype = is_bushy()[1],
+	tiles = { is_bushy().apple_tiles },
+	drawtype = is_bushy().drawtype,
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
 	waving = 2,
@@ -141,12 +141,21 @@ core.register_node("mini_nodes:apple_leaves", {
 	}
 })
 
-core.register_node("mini_nodes:red_flower", {
-	description = "Flower",
+local flat_nodes = {
+	red_flower = "Flower",
+	blue_flower = "Flower",
+	white_flower = "Flower",
+	twig = "Twig",
+	rocks = "Rocks"
+}
+
+for k,v in pairs(flat_nodes) do
+	core.register_node("mini_nodes:"..k, {
+	description = v.name,
 	use_texture_alpha = "clip",
-	tiles = { "mini_red_flower.png" },
-	inventory_image = "mini_red_flower.png",
-	wield_image = "mini_red_flower.png",
+	tiles = { "mini_"..k..".png" },
+	inventory_image = "mini_"..k..".png",
+	wield_image = "mini_"..k..".png",
 	paramtype = "light",
 	waving = 1,
 	sunlight_propagates = true,
@@ -154,102 +163,20 @@ core.register_node("mini_nodes:red_flower", {
 	buildable_to = true,
 	drawtype = "nodebox",
 	node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
-	}
-},
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.4375, -0.5, 0.5, -0.4375, 0.5}
+		}
+	},
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
-
-core.register_node("mini_nodes:blue_flower", {
-	description = "Flower",
-	use_texture_alpha = "clip",
-	tiles = { "mini_blue_flower.png" },
-	inventory_image = "mini_blue_flower.png",
-	wield_image = "mini_blue_flower.png",
-	paramtype = "light",
-	waving = 1,
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drawtype = "nodebox",
-	node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
-	}
-},
-	groups = { dig_immediate = 3, attached_node = 1 },
-})
-
-core.register_node("mini_nodes:white_flower", {
-	description = "Flower",
-	use_texture_alpha = "clip",
-	tiles = { "mini_white_flower.png" },
-	inventory_image = "mini_white_flower.png",
-	wield_image = "mini_white_flower.png",
-	paramtype = "light",
-	waving = 1,
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drawtype = "nodebox",
-	node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
-	}
-},
-	groups = { dig_immediate = 3, attached_node = 1 },
-})
-
-core.register_node("mini_nodes:twig", {
-	description = "Twig",
-	use_texture_alpha = "clip",
-	tiles = { "mini_twig.png" },
-	inventory_image = "mini_twig.png",
-	wield_image = "mini_twig.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drawtype = "nodebox",
-	node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
-	}
-},
-	groups = { dig_immediate = 3, attached_node = 1 },
-})
-
-core.register_node("mini_nodes:rocks", {
-	description = "Rocks",
-	use_texture_alpha = "clip",
-	tiles = { "mini_rocks.png" },
-	inventory_image = "mini_rocks.png",
-	wield_image = "mini_rocks.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drawtype = "nodebox",
-	node_box = {
-	type = "fixed",
-	fixed = {
-		{-0.5000, -0.4375, -0.5000, 0.5000, -0.4375, 0.5000}
-	}
-},
-	groups = { dig_immediate = 3, attached_node = 1 },
-	drop = "mini_items:rock"
-})
+end
 
 core.register_node("mini_nodes:low_grass", {
-	description = "Tall Grass",
-	tiles = {"mini_low_grass.png"},
-	inventory_image = "mini_low_grass.png",
-	wield_image = "mini_low_grass.png",
+	description = "Short Grass",
+	tiles = {"mini_short_grass.png"},
+	inventory_image = "mini_short_grass.png",
+	wield_image = "mini_short_grass.png",
 	drawtype = "plantlike",
 	paramtype = "light",
 	waving = 1,
@@ -259,7 +186,7 @@ core.register_node("mini_nodes:low_grass", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
+		fixed = {-0.25, -0.5, -0.25, 0.25, -0.0625, 0.25},
 	},
 	drop = {
 		max_items = 2,
@@ -284,7 +211,7 @@ core.register_node("mini_nodes:tall_grass", {
 	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
-		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, -1 / 16, 4 / 16},
+		fixed = {-0.25, -0.5, -0.25, 0.25, -0.0625, 0.25},
 	},
 	drop = {
 		max_items = 2,
@@ -366,7 +293,7 @@ core.register_node("mini_nodes:oak_sapling", {
 	on_timer = grow_sapling,
 	groups = { snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1 },
 	on_construct = function(pos)
-		core.get_node_timer(pos):start(math.random(60, 480))
+		core.get_node_timer(pos):start(math.random(1, 1)) --the hell?
 	end,
 })
 
