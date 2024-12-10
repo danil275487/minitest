@@ -20,9 +20,9 @@ function get_creative_formspec(page)
 	return formspec_wrapper([[
 		size[8.25,9]
 		real_coordinates[true]
-		background9[0,0.75;8.25,8.25;mt_formspec_bg.png;false;12]
+		background9[0,0.75;8.25,8.25;mini_formspec_bg.png;false;12]
 		bgcolor[#00000080;true]
-		style_type[button;border=false;bgimg=mt_formspec_bg.png;bgimg_pressed=mt_formspec_bg_dark.png;bgimg_middle=12,12]
+		style_type[button;border=false;bgimg=mini_formspec_bg.png;bgimg_pressed=mini_formspec_bg_dark.png;bgimg_middle=12,12]
 		listcolors[#787878ff;#505050ff]
 		list[detached:creative;main;0.5,1.25;6,4;${start}]
 		button[0.5,6.25;1,1;inv_creative_prev;\<]
