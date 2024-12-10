@@ -1,9 +1,14 @@
 --Easier schematic loading
 function mts(name)
-	return core.get_modpath("mini_core").."/schems/"..name..".mts"
+	return core.get_modpath("mini_assets").."/schems/"..name..".mts"
 end
 
--- Simple formspec wrapper that does variable substitution
+--Helper function for tilesheets
+function sheet(sheet, x, y)
+	return 'mini_'..sheet..'_sheet.png^[sheet:8x8:'..x..','..y
+end
+
+--Simple formspec wrapper that does variable substitution
 function formspec_wrapper(formspec, variables)
 	local retval = formspec
 	for k,v in pairs(variables) do
@@ -43,7 +48,7 @@ end
 
 --Return proper mesh and texture for leaves depending on "Bushy leaves" option
 function is_bushy()
-	if 	core.settings:get("mini_bushy_leaves") then
+	if 	core.settings:get("mini_bushy_leaves") == true then
 		return {
 			drawtype = "mesh",
 			tiles = "mini_oak_leaves_bushy.png",

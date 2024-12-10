@@ -1,13 +1,13 @@
 --Nodes
 core.register_node("mini_nodes:stone", {
 	description = "Stone",
-	tiles = { "mini_stone.png" },
+	tiles = { sheet('node',3,0) },
 	groups = { cracky = 3 },
 })
 
 core.register_node("mini_nodes:deep_stone", {
 	description = "Deep Stone",
-	tiles = { "mini_deep_stone.png" },
+	tiles = { "min" },
 	groups = { cracky = 2, level = 1 },
 })
 
