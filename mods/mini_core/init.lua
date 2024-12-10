@@ -7,7 +7,7 @@ mini_core = {}
 core.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",
-		textures = {"mini_char.png", "mini_char_back.png" },
+		textures = {"mini_player.png", "mini_player_back.png" },
 		visual_size = { x = 0.875, y = 1.875 },
 		collisionbox = { -0.4375, 0, -0.4375, 0.4375, 1.875, 0.4375 },
 		eye_height = 1.75,
