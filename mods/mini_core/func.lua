@@ -4,8 +4,13 @@ function mts(name)
 end
 
 --Helper function for tilesheets
-function sheet(sheet, x, y)
-	return 'mini_'..sheet..'_sheet.png^[sheet:8x8:'..x..','..y
+function sheet(sheet, x, y, esc)
+	esc = esc or false
+	if esc then
+		return "(mini_"..sheet.."_sheet.png\\^[sheet\\:8x8\\:"..x..","..y..")" --the only reason this exists is bushy leaves
+	else
+		return "(mini_"..sheet.."_sheet.png^[sheet:8x8:"..x..","..y..")"
+	end
 end
 
 --Simple formspec wrapper that does variable substitution
@@ -48,17 +53,17 @@ end
 
 --Return proper mesh and texture for leaves depending on "Bushy leaves" option
 function is_bushy()
-	if 	core.settings:get("mini_bushy_leaves") == true then
+	if core.settings:get("mini_bushy_leaves") == true then --why does this now return false always?
 		return {
 			drawtype = "mesh",
 			tiles = "mini_oak_leaves_bushy.png",
-			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4=mini_apple_leaves.png"
+			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4="..sheet("node",6,3,true)
 		}
 	else
 		return {
 			drawtype = "allfaces_optional",
-			tiles = "mini_oak_leaves.png",
-			apple_tiles = "mini_oak_leaves.png^mini_apple_leaves.png"
+			tiles = sheet("node",3,1),
+			apple_tiles = sheet("node",3,1).."^"..sheet("node",6,3)
 		}
 	end
 end
