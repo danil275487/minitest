@@ -46,7 +46,7 @@ function mini_core.grow_sapling(pos)
 	local node = core.get_node(pos)
 	if node.name == "mini_farming:oak_sapling" then
 		core.remove_node(pos)
-		core.place_schematic({x = pos.x-3, y = pos.y-1, z = pos.z-3}, mts("tree"), "random", nil, false)
+		core.place_schematic({x = pos.x-3, y = pos.y-1, z = pos.z-3}, mini_core.mts("tree"), "random", nil, false)
 	end
 end
 
@@ -56,13 +56,13 @@ function mini_core.is_bushy()
 		return {
 			drawtype = "mesh",
 			tiles = "mini_oak_leaves_bushy.png",
-			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4="..sheet("node",6,3,true)
+			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4="..mini_core.sheet("node",6,3,true)
 		}
 	else
 		return {
 			drawtype = "allfaces_optional",
-			tiles = sheet("node",3,1),
-			apple_tiles = sheet("node",3,1).."^"..sheet("node",6,3)
+			tiles = mini_core.sheet("node",3,1),
+			apple_tiles = mini_core.sheet("node",3,1).."^"..mini_core.sheet("node",6,3)
 		}
 	end
 end

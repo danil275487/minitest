@@ -1,40 +1,40 @@
 --Nodes
 core.register_node("mini_nodes:stone", {
 	description = "Stone",
-	tiles = { sheet("node",3,0) },
+	tiles = { mini_core.sheet("node",3,0) },
 	groups = { cracky = 3 },
 })
 
 core.register_node("mini_nodes:deep_stone", {
 	description = "Deep Stone",
-	tiles = { sheet("node",4,0) },
+	tiles = { mini_core.sheet("node",4,0) },
 	groups = { cracky = 2, level = 1 },
 })
 
 core.register_node("mini_nodes:stone_bricks", {
 	description = "Stone Bricks",
-	tiles = { sheet("node",5,0) },
+	tiles = { mini_core.sheet("node",5,0) },
 	groups = { cracky = 3 },
 })
 
 core.register_node("mini_nodes:deep_stone_bricks", {
 	description = "Deep Stone Bricks",
-	tiles = { sheet("node",6,0) },
+	tiles = { mini_core.sheet("node",6,0) },
 	groups = { cracky = 2, level = 1 },
 })
 
 core.register_node("mini_nodes:dirt", {
 	description = "Dirt",
-	tiles = { sheet("node",2,0) },
+	tiles = { mini_core.sheet("node",2,0) },
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 })
 
 core.register_node("mini_nodes:grass", {
 	description = "Grassy Dirt",
 	tiles = {
-		sheet("node",0,0),
-		sheet("node",2,0),
-		sheet("node",2,0).."^"..sheet("node",1,0)
+		mini_core.sheet("node",0,0),
+		mini_core.sheet("node",2,0),
+		mini_core.sheet("node",2,0).."^"..mini_core.sheet("node",1,0)
 	},
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 	drop = "mini_nodes:dirt"
@@ -42,37 +42,37 @@ core.register_node("mini_nodes:grass", {
 
 core.register_node("mini_nodes:sand", {
 	description = "Sand",
-	tiles = { sheet("node",0,1) },
+	tiles = { mini_core.sheet("node",0,1) },
 	groups = { crumbly = 3, falling_node = 1 },
 })
 
 core.register_node("mini_nodes:gravel", {
 	description = "Gravel",
-	tiles = { sheet("node",7,0) },
+	tiles = { mini_core.sheet("node",7,0) },
 	groups = { crumbly = 2, falling_node = 1 },
 })
 
 core.register_node("mini_nodes:oak_tree", {
 	description = "Oak Tree",
 	tiles = {
-		sheet("node",2,1),
-		sheet("node",2,1),
-		sheet("node",1,1),
+		mini_core.sheet("node",2,1),
+		mini_core.sheet("node",2,1),
+		mini_core.sheet("node",1,1),
 	},
 	groups = { choppy = 3 },
 })
 
 core.register_node("mini_nodes:oak_planks", {
 	description = "Oak Planks",
-	tiles = { sheet("node",1,2) },
+	tiles = { mini_core.sheet("node",1,2) },
 	groups = { choppy = 3 },
 })
 
 core.register_node("mini_nodes:crafting_bench", {
 	description = "Crafting Bench",
 	tiles = {
-		sheet("node",2,2),
-		sheet("node",3,2),
+		mini_core.sheet("node",2,2),
+		mini_core.sheet("node",3,2),
 	},
 	paramtype = "light",
 	drawtype = "nodebox",
@@ -112,8 +112,8 @@ core.register_node("mini_nodes:crafting_bench", {
 
 core.register_node("mini_nodes:oak_leaves", {
 	description = "Oak Leaves",
-	tiles = { is_bushy().tiles },
-	drawtype = is_bushy().drawtype,
+	tiles = { mini_core.is_bushy().tiles },
+	drawtype = mini_core.is_bushy().drawtype,
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
 	waving = 2,
@@ -128,8 +128,8 @@ core.register_node("mini_nodes:oak_leaves", {
 
 core.register_node("mini_nodes:apple_leaves", {
 	description = "Leaves with apple",
-	tiles = { is_bushy().apple_tiles },
-	drawtype = is_bushy().drawtype,
+	tiles = { mini_core.is_bushy().apple_tiles },
+	drawtype = mini_core.is_bushy().drawtype,
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
 	waving = 2,
@@ -155,9 +155,9 @@ for i,v in pairs(flat_nodes) do
 	core.register_node("mini_nodes:"..v[1], {
 	description = v[2],
 	use_texture_alpha = "clip",
-	tiles = { sheet("node",i,3) },
-	inventory_image = sheet("node",i,3),
-	wield_image = sheet("node",i,3),
+	tiles = { mini_core.sheet("node",i,3) },
+	inventory_image = mini_core.sheet("node",i,3),
+	wield_image = mini_core.sheet("node",i,3),
 	paramtype = "light",
 	waving = 1,
 	sunlight_propagates = true,
@@ -176,9 +176,9 @@ end
 
 core.register_node("mini_nodes:low_grass", {
 	description = "Short Grass",
-	tiles = { sheet("node",6,1) },
-	inventory_image = sheet("node",6,1),
-	wield_image = sheet("node",6,1),
+	tiles = { mini_core.sheet("node",6,1) },
+	inventory_image = mini_core.sheet("node",6,1),
+	wield_image = mini_core.sheet("node",6,1),
 	drawtype = "plantlike",
 	paramtype = "light",
 	waving = 1,
@@ -201,9 +201,9 @@ core.register_node("mini_nodes:low_grass", {
 
 core.register_node("mini_nodes:tall_grass", {
 	description = "Tall Grass",
-	tiles = { sheet("node",7,1) },
-	inventory_image = sheet("node",7,1),
-	wield_image = sheet("node",7,1),
+	tiles = { mini_core.sheet("node",7,1) },
+	inventory_image = mini_core.sheet("node",7,1),
+	wield_image = mini_core.sheet("node",7,1),
 	drawtype = "plantlike",
 	paramtype = "light",
 	waving = 1,
@@ -265,13 +265,13 @@ local ores = {
 for i,v in pairs(ores) do
 	core.register_node("mini_nodes:"..v.name.."_ore", {
 		description = v.description.." Ore",
-		tiles = { sheet("node",3,0).."^"..sheet("node",i-1,5) },
+		tiles = { mini_core.sheet("node",3,0).."^"..mini_core.sheet("node",i-1,5) },
 		groups = v.groups,
 		drop = v.drop
 	})
 	core.register_node("mini_nodes:deep_"..v.name.."_ore", {
 		description = "Deep "..v.description.." Ore",
-		tiles = { sheet("node",4,0).."^"..sheet("node",i-1,5) },
+		tiles = { mini_core.sheet("node",4,0).."^"..mini_core.sheet("node",i-1,5) },
 		groups = v.deep_groups,
 		drop = v.drop
 	})
@@ -281,7 +281,7 @@ core.register_node("mini_nodes:glass", {
 	description = "Glass",
 	drawtype = "glasslike",
 	paramtype = "light",
-	tiles = { sheet("node",0,2) },
+	tiles = { mini_core.sheet("node",0,2) },
 	groups = { oddly_breakable_by_hand = 3 },
 	use_texture_alpha = "clip",
 	is_ground_content = true,
@@ -291,9 +291,9 @@ core.register_node("mini_nodes:glass", {
 core.register_node("mini_nodes:oak_sapling", {
 	description = "Oak Sapling",
 	drawtype = "plantlike",
-	tiles = { sheet("node",0,3) },
-	inventory_image = sheet("node",0,3),
-	wield_image = sheet("node",0,3),
+	tiles = { mini_core.sheet("node",0,3) },
+	inventory_image = mini_core.sheet("node",0,3),
+	wield_image = mini_core.sheet("node",0,3),
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -309,9 +309,9 @@ core.register_node("mini_nodes:torch", {
 	drawtype = "plantlike",
 	paramtype2 = "meshoptions",
 	place_param2 = 1,
-	inventory_image = sheet("node",6,2),
-	wield_image = sheet("node",6,2),
-	tiles = { sheet("node",6,2) },
+	inventory_image = mini_core.sheet("node",6,2),
+	wield_image = mini_core.sheet("node",6,2),
+	tiles = { mini_core.sheet("node",6,2) },
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -351,7 +351,7 @@ core.register_node("mini_nodes:torch", {
 
 core.register_node("mini_nodes:torch_wall", {
 	drawtype = "torchlike",
-	tiles = { sheet("node",7,2) },
+	tiles = { mini_core.sheet("node",7,2) },
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,

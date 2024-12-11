@@ -1,12 +1,12 @@
 core.register_node("mini_chests:chest", {
 	description = "Chest",
 	tiles ={
-		sheet("node",1,2),
-		sheet("node",1,2),
-		sheet("node",5,2),
-		sheet("node",5,2),
-		sheet("node",5,2),
-		sheet("node",4,2)
+		mini_core.sheet("node",1,2),
+		mini_core.sheet("node",1,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",4,2)
 		},
 	paramtype2 = "facedir",
 	groups = { choppy=3 },

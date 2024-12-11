@@ -2,7 +2,7 @@ dofile(core.get_modpath("mini_furnaces") .. "/furnace.lua")
 dofile(core.get_modpath("mini_furnaces") .. "/deepstone_furnace.lua")
 
 function mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
-	return formspec_wrapper([[
+	return mini_core.formspec_wrapper([[
 		size[8.25,8.75]
 		real_coordinates[true]
 		background9[0,0;0,0;mini_formspec_bg.png;true;12]

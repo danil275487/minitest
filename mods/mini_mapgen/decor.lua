@@ -84,7 +84,7 @@ core.register_decoration({
 	biomes = "mini_mapgen:forest",
 	y_min = 0,
 	y_max = 31000,
-	schematic = mts("tree"),
+	schematic = mini_core.mts("tree"),
 	flags = "place_center_x, place_center_z, force_placement",
 	rotation = "random",
 })

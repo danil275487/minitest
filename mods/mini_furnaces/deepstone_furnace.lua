@@ -177,12 +177,12 @@ end
 core.register_node("mini_furnaces:deep_furnace", {
 	description =  "Deep Stone Furnace",
 	tiles = {
-		sheet("node",4,0),
-		sheet("node",4,0),
-		sheet("node",6,0),
-		sheet("node",6,0),
-		sheet("node",6,0),
-		sheet("node",6,0).."^"..sheet("node",4,4)
+		mini_core.sheet("node",4,0),
+		mini_core.sheet("node",4,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",4,4)
 	},
 	paramtype2 = "facedir",
 	groups = { cracky=2, level = 1 },
@@ -222,12 +222,12 @@ core.register_node("mini_furnaces:deep_furnace", {
 core.register_node("mini_furnaces:deep_furnace_active", {
 	description =  "Deep Stone Furnace",
 	tiles = {
-		sheet("node",4,0),
-		sheet("node",4,0),
-		sheet("node",6,0),
-		sheet("node",6,0),
-		sheet("node",6,0),
-		sheet("node",6,0).."^"..sheet("node",5,4)
+		mini_core.sheet("node",4,0),
+		mini_core.sheet("node",4,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0),
+		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",5,4)
 	},
 	paramtype2 = "facedir",
 	light_source = 8,

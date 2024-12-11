@@ -177,12 +177,12 @@ end
 core.register_node("mini_furnaces:furnace", {
 	description =  "Furnace",
 	tiles = {
-		sheet("node",3,0),
-		sheet("node",3,0),
-		sheet("node",5,0),
-		sheet("node",5,0),
-		sheet("node",5,0),
-		sheet("node",5,0).."^"..sheet("node",4,4)
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",4,4)
 	},
 	paramtype2 = "facedir",
 	paramtype = "light",
@@ -223,12 +223,12 @@ core.register_node("mini_furnaces:furnace", {
 core.register_node("mini_furnaces:furnace_active", {
 	description =  "Furnace",
 	tiles = {
-		sheet("node",3,0),
-		sheet("node",3,0),
-		sheet("node",5,0),
-		sheet("node",5,0),
-		sheet("node",5,0),
-		sheet("node",5,0).."^"..sheet("node",5,4)
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",5,4)
 	},
 	paramtype2 = "facedir",
 	paramtype = "light",

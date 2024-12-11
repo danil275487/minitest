@@ -17,7 +17,7 @@ local ipp = 24
 
 function mini_core.get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
-	return formspec_wrapper([[
+	return mini_core.formspec_wrapper([[
 		size[8.25,9]
 		real_coordinates[true]
 		background9[0,0.75;8.25,8.25;mini_formspec_bg.png;false;12]

@@ -6,7 +6,7 @@ function mini_core.get_inventory_formspec(playername)
 			button[2,0;2,0.75;creative;Creative]
 		]]
 	end
-	return formspec_wrapper([[
+	return mini_core.formspec_wrapper([[
 		size[8.25,8.25,true]
 		real_coordinates[true]
 		background9[0,0.75;8.25,7.5;mini_formspec_bg.png;false;12]
