@@ -1,11 +1,10 @@
 --Easier schematic loading
-function mts(name)
+function mini_core.mts(name)
 	return core.get_modpath("mini_assets").."/schems/"..name..".mts"
 end
 
 --Helper function for tilesheets
-function sheet(sheet, x, y, esc)
-	esc = esc or false
+function mini_core.sheet(sheet, x, y, esc)
 	if esc then
 		return "(mini_"..sheet.."_sheet.png\\^[sheet\\:8x8\\:"..x..","..y..")" --the only reason this exists is bushy leaves
 	else
@@ -14,7 +13,7 @@ function sheet(sheet, x, y, esc)
 end
 
 --Simple formspec wrapper that does variable substitution
-function formspec_wrapper(formspec, variables)
+function mini_core.formspec_wrapper(formspec, variables)
 	local retval = formspec
 	for k,v in pairs(variables) do
 		retval = retval:gsub("${"..k.."}", v)
@@ -23,7 +22,7 @@ function formspec_wrapper(formspec, variables)
 end
 
 --Tree growing
-function can_grow(pos)
+function mini_core.can_grow(pos)
 	local node_under = core.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
 	if not node_under then
 		return false
@@ -39,7 +38,7 @@ function can_grow(pos)
 end
 
 --Grow sapling
-function grow_sapling(pos)
+function mini_core.grow_sapling(pos)
 	if not can_grow(pos) then
 		core.get_node_timer(pos):start(math.random(60,480))
 		return
@@ -52,7 +51,7 @@ function grow_sapling(pos)
 end
 
 --Return proper mesh and texture for leaves depending on "Bushy leaves" option
-function is_bushy()
+function mini_core.is_bushy()
 	if core.settings:get("mini_bushy_leaves") == true then --why does this now return false always?
 		return {
 			drawtype = "mesh",
@@ -65,5 +64,63 @@ function is_bushy()
 			tiles = sheet("node",3,1),
 			apple_tiles = sheet("node",3,1).."^"..sheet("node",6,3)
 		}
+	end
+end
+
+--Register a stairs and slab node for given node
+function mini_core.register_stair_and_slab(subname, recipeitem, groups, tiles, description, texture_alpha)
+	core.register_node("mini_stairs:"..subname.."_stair", {
+		description = description.." Stairs",
+		drawtype = "nodebox",
+		tiles = tiles,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = groups,
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.0, 0.5},
+				{-0.5, 0.0, 0.0, 0.5, 0.5, 0.5},
+			},
+		},
+	})
+	core.register_node("mini_stairs:"..subname.."_slab", {
+		description = description.." Slab",
+		drawtype = "nodebox",
+		tiles = tiles,
+		paramtype = "light",
+		groups = groups,
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5, -0.5, -0.5, 0.5, 0.0, 0.5},
+			},
+		},
+		use_texture_alpha = texture_alpha
+	})
+
+	if recipeitem then
+		core.register_craft({
+			output = "mini_stairs:"..subname.."_stair",
+			recipe = {
+				{"", "", recipeitem},
+				{"", recipeitem, recipeitem},
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
+		core.register_craft({
+			output = "mini_stairs:"..subname.."_stair",
+			recipe = {
+				{recipeitem,"",""},
+				{recipeitem, recipeitem,""},
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
+		core.register_craft({
+			output = "mini_stairs:"..subname.."_slab",
+			recipe = {
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
 	end
 end

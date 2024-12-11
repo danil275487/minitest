@@ -251,12 +251,12 @@ for k,v in pairs(materials) do
 end
 
 local materials = {
-	stone,
-	deep_stone,
-	iron,
-	gold,
-	diamond,
-	crystal
+	"stone",
+	"deep_stone",
+	"iron",
+	"gold",
+	"diamond",
+	"crystal"
 }
 
 for i in pairs(materials) do

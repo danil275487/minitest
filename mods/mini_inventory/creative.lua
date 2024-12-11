@@ -15,7 +15,7 @@ local inv_creative = core.create_detached_inventory("creative", {
 local max_page = 1
 local ipp = 24
 
-function get_creative_formspec(page)
+function mini_core.get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
 	return formspec_wrapper([[
 		size[8.25,9]
@@ -42,7 +42,7 @@ end
 core.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "mini_inventory:creative" and fields.quit == nil and fields.creative == nil then
 		if fields.inventory then
-			core.show_formspec(player:get_player_name(), "", get_inventory_formspec())
+			core.show_formspec(player:get_player_name(), "", mini_core.get_inventory_formspec())
 			return
 		end
 		local page = fields.internal_paginator
@@ -57,7 +57,7 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 		if page > max_page then
 			page = 1
 		end
-		core.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(page))
+		core.show_formspec(player:get_player_name(), "mini_inventory:creative", mini_core.get_creative_formspec(page))
 	end
 end)
 

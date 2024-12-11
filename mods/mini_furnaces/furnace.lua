@@ -1,38 +1,4 @@
 --
--- Formspecs
---
-
-local function get_furnace_active_formspec(fuel_percent, item_percent)
-	return "size[8.25,8.75]"..
-		"real_coordinates[true]"..
-		"background9[0,0;0,0;mt_formspec_bg.png;true;12]"..
-		"bgcolor[#00000080;true]"..
-		"listcolors[#787878ff;#505050ff]"..
-		"list[context;src;2.35,0.5;1,1;]"..
-		"list[context;fuel;2.35,3;1,1;]"..
-		"image[2.35,1.75;1,1;mt_furnace_ui_fire_bg.png^[lowpart:"..(fuel_percent)..":mt_furnace_ui_fire.png]"..
-		"image[3.60,1.75;1,1;mt_inv_arrow.png^[lowpart:"..(item_percent)..":mt_inv_arrow_full.png^[transformR270]"..
-		"list[context;dst;4.85,1.75;1,1;]"..
-		"list[current_player;main;0.5,4.5;6,2;6]"..
-		"list[current_player;main;0.5,7.25;6,1;0]"
-end
-
-local function get_furnace_inactive_formspec()
-	return "size[8.25,8.75]"..
-		"real_coordinates[true]"..
-		"background9[0,0;0,0;mt_formspec_bg.png;true;12]"..
-		"bgcolor[#00000080;true]"..
-		"listcolors[#787878ff;#505050ff]"..
-		"list[context;src;2.35,0.5;1,1;]"..
-		"list[context;fuel;2.35,3;1,1;]"..
-		"image[2.35,1.75;1,1;mt_furnace_ui_fire_bg.png]"..
-		"image[3.60,1.75;1,1;mt_inv_arrow.png^[transformR270]"..
-		"list[context;dst;4.85,1.75;1,1;]"..
-		"list[current_player;main;0.5,4.5;6,2;6]"..
-		"list[current_player;main;0.5,7.25;6,1;0]"
-end
-
---
 -- Node callback functions that are the same for active and inactive furnace
 --
 
@@ -174,7 +140,7 @@ local function furnace_node_timer(pos, elapsed)
 		active = true
 		local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
 		fuel_state =  "@1%", fuel_percent
-		formspec = get_furnace_active_formspec(fuel_percent, item_percent)
+		formspec = mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
 		swap_node(pos, "mini_furnaces:furnace_active")
 		-- make sure timer restarts automatically
 		result = true
@@ -182,7 +148,7 @@ local function furnace_node_timer(pos, elapsed)
 		if fuellist and not fuellist[1]:is_empty() then
 			fuel_state =  "@1%", 0
 		end
-		formspec = get_furnace_inactive_formspec()
+		formspec = mini_core.get_furnace_inactive_formspec()
 		swap_node(pos, "mini_furnaces:furnace")
 		-- stop timer on the inactive furnace
 		core.get_node_timer(pos):stop()
@@ -211,12 +177,12 @@ end
 core.register_node("mini_furnaces:furnace", {
 	description =  "Furnace",
 	tiles = {
-		"mini_stone.png",
-		"mini_stone.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png^mini_furnace.png"
+		sheet("node",3,0),
+		sheet("node",3,0),
+		sheet("node",5,0),
+		sheet("node",5,0),
+		sheet("node",5,0),
+		sheet("node",5,0).."^"..sheet("node",4,4)
 	},
 	paramtype2 = "facedir",
 	paramtype = "light",
@@ -257,12 +223,12 @@ core.register_node("mini_furnaces:furnace", {
 core.register_node("mini_furnaces:furnace_active", {
 	description =  "Furnace",
 	tiles = {
-		"mini_stone.png",
-		"mini_stone.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png",
-		"mini_stone_bricks.png^mini_furnace_lit.png"
+		sheet("node",3,0),
+		sheet("node",3,0),
+		sheet("node",5,0),
+		sheet("node",5,0),
+		sheet("node",5,0),
+		sheet("node",5,0).."^"..sheet("node",5,4)
 	},
 	paramtype2 = "facedir",
 	paramtype = "light",

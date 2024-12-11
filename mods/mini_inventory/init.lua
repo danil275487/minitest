@@ -1,4 +1,4 @@
-function get_inventory_formspec(playername)
+function mini_core.get_inventory_formspec(playername)
 	local creative_button = ""
 	if core.is_creative_enabled(playername) then
 		creative_button = [[
@@ -29,12 +29,12 @@ core.register_on_joinplayer(function(player)
 	player:get_inventory():set_width("main", 6)
 	player:get_inventory():set_size("main", 18)
 	player:hud_set_hotbar_itemcount(6)
-	player:set_inventory_formspec(get_inventory_formspec(player:get_player_name()))
+	player:set_inventory_formspec(mini_core.get_inventory_formspec(player:get_player_name()))
 end)
 
 core.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "" and fields.creative and core.is_creative_enabled(player) then
-		core.show_formspec(player:get_player_name(), "mini_inventory:creative", get_creative_formspec(1))
+		core.show_formspec(player:get_player_name(), "mini_inventory:creative", mini_core.get_creative_formspec(1))
 	end
 end)
 

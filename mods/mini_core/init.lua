@@ -1,9 +1,10 @@
+mini_core = {}
+
 --Load .lua files
 dofile(core.get_modpath("mini_core") .. "/func.lua")
 dofile(core.get_modpath("mini_core") .. "/hand.lua")
 
 --Set up player related stuff and sky
-mini_core = {}
 core.register_on_joinplayer(function(player)
 	player:set_properties({
 		visual = "upright_sprite",

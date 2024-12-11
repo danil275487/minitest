@@ -1,98 +1,40 @@
-function register_stair_and_slab(subname, recipeitem, groups, tiles, description, texture_alpha)
-	core.register_node("mini_stairs:"..subname.."_stair", {
-		description = description.." Stairs",
-		drawtype = "nodebox",
-		tiles = tiles,
-		paramtype = "light",
-		paramtype2 = "facedir",
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0.0, 0.5},
-				{-0.5, 0.0, 0.0, 0.5, 0.5, 0.5},
-			},
-		},
-	})
-	if recipeitem then
-		core.register_craft({
-			output = "mini_stairs:"..subname.."_stair",
-			recipe = {
-				{"", "", recipeitem},
-				{"", recipeitem, recipeitem},
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-		core.register_craft({
-			output = "mini_stairs:"..subname.."_stair",
-			recipe = {
-				{recipeitem,"",""},
-				{recipeitem, recipeitem,""},
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-	end
-	core.register_node("mini_stairs:"..subname.."_slab", {
-		description = description.." Slab",
-		drawtype = "nodebox",
-		tiles = tiles,
-		paramtype = "light",
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0.0, 0.5},
-			},
-		},
-		use_texture_alpha = texture_alpha
-	})
 
-	if recipeitem then
-		core.register_craft({
-			output = "mini_stairs:"..subname.."_slab",
-			recipe = {
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-	end
-end
-
-register_stair_and_slab(
+mini_core.register_stair_and_slab(
 	"stone",
 	"mini_nodes:stone",
 	{ cracky = 3 },
-	{ "mini_stone.png" },
+	{ sheet("node",3,0) },
 	"Stone"
 )
 
-register_stair_and_slab(
+mini_core.register_stair_and_slab(
 	"deep_stone",
 	"mini_nodes:deep_stone",
 	{ cracky = 2, level = 1 },
-	{ "mini_deep_stone.png" },
+	{ sheet("node",4,0) },
 	"Deep Stone"
 )
 
-register_stair_and_slab(
+mini_core.register_stair_and_slab(
 	"stone_brick",
 	"mini_nodes:stone_bricks",
 	{ cracky = 3 },
-	{ "mini_stone_bricks.png" },
+	{ sheet("node",5,0) },
 	"Stone Brick"
 )
 
-register_stair_and_slab(
+mini_core.register_stair_and_slab(
 	"deep_stone_brick",
 	"mini_nodes:deep_stone_bricks",
 	{ cracky = 2, level = 1 },
-	{ "mini_deep_stone_bricks.png" },
+	{ sheet("node",6,0) },
 	"Deep Stone Brick"
 )
 
-register_stair_and_slab(
+mini_core.register_stair_and_slab(
 	"oak_plank",
 	"mini_nodes:oak_planks",
 	{ choppy = 3 },
-	{ "mini_oak_planks.png" },
+	{ sheet("node",1,2) },
 	"Oak Plank"
 )

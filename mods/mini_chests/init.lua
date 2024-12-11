@@ -1,12 +1,12 @@
 core.register_node("mini_chests:chest", {
 	description = "Chest",
 	tiles ={
-		"mini_oak_planks.png",
-		"mini_oak_planks.png",
-		"mini_chest_side.png",
-		"mini_chest_side.png",
-		"mini_chest_side.png",
-		"mini_chest.png"
+		sheet("node",1,2),
+		sheet("node",1,2),
+		sheet("node",5,2),
+		sheet("node",5,2),
+		sheet("node",5,2),
+		sheet("node",4,2)
 		},
 	paramtype2 = "facedir",
 	groups = { choppy=3 },
@@ -15,7 +15,7 @@ core.register_node("mini_chests:chest", {
 		meta:set_string("formspec",
 			"size[8.25,8.75]"..
 			"real_coordinates[true]"..
-			"background9[0,0;0,0;mt_formspec_bg.png;true;12]"..
+			"background9[0,0;0,0;mini_formspec_bg.png;true;12]"..
 			"bgcolor[#00000080;true]"..
 			"listcolors[#787878ff;#505050ff]"..
 			"list[current_player;main;0.5,4.5;6,2;6]"..
