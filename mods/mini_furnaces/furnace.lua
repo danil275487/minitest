@@ -228,7 +228,7 @@ core.register_node("mini_furnaces:furnace_active", {
 		mini_core.sheet("node",5,0),
 		mini_core.sheet("node",5,0),
 		mini_core.sheet("node",5,0),
-		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",5,4)
+		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",7,3)
 	},
 	paramtype2 = "facedir",
 	paramtype = "light",

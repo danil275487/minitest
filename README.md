@@ -1,11 +1,11 @@
 # [![Minitest](misc/readme_logo.png)](https://github.com/danil275487/minitest)
+[*Download*](https://github.com/danil275487/minitest/archive/refs/heads/main.zip)
 ![](misc/readme_screenshots.png)
 
 Minitest is a survival [Luanti](https://luanti.org/) game mainly inspired by [Minicraft](https://wikipedia.org/wiki/Minicraft) and similar games.
 
 You wake up in a lush colorful world with no recollection who or where you are, and you must thrive.
-Start off by gathering *twigs* and *rocks* and using your trusty stone axe to chop down trees, before making a workbench using 2 planks and *staffs*.
-###### I was bad at english when naming these items, okay?
+Start off by gathering twigs and rocks and using your trusty stone axe to chop down trees, before making a crafting bench using 2 planks and sticks.
 
 Requires Luanti 5.10 to run properly.
 The ingame colors and textures mostly use the 16 color palette taken from the [Commodore 64](https://wikipedia.org/wiki/Commodore_64) with a resolution of 8x8 pixels, with plenty of tweaks and adjustments to visuals.
@@ -13,6 +13,7 @@ The ingame colors and textures mostly use the 16 color palette taken from the [C
 
 ## Features roadmap
 ### for the near future
+- [ ] Make the game use tilesheets
 - [ ] Tidy up most of the code 
 - [ ] Redo many item names
 - [ ] Refactor the mod structure (make it less modular, what was I smoking back then)

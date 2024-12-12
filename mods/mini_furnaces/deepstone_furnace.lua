@@ -227,7 +227,7 @@ core.register_node("mini_furnaces:deep_furnace_active", {
 		mini_core.sheet("node",6,0),
 		mini_core.sheet("node",6,0),
 		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",5,4)
+		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",7,3)
 	},
 	paramtype2 = "facedir",
 	light_source = 8,
