@@ -4,8 +4,8 @@
 
 Minitest is a survival [Luanti](https://luanti.org/) game mainly inspired by [Minicraft](https://wikipedia.org/wiki/Minicraft) and similar games.
 
-You wake up in a lush colorful world with no recollection who or where you are, and you must thrive.
-Start off by gathering twigs and rocks and using your trusty stone axe to chop down trees, before making a crafting bench using 2 planks and sticks.
+You wake up in a lush colorful world with no recollection of who or where you are, and you must thrive.
+Start off by gathering twigs and rocks, then using your trusty stone axe chop down trees, before making a crafting bench using 2 planks and sticks.
 
 Requires Luanti 5.10 to run properly.
 The ingame colors and textures mostly use the 16 color palette taken from the [Commodore 64](https://wikipedia.org/wiki/Commodore_64) with a resolution of 8x8 pixels, with plenty of tweaks and adjustments to visuals.
