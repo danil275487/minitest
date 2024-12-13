@@ -1,25 +1,16 @@
 --Liquids
+--Water
 core.register_node("mini_liquids:water_source", {
 	description = "Water",
 	drawtype = "liquid",
 	tiles = {
 		{
-			name = "mt_water.png",
+			name = mini_core.sheet('node',7,1,8,2),
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
-			},
-		},
-		{
-			name = "mt_water.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
+				aspect_w = 8,
+				aspect_h = 8,
 				length = 2.5,
 			},
 		},
@@ -42,26 +33,25 @@ core.register_node("mini_liquids:water_source", {
 core.register_node("mini_liquids:water_flowing", {
 	description = "Water",
 	drawtype = "flowingliquid",
-	tiles = {"mt_water.png"},
 	special_tiles = {
 		{
-			name = "mt_water.png",
+			name = mini_core.sheet('node',7,1,8,2), --flowing animation might be broken as shit? luanti is odd
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
 		{
-			name = "mt_water.png",
-			backface_culling = true,
+			name = mini_core.sheet('node',7,1,8,2),
+			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
 	},
@@ -82,27 +72,18 @@ core.register_node("mini_liquids:water_flowing", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
+--River water
 core.register_node("mini_liquids:river_water_source", {
 	description = "River Water",
 	drawtype = "liquid",
 	tiles = {
 		{
-			name = "mt_river_water.png",
+			name = mini_core.sheet('node',6,1,8,2),
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
-			},
-		},
-		{
-			name = "mt_river_water.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
+				aspect_w = 8,
+				aspect_h = 8,
 				length = 2.5,
 			},
 		},
@@ -126,28 +107,28 @@ core.register_node("mini_liquids:river_water_source", {
 core.register_node("mini_liquids:river_water_flowing", {
 	description = "River Water",
 	drawtype = "flowingliquid",
-	tiles = {"mt_river_water.png"},
-	special_tiles = {
+ 	special_tiles = {
 		{
-			name = "mt_river_water.png",
+			name = mini_core.sheet('node',6,1,8,2),
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
 		{
-			name = "mt_river_water.png",
-			backface_culling = true,
+			name = mini_core.sheet('node',6,1,8,2),
+			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
+
 	},
 	paramtype = "light",
 	paramtype2 = "flowingliquid",
@@ -167,27 +148,18 @@ core.register_node("mini_liquids:river_water_flowing", {
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
+--Lava
 core.register_node("mini_liquids:lava_source", {
 	description = "Lava",
 	drawtype = "liquid",
 	tiles = {
 		{
-			name = "mt_lava.png",
+			name = mini_core.sheet('node',5,1,8,2),
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
-			},
-		},
-		{
-			name = "mt_lava.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
+				aspect_w = 8,
+				aspect_h = 8,
 				length = 2.5,
 			},
 		},
@@ -212,28 +184,28 @@ core.register_node("mini_liquids:lava_source", {
 core.register_node("mini_liquids:lava_flowing", {
 	description = "Lava",
 	drawtype = "flowingliquid",
-	tiles = {"mt_lava.png"},
 	special_tiles = {
 		{
-			name = "mt_lava.png",
+			name = mini_core.sheet('node',5,1,8,2),
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
 		{
-			name = "mt_lava.png",
-			backface_culling = true,
+			name = mini_core.sheet('node',5,1,8,2),
+			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
-				aspect_w = 1,
-				aspect_h = 1,
-				length = 2.5,
+				aspect_w = 8,
+				aspect_h = 4,
+				length = 2,
 			},
 		},
+
 	},
 	light_source = 7,
 	paramtype = "light",

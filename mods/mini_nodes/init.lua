@@ -97,13 +97,13 @@ core.register_node("mini_nodes:crafting_bench", {
 		local form = [[
 		size[8.25,8.75]
 		real_coordinates[true]
-		background9[0,0;0,0;mt_formspec_bg.png;true;12]
+		background9[0,0;0,0;mini_formspec_bg.png;true;12]
 		bgcolor[#00000080;true]
 		listcolors[#787878ff;#505050ff]
 		list[current_player;main;0.5,4.5;6,2;6]
 		list[current_player;main;0.5,7.25;6,1;0]
 		list[current_player;craft;1.125,0.5;3,3;]
-		image[4.875,1.75;1,1;mt_inv_arrow.png^[transformR270]
+		image[4.875,1.75;1,1;mini_inv_arrow.png^[transformR270]
 		list[current_player;craftpreview;6.125,1.75;1,1;]
 		]]
 		core.show_formspec(player:get_player_name(), "main", form)

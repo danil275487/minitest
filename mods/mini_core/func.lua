@@ -4,11 +4,13 @@ function mini_core.mts(name)
 end
 
 --Helper function for tilesheets
-function mini_core.sheet(sheet, x, y, esc)
+function mini_core.sheet(sheet, x,y, w,h, esc) -- w/h is used for animation, esc is for texmods
+	w = w or 8
+	h = h or 8
 	if esc then
-		return "(mini_"..sheet.."_sheet.png\\^[sheet\\:8x8\\:"..x..","..y..")" --the only reason this exists is bushy leaves
+		return "(mini_"..sheet.."_sheet.png\\^[sheet\\:"..w.."x"..h.."\\:"..x..","..y..")"
 	else
-		return "(mini_"..sheet.."_sheet.png^[sheet:8x8:"..x..","..y..")"
+		return "(mini_"..sheet.."_sheet.png^[sheet:"..w.."x"..h..":"..x..","..y..")"
 	end
 end
 
@@ -56,7 +58,7 @@ function mini_core.is_bushy()
 		return {
 			drawtype = "mesh",
 			tiles = "mini_oak_leaves_bushy.png",
-			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4="..mini_core.sheet("node",6,3,true)
+			apple_tiles = "[combine:16x16:0,0=mini_oak_leaves_bushy.png:4,4="..mini_core.sheet("node",6,3,8,8,true)
 		}
 	else
 		return {
