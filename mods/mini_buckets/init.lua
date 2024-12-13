@@ -1,15 +1,14 @@
-bucket = {}
-bucket.liquids = {}
+mini_core.liquids = {}
 
-function bucket.register_liquid(source, flowing, itemname, inventory_image, name,
+function mini_core.register_liquid(source, flowing, itemname, inventory_image, name,
 		groups, force_renew)
-	bucket.liquids[source] = {
+	mini_core.liquids[source] = {
 		source = source,
 		flowing = flowing,
 		itemname = itemname,
 		force_renew = force_renew,
 	}
-	bucket.liquids[flowing] = bucket.liquids[source]
+	mini_core.liquids[flowing] = mini_core.liquids[source]
 
 	if itemname ~= nil then
 		core.register_craftitem(":"..itemname, {
@@ -65,7 +64,7 @@ end
 
 core.register_craftitem("mini_buckets:bucket", {
 	description = "Bucket",
-	inventory_image = "mini_bucket.png",
+	inventory_image = mini_core.sheet('item',4,0),
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
 		if pointed_thing.type == "object" then
@@ -77,7 +76,7 @@ core.register_craftitem("mini_buckets:bucket", {
 		end
 		-- Check if pointing to a liquid source
 		local node = core.get_node(pointed_thing.under)
-		local liquiddef = bucket.liquids[node.name]
+		local liquiddef = mini_core.liquids[node.name]
 		local item_count = user:get_wielded_item():get_count()
 
 		if liquiddef ~= nil
@@ -127,26 +126,26 @@ core.register_craftitem("mini_buckets:bucket", {
 	end
 })
 
-bucket.register_liquid(
+mini_core.register_liquid(
 	"mini_liquids:water_source",
 	"mini_liquids:water_flowing",
 	"mini_buckets:water_bucket",
-	"mini_water_bucket.png",
+	mini_core.sheet('item',5,0),
 	"Water Bucket"
 )
 
-bucket.register_liquid(
+mini_core.register_liquid(
 	"mini_liquids:river_water_source",
 	"mini_liquids:river_water_flowing",
 	"mini_buckets:river_water_bucket",
-	"mini_river_water_bucket.png",
+	mini_core.sheet('item',6,0),
 	"River Water Bucket"
 )
 
-bucket.register_liquid(
+mini_core.register_liquid(
 	"mini_liquids:lava_source",
 	"mini_liquids:lava_flowing",
 	"mini_buckets:lava_bucket",
-	"mini_lava_bucket.png",
+	mini_core.sheet('item',7,0),
 	"Lava Bucket"
 )

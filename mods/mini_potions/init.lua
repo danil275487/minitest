@@ -1,6 +1,6 @@
 core.register_craftitem("mini_potions:bottle", {
 	description = "Bottle",
-	inventory_image = "mini_bottle.png",
+	inventory_image = mini_core.sheet('item',0,3),
 	liquids_pointable = true,
 	on_use = function(itemstack,user,pointed_thing)
 		local node = core.get_node(pointed_thing.under)
@@ -21,7 +21,7 @@ core.register_craftitem("mini_potions:bottle", {
 
 core.register_craftitem("mini_potions:water_bottle", {
 	description = "Bottle with Water",
-	inventory_image = "mini_water_bottle.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',5,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
@@ -32,7 +32,7 @@ core.register_craftitem("mini_potions:water_bottle", {
 
 core.register_craftitem("mini_potions:river_water_bottle", {
 	description = "Bottle with River Water",
-	inventory_image = "mini_river_water_bottle.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',5,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
@@ -43,7 +43,7 @@ core.register_craftitem("mini_potions:river_water_bottle", {
 
 core.register_craftitem("mini_potions:heal_potion", {
 	description = "Healing Potion",
-	inventory_image = "mini_heal_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',1,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		local hp = user:get_hp()
 		user:set_hp(hp+10)
@@ -56,7 +56,7 @@ core.register_craftitem("mini_potions:heal_potion", {
 
 core.register_craftitem("mini_potions:speed_potion", {
 	description = "Speed Potion",
-	inventory_image = "mini_speed_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',2,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -77,7 +77,7 @@ core.register_craftitem("mini_potions:speed_potion", {
 
 core.register_craftitem("mini_potions:jump_potion", {
 	description = "Jump Potion",
-	inventory_image = "mini_jump_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',3,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -98,7 +98,7 @@ core.register_craftitem("mini_potions:jump_potion", {
 
 core.register_craftitem("mini_potions:river_heal_potion", {
 	description = "Healing Potion",
-	inventory_image = "mini_heal_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',1,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		local hp = user:get_hp()
 		user:set_hp(hp+15)
@@ -111,7 +111,7 @@ core.register_craftitem("mini_potions:river_heal_potion", {
 
 core.register_craftitem("mini_potions:river_speed_potion", {
 	description = "Speed Potion",
-	inventory_image = "mini_speed_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',2,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
@@ -132,7 +132,7 @@ core.register_craftitem("mini_potions:river_speed_potion", {
 
 core.register_craftitem("mini_potions:river_jump_potion", {
 	description = "Jump Potion",
-	inventory_image = "mini_jump_potion.png^mini_bottle.png",
+	inventory_image = mini_core.sheet('item',3,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		user:set_fov(1.10, true, 0.25)
 		user:set_physics_override({
