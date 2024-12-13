@@ -16,7 +16,22 @@ core.register_on_joinplayer(function(player)
 	player:set_fov(65, false)
 	player:hud_set_hotbar_image("mini_hotbar.png")
 	player:hud_set_hotbar_selected_image("mini_hotbar_selected.png")
-
+	player:set_minimap_modes({
+	{
+		type = "off",
+		label = "Map disabled"
+	},
+	{
+		type = "surface",
+		label = "Map enabled",
+		size = 75
+	},
+	{
+		type = "radar",
+		label = "Underground radar enabled",
+		size = 50
+	},
+	}, 0)
 	--physics
 	player:set_physics_override({
 		sneak_glitch = true
@@ -87,6 +102,22 @@ core.register_on_joinplayer(function(player)
 		}
 	})
 end)
+
+core.hud_replace_builtin("hotbar", {
+	type = "hotbar",
+	position = {x = 0.5, y = 1},
+	direction = 0,
+	alignment = {x = 0, y = -1},
+	offset = {x = 0, y = -16}, -- Extra padding below.
+})
+
+core.hud_replace_builtin("minimap", {
+	type = "minimap",
+	position = {x = 0, y = 1},
+	alignment = {x = 1, y = -1},
+	offset = {x = 16, y = -16},
+	size = {x = 32, y = 32},
+})
 
 --Infinite materials in creative
 core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
