@@ -26,7 +26,7 @@ core.register_node("mini_liquids:water_source", {
 	liquid_alternative_flowing = "mini_liquids:water_flowing",
 	liquid_alternative_source = "mini_liquids:water_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 170, r = 120, g = 105, b = 196},
+	post_effect_color = {a = 170, r = 64, g = 49, b = 141},
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
@@ -41,7 +41,7 @@ core.register_node("mini_liquids:water_flowing", {
 				type = "vertical_frames",
 				aspect_w = 8,
 				aspect_h = 4,
-				length = 2,
+				length = 1.75,
 			},
 		},
 		{
@@ -51,7 +51,7 @@ core.register_node("mini_liquids:water_flowing", {
 				type = "vertical_frames",
 				aspect_w = 8,
 				aspect_h = 4,
-				length = 2,
+				length = 1.75,
 			},
 		},
 	},
@@ -68,7 +68,7 @@ core.register_node("mini_liquids:water_flowing", {
 	liquid_alternative_source = "mini_liquids:water_source",
 	liquid_renewable = false,
 	liquid_viscosity = 1,
-	post_effect_color = {a = 170, r = 120, g = 105, b = 196},
+	post_effect_color = {a = 170, r = 64, g = 49, b = 141},
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
@@ -100,7 +100,7 @@ core.register_node("mini_liquids:river_water_source", {
 	liquid_alternative_flowing = "mini_liquids:river_water_flowing",
 	liquid_alternative_source = "mini_liquids:river_water_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 170, r = 103, g = 182, b = 189},
+	post_effect_color = {a = 170, r = 120, g = 105, b = 196},
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
@@ -115,7 +115,7 @@ core.register_node("mini_liquids:river_water_flowing", {
 				type = "vertical_frames",
 				aspect_w = 8,
 				aspect_h = 4,
-				length = 2,
+				length = 1.75,
 			},
 		},
 		{
@@ -125,7 +125,7 @@ core.register_node("mini_liquids:river_water_flowing", {
 				type = "vertical_frames",
 				aspect_w = 8,
 				aspect_h = 4,
-				length = 2,
+				length = 1.75,
 			},
 		},
 
@@ -144,7 +144,7 @@ core.register_node("mini_liquids:river_water_flowing", {
 	liquid_alternative_source = "mini_liquids:river_water_source",
 	liquid_renewable = false,
 	liquid_viscosity = 1,
-	post_effect_color = {a = 170, r = 103, g = 182, b = 189},
+	post_effect_color = {a = 170, r = 120, g = 105, b = 196},
 	groups = { not_in_creative_inventory = 1, water = 1 }
 })
 
@@ -160,7 +160,7 @@ core.register_node("mini_liquids:lava_source", {
 				type = "vertical_frames",
 				aspect_w = 8,
 				aspect_h = 8,
-				length = 2.5,
+				length = 3,
 			},
 		},
 	},
@@ -177,7 +177,7 @@ core.register_node("mini_liquids:lava_source", {
 	liquid_alternative_flowing = "mini_liquids:lava_flowing",
 	liquid_alternative_source = "mini_liquids:lava_source",
 	liquid_viscosity = 1,
-	post_effect_color = {a = 204, r = 100, g = 100, b = 200},
+	post_effect_color = {a = 204, r = 136, g = 57, b = 50},
 	groups = { not_in_creative_inventory = 1 }
 })
 
@@ -191,8 +191,8 @@ core.register_node("mini_liquids:lava_flowing", {
 			animation = {
 				type = "vertical_frames",
 				aspect_w = 8,
-				aspect_h = 4,
-				length = 2,
+				aspect_h = 8,
+				length = 2.5,
 			},
 		},
 		{
@@ -201,8 +201,8 @@ core.register_node("mini_liquids:lava_flowing", {
 			animation = {
 				type = "vertical_frames",
 				aspect_w = 8,
-				aspect_h = 4,
-				length = 2,
+				aspect_h = 8,
+				length = 2.5,
 			},
 		},
 
@@ -222,6 +222,6 @@ core.register_node("mini_liquids:lava_flowing", {
 	liquid_alternative_source = "mini_liquids:lava_source",
 	liquid_renewable = false,
 	liquid_viscosity = 1,
-	post_effect_color = {a = 204, r = 120, g = 105, b = 196},
+	post_effect_color = {a = 204, r = 136, g = 57, b = 50},
 	groups = { not_in_creative_inventory = 1 }
 })

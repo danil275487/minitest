@@ -83,7 +83,7 @@ core.register_on_joinplayer(function(player)
 			radius = 1
 		},
 		volumetric_light = {
-			strength = 0.2
+			strength = 0.25
 		}
 	})
 end)

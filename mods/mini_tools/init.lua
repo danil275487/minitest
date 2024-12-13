@@ -78,20 +78,48 @@ for k,v in pairs(heads) do
 		core.register_tool("mini_tools:"..k.."_pick_"..k2.."_stick", {
 			description = v.desc.." Pickaxe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_pick_head.png",
+			wear_color = {
+				blend = "constant",
+				color_stops = {
+					[0.00] = "#883932",
+					[0.25] = "#8b5429",
+					[0.50] = "#bfce72",
+					[0.75] = "#94e089",
+					[1.00] = "#67b6bd"
+				}
+			},
 			tool_capabilities = {
 				max_drop_level=0,
 				groupcaps={
-					cracky={times=v.times, uses=v2.durability+(v.durability/5), maxlevel=v.level},
+					cracky={
+						times=v.times, 
+						uses=v2.durability+(v.durability/5), 
+						maxlevel=v.level
+					},
 				},
 			},
 		})
 		core.register_tool("mini_tools:"..k.."_axe_"..k2.."_stick", {
 			description = v.desc.." Axe",
 			inventory_image = "mini_"..k2.."_stick.png^mini_"..k.."_axe_head.png",
+			wear_color = {
+				blend = "constant",
+				color_stops = {
+					[0.00] = "#883932",
+					[0.25] = "#8b5429",
+					[0.50] = "#bfce72",
+					[0.75] = "#94e089",
+					[1.00] = "#67b6bd"
+				}
+			},
 			tool_capabilities = {
 				max_drop_level=0,
 				groupcaps={
-					choppy={times=v.times, uses=v2.durability+(v.durability/5), maxlevel=v.level},
+					choppy={
+						times=v.times,
+						uses=v2.durability+(v.durability/5),
+						maxlevel=v.level
+					},
 				},
 			},
 		})

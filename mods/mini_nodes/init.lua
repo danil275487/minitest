@@ -144,22 +144,42 @@ core.register_node("mini_nodes:apple_leaves", {
 })
 
 local flat_nodes = {
-	{"twig", "Twig"},
-	{"rocks", "Rocks"},
-	{"red_flower", "Flower"},
-	{"blue_flower", "Flower"},
-	{"white_flower", "Flower"}
+	{
+		name = "twig",
+		description = "Twig", 
+		waving = 0
+	},
+	{
+		name = "rocks",
+		description = "Rocks", 
+		waving = 0
+	},
+	{
+		name = "red_flower",
+		description = "Flower", 
+		waving = 1
+	},
+	{
+		name = "blue_flower",
+		description = "Flower", 
+		waving = 1
+	},
+	{
+		name = "white_flower",
+		description = "Flower", 
+		waving = 1
+	},
 }
 
 for i,v in pairs(flat_nodes) do
-	core.register_node("mini_nodes:"..v[1], {
-	description = v[2],
+	core.register_node("mini_nodes:"..v.name, {
+	description = v.description,
 	use_texture_alpha = "clip",
 	tiles = { mini_core.sheet("node",i,3) },
 	inventory_image = mini_core.sheet("node",i,3),
 	wield_image = mini_core.sheet("node",i,3),
 	paramtype = "light",
-	waving = 1,
+	waving = v.waving,
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
