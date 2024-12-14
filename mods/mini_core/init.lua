@@ -103,21 +103,47 @@ core.register_on_joinplayer(function(player)
 	})
 end)
 
-core.hud_replace_builtin("hotbar", {
-	type = "hotbar",
-	position = {x = 0.5, y = 1},
-	direction = 0,
-	alignment = {x = 0, y = -1},
-	offset = {x = 0, y = -16}, -- Extra padding below.
-})
+--move around the hud a bit
+local huds = {
+	health = {
+		type = "statbar",
+		position = {x = 0.5, y = 1},
+		text = mini_core.sheet('bars',0,0,8,1),
+		text2 = mini_core.sheet('bars',7,0,8,1),
+		number = 62,
+		item = 62,
+		size = {x = 11, y = 11},
+		offset = {x = (-11*62)/4, y = -11-(74)},
+	},
+	breath = {
+		type = "statbar",
+		position = {x = 0.5, y = 1},
+		text = mini_core.sheet('bars',1,0,8,1),
+		text2 = mini_core.sheet('bars',7,0,8,1),
+		number = 62,
+		item = 62,
+		size = {x = 11, y = 11},
+		offset = {x = (-11*62)/4, y = -(11*2)-(74)},
+	},
+	hotbar = {
+		type = "hotbar",
+		position = {x = 0.5, y = 1},
+		direction = 0,
+		alignment = {x = 0, y = -1},
+		offset = {x = 0, y = -16},
+	},
+	minimap = {
+		type = "minimap",
+		position = {x = 0, y = 1},
+		alignment = {x = 1, y = -1},
+		offset = {x = 16, y = -16},
+		size = {x = 32, y = 32},
+	},
+}
 
-core.hud_replace_builtin("minimap", {
-	type = "minimap",
-	position = {x = 0, y = 1},
-	alignment = {x = 1, y = -1},
-	offset = {x = 16, y = -16},
-	size = {x = 32, y = 32},
-})
+for k,v in pairs(huds) do
+	core.hud_replace_builtin(k,v)
+end
 
 --Infinite materials in creative
 core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
