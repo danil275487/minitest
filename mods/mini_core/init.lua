@@ -3,6 +3,7 @@ mini_core = {}
 --Load .lua files
 dofile(core.get_modpath("mini_core") .. "/func.lua")
 dofile(core.get_modpath("mini_core") .. "/hand.lua")
+dofile(core.get_modpath("mini_core") .. "/sounds.lua")
 
 --Set up player related stuff and sky
 core.register_on_joinplayer(function(player)

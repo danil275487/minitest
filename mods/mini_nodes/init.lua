@@ -2,30 +2,35 @@
 core.register_node("mini_nodes:stone", {
 	description = "Stone",
 	tiles = { mini_core.sheet("node",3,0) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { cracky = 3 },
 })
 
 core.register_node("mini_nodes:deep_stone", {
 	description = "Deep Stone",
 	tiles = { mini_core.sheet("node",4,0) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { cracky = 2, level = 1 },
 })
 
 core.register_node("mini_nodes:stone_bricks", {
 	description = "Stone Bricks",
 	tiles = { mini_core.sheet("node",5,0) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { cracky = 3 },
 })
 
 core.register_node("mini_nodes:deep_stone_bricks", {
 	description = "Deep Stone Bricks",
 	tiles = { mini_core.sheet("node",6,0) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { cracky = 2, level = 1 },
 })
 
 core.register_node("mini_nodes:dirt", {
 	description = "Dirt",
 	tiles = { mini_core.sheet("node",2,0) },
+	sounds = mini_core.sounds.dig_soft,
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
 })
 
@@ -37,18 +42,21 @@ core.register_node("mini_nodes:grass", {
 		mini_core.sheet("node",2,0).."^"..mini_core.sheet("node",1,0)
 	},
 	groups = { crumbly = 3, soil = 1, cultivatable = 1 },
+	sounds = mini_core.sounds.dig_soft,
 	drop = "mini_nodes:dirt"
 })
 
 core.register_node("mini_nodes:sand", {
 	description = "Sand",
 	tiles = { mini_core.sheet("node",0,1) },
+	sounds = mini_core.sounds.dig_soft,
 	groups = { crumbly = 3, falling_node = 1 },
 })
 
 core.register_node("mini_nodes:gravel", {
 	description = "Gravel",
 	tiles = { mini_core.sheet("node",7,0) },
+	sounds = mini_core.sounds.dig_soft,
 	groups = { crumbly = 2, falling_node = 1 },
 })
 
@@ -59,12 +67,14 @@ core.register_node("mini_nodes:oak_tree", {
 		mini_core.sheet("node",2,1),
 		mini_core.sheet("node",1,1),
 	},
+	sounds = mini_core.sounds.dig_hard,
 	groups = { choppy = 3 },
 })
 
 core.register_node("mini_nodes:oak_planks", {
 	description = "Oak Planks",
 	tiles = { mini_core.sheet("node",1,2) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { choppy = 3 },
 })
 
@@ -86,6 +96,7 @@ core.register_node("mini_nodes:crafting_bench", {
 			{0.375, -0.5, 0.375, 0.5, 0.25, 0.5}
 		}
 	},
+	sounds = mini_core.sounds.dig_hard,
 	groups = { oddly_breakable_by_hand = 1, choppy = 3, attached_node = 1 },
 	on_construct = function(pos)
 		local meta = core.get_meta(pos)
@@ -120,6 +131,7 @@ core.register_node("mini_nodes:oak_leaves", {
 	move_resistance = 4,
 	climbable = true,
 	waving = 2,
+	sounds = mini_core.sounds.dig_soft,
 	groups = { snappy = 3 },
 	drop = {
 		max_items = 1,
@@ -139,6 +151,7 @@ core.register_node("mini_nodes:apple_leaves", {
 	walkable = false,
 	climbable = true,
 	move_resistance = 4,
+	sounds = mini_core.sounds.dig_soft,
 	groups = { snappy = 3 },
 	drop = {
 		max_items = 2,
@@ -196,6 +209,7 @@ for i,v in pairs(flat_nodes) do
 			{-0.5, -0.4375, -0.5, 0.5, -0.4375, 0.5}
 		}
 	},
+	sounds = mini_core.sounds.dig_soft,
 	groups = { dig_immediate = 3, attached_node = 1 },
 })
 end
@@ -211,6 +225,7 @@ core.register_node("mini_nodes:low_grass", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
+	sounds = mini_core.sounds.dig_soft,
 	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
@@ -236,6 +251,7 @@ core.register_node("mini_nodes:tall_grass", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
+	sounds = mini_core.sounds.dig_soft,
 	groups = { dig_immediate = 3, attached_node = 1 },
 	selection_box = {
 		type = "fixed",
@@ -293,12 +309,14 @@ for i,v in pairs(ores) do
 		description = v.description.." Ore",
 		tiles = { mini_core.sheet("node",3,0).."^"..mini_core.sheet("node",i-1,5) },
 		groups = v.groups,
+		sounds = mini_core.sounds.dig_hard,
 		drop = v.drop
 	})
 	core.register_node("mini_nodes:deep_"..v.name.."_ore", {
 		description = "Deep "..v.description.." Ore",
 		tiles = { mini_core.sheet("node",4,0).."^"..mini_core.sheet("node",i-1,5) },
 		groups = v.deep_groups,
+		sounds = mini_core.sounds.dig_hard,
 		drop = v.drop
 	})
 end
@@ -308,6 +326,7 @@ core.register_node("mini_nodes:glass", {
 	drawtype = "glasslike",
 	paramtype = "light",
 	tiles = { mini_core.sheet("node",0,2) },
+	sounds = mini_core.sounds.dig_hard,
 	groups = { oddly_breakable_by_hand = 3 },
 	use_texture_alpha = "clip",
 	is_ground_content = true,
@@ -324,6 +343,7 @@ core.register_node("mini_nodes:oak_sapling", {
 	sunlight_propagates = true,
 	walkable = false,
 	on_timer = grow_sapling,
+	sounds = mini_core.sounds.dig_soft,
 	groups = { snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1 },
 	on_construct = function(pos)
 		core.get_node_timer(pos):start(math.random(1, 1)) --the hell?
@@ -343,6 +363,7 @@ core.register_node("mini_nodes:torch", {
 	walkable = false,
 	liquids_pointable = false,
 	light_source = 12,
+	sounds = mini_core.sounds.dig_soft,
 	groups = {choppy=2, dig_immediate=3, attached_node=1},
 	selection_box = {
 		type = "fixed",
@@ -383,6 +404,7 @@ core.register_node("mini_nodes:torch_wall", {
 	sunlight_propagates = true,
 	walkable = false,
 	light_source = 12,
+	sounds = mini_core.sounds.dig_soft,
 	groups = {choppy=2, dig_immediate=3, not_in_creative_inventory=1, attached_node=1},
 	drop = "mini_nodes:torch",
 	selection_box = {
