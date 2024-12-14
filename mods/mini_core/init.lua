@@ -137,7 +137,7 @@ local huds = {
 		position = {x = 0, y = 1},
 		alignment = {x = 1, y = -1},
 		offset = {x = 16, y = -16},
-		size = {x = 32, y = 32},
+		size = {x = 0, y = 0},
 	},
 }
 
