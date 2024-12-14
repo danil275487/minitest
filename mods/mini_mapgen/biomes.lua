@@ -49,7 +49,7 @@ core.register_biome({
 
 core.register_biome({
 	name = "mini_mapgen:underground",
-	node_cave_liquid = "mini_liquids:water_source",
+	node_cave_liquid = {"mini_liquids:water_source", "mini_liquids:lava_source"},
 	node_dungeon = "mini_nodes:stone_bricks",
 	node_dungeon_alt = "mini_nodes:stone",
 	y_max = -10,

@@ -88,3 +88,16 @@ core.register_decoration({
 	flags = "place_center_x, place_center_z, force_placement",
 	rotation = "random",
 })
+
+core.register_decoration({
+	deco_type = "schematic",
+	place_on = "mini_nodes:grass",
+	sidelen = 16,
+	fill_ratio = 0.0001,
+	biomes = "mini_mapgen:plains",
+	y_min = 0,
+	y_max = 31000,
+	schematic = mini_core.mts("tree"),
+	flags = "place_center_x, place_center_z, force_placement",
+	rotation = "random",
+})
