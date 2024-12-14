@@ -116,6 +116,9 @@ core.register_node("mini_nodes:oak_leaves", {
 	drawtype = mini_core.is_bushy().drawtype,
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
+	walkable = false,
+	move_resistance = 4,
+	climbable = true,
 	waving = 2,
 	groups = { snappy = 3 },
 	drop = {
@@ -133,6 +136,9 @@ core.register_node("mini_nodes:apple_leaves", {
 	mesh = "mini_leaves.obj",
 	paramtype = "light",
 	waving = 2,
+	walkable = false,
+	climbable = true,
+	move_resistance = 4,
 	groups = { snappy = 3 },
 	drop = {
 		max_items = 2,
