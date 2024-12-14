@@ -28,7 +28,7 @@ core.register_on_joinplayer(function(player)
 	},
 	{
 		type = "radar",
-		label = "Underground radar enabled",
+		label = "Cave map  enabled",
 		size = 50
 	},
 	}, 0)
@@ -141,8 +141,10 @@ local huds = {
 	},
 }
 
-for k,v in pairs(huds) do
-	core.hud_replace_builtin(k,v)
+if core.settings:get_bool("mini_change_hud", true) then
+	for k,v in pairs(huds) do
+		core.hud_replace_builtin(k,v)
+	end
 end
 
 --Infinite materials in creative

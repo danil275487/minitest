@@ -2,3 +2,6 @@
 
 # Gives leaves a bushy 3D model. Requires a beefy computer.
 mini_bushy_leaves (Bushy leaves) bool false
+
+# Raises the hotbar and replaces health/bubbles with bars, and moves the minimap.
+mini_change_hud (Modify HUD) bool true

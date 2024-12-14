@@ -54,7 +54,7 @@ end
 
 --Return proper mesh and texture for leaves depending on "Bushy leaves" option
 function mini_core.is_bushy()
-	if core.settings:get("mini_bushy_leaves") == "true" then
+	if core.settings:get_bool("mini_bushy_leaves") then
 		return {
 			drawtype = "mesh",
 			tiles = "mini_oak_leaves_bushy.png",
