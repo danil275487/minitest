@@ -1,5 +1,3 @@
-local F = core.formspec_escape
-
 -- Create a detached inventory
 local inv_creative = core.create_detached_inventory("creative", {
 	allow_move = function(inv, from_list, from_index, to_list, to_index, count, player)
@@ -13,22 +11,21 @@ local inv_creative = core.create_detached_inventory("creative", {
 	end,
 })
 local max_page = 1
-local ipp = 24
-
+local ipp = 5
+--		label[1.75,6.75;Page: ${page} / ${max_page}]
 function mini_core.get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
 	return mini_core.formspec_wrapper([[
-		size[8.25,9]
+		size[8.25,9.25]
 		real_coordinates[true]
-		background9[0,0.75;8.25,8.25;mini_formspec_bg.png;false;12]
+		background9[0,0.75;8.25,8.5;mini_formspec_bg.png;false;12]
 		bgcolor[#00000080;true]
 		style_type[button;border=false;bgimg=mini_formspec_bg.png;bgimg_pressed=mini_formspec_bg_dark.png;bgimg_middle=12,12]
 		listcolors[#787878ff;#505050ff]
-		list[detached:creative;main;0.5,1.25;6,4;${start}]
-		button[0.5,6.25;1,1;inv_creative_prev;\<]
-		label[1.75,6.75;Page: ${page} / ${max_page}]
-		button[4,6.25;1,1;inv_creative_next;\>]
-		list[current_player;main;0.5,7.5;6,1;0]
+		list[detached:creative;main;0.5,1.25;5,5;${start}]
+		button[6.75,1.25;1,1;inv_creative_prev;\/\\]
+		button[6.75,6.25;1,1;inv_creative_next;\\\/]
+		list[current_player;main;0.5,7.75;6,1;0]
 		field[0,0;0,0;internal_paginator;;${page}]
 		button[0,0;2,0.75;inventory;Inventory]
 		button[2,0;2,0.75;creative;Creative]
@@ -40,7 +37,7 @@ function mini_core.get_creative_formspec(page)
 end
 
 core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "mini_inventory:creative" and fields.quit == nil and fields.creative == nil then
+	if formname == "mini_core:creative" and fields.quit == nil and fields.creative == nil then
 		if fields.inventory then
 			core.show_formspec(player:get_player_name(), "", mini_core.get_inventory_formspec())
 			return
@@ -52,12 +49,12 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 			page = page + 1
 		end
 		if page < 1 then
-			page = max_page
-		end
-		if page > max_page then
 			page = 1
 		end
-		core.show_formspec(player:get_player_name(), "mini_inventory:creative", mini_core.get_creative_formspec(page))
+		if page > max_page then
+			page = max_page
+		end
+		core.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.get_creative_formspec(page))
 	end
 end)
 

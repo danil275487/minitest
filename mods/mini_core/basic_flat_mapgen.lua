@@ -1,3 +1,5 @@
+local node = core.settings:get("mini_flat_node") or "mini_nodes:stone"
+
 if core.get_mapgen_setting('mg_name') == "singlenode" then
 	local data = {}
 	core.register_on_generated(function(minp, maxp, blockseed)
@@ -15,7 +17,7 @@ if core.get_mapgen_setting('mg_name') == "singlenode" then
 					}
 					local posi = area:index(pos.x, pos.y, pos.z)
 					if (pos.x >= -31000 and pos.x <= 31000) and (pos.z >= -31000 and pos.z <= 31000) and (pos.y >= -31000 and pos.y <= -1) then
-						data[posi] = core.get_content_id("mini_nodes:stone")
+						data[posi] = core.get_content_id(node)
 					end
 				end
 			end

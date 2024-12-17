@@ -49,7 +49,7 @@ core.register_biome({
 
 core.register_biome({
 	name = "mini_mapgen:underground",
-	node_cave_liquid = {"mini_liquids:water_source", "mini_liquids:lava_source"},
+	node_cave_liquid = {"mini_nodes:water_source", "mini_nodes:lava_source"},
 	node_dungeon = "mini_nodes:stone_bricks",
 	node_dungeon_alt = "mini_nodes:stone",
 	y_max = -10,
@@ -61,7 +61,7 @@ core.register_biome({
 core.register_biome({
 	name = "mini_mapgen:underground2",
 	node_stone = "mini_nodes:stone",
-	node_cave_liquid = "mini_liquids:lava_source",
+	node_cave_liquid = "mini_nodes:lava_source",
 	node_dungeon = "mini_nodes:stone_bricks",
 	node_dungeon_alt = "mini_nodes:stone",
 	y_max = -75,
@@ -73,7 +73,7 @@ core.register_biome({
 core.register_biome({
 	name = "mini_mapgen:deep_underground",
 	node_stone = "mini_nodes:deep_stone",
-	node_cave_liquid = "mini_liquids:lava_source",
+	node_cave_liquid = "mini_nodes:lava_source",
 	node_dungeon = "mini_nodes:deep_stone_bricks",
 	node_dungeon_alt = "mini_nodes:deep_stone",
 	y_max = -275,

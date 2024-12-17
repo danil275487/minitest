@@ -1,4 +1,4 @@
-core.register_node("mini_chests:chest", {
+core.register_node("mini_nodes:chest", {
 	description = "Chest",
 	tiles ={
 		mini_core.sheet("node",1,2),
@@ -10,6 +10,7 @@ core.register_node("mini_chests:chest", {
 		},
 	paramtype2 = "facedir",
 	groups = { choppy=3 },
+	sounds = mini_core.sounds.dig_hard,
 	on_construct = function(pos)
 		local meta = core.get_meta(pos)
 		meta:set_string("formspec",

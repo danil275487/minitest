@@ -52,7 +52,7 @@ local function furnace_node_timer(pos, elapsed)
 			fuel_time = fuel_time + el
 			-- If there is a cookable item then check if it is ready yet
 			if cookable then
-				src_time = src_time + el + 0.25
+				src_time = src_time + el
 				if src_time >= cooked.time then
 					-- Place result in dst list if possible
 					if inv:room_for_item("dst", cooked.item) then
@@ -141,7 +141,7 @@ local function furnace_node_timer(pos, elapsed)
 		local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
 		fuel_state =  "@1%", fuel_percent
 		formspec = mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
-		swap_node(pos, "mini_furnaces:deep_furnace_active")
+		swap_node(pos, "mini_nodes:furnace_active")
 		-- make sure timer restarts automatically
 		result = true
 	else
@@ -149,14 +149,14 @@ local function furnace_node_timer(pos, elapsed)
 			fuel_state =  "@1%", 0
 		end
 		formspec = mini_core.get_furnace_inactive_formspec()
-		swap_node(pos, "mini_furnaces:deep_furnace")
+		swap_node(pos, "mini_nodes:furnace")
 		-- stop timer on the inactive furnace
 		core.get_node_timer(pos):stop()
 		meta:set_int("timer_elapsed", 0)
 	end
 
 
-	local infotext = "Deep Stone Furnace"
+	local infotext = "Furnace"
 	
 	--
 	-- Set meta values
@@ -174,20 +174,22 @@ end
 -- Node definitions
 --
 
-core.register_node("mini_furnaces:deep_furnace", {
-	description =  "Deep Stone Furnace",
+core.register_node("mini_nodes:furnace", {
+	description =  "Furnace",
 	tiles = {
-		mini_core.sheet("node",4,0),
-		mini_core.sheet("node",4,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",4,4)
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",4,4)
 	},
 	paramtype2 = "facedir",
-	groups = { cracky=2, level = 1 },
+	paramtype = "light",
+	groups = {cracky=3},
 	can_dig = can_dig,
 	on_timer = furnace_node_timer,
+	sounds = mini_core.sounds.dig_hard,
 	on_construct = function(pos)
 		local meta = core.get_meta(pos)
 		local inv = meta:get_inventory()
@@ -208,31 +210,25 @@ core.register_node("mini_furnaces:deep_furnace", {
 		-- check whether the furnace is empty or not.
 		core.get_node_timer(pos):start(1.0)
 	end,
-	on_break = function(pos)
-		local drops = {}
-		mt_nodes.get_inventory_drops(pos, "src", drops)
-		mt_nodes.get_inventory_drops(pos, "fuel", drops)
-		mt_nodes.get_inventory_drops(pos, "dst", drops)
-		drops[#drops+1] = "mini_furnaces:deep_furnace"
-		core.remove_node(pos)
-		return drops
-	end,
+	can_dig = can_dig
 })
 
-core.register_node("mini_furnaces:deep_furnace_active", {
-	description =  "Deep Stone Furnace",
+core.register_node("mini_nodes:furnace_active", {
+	description =  "Furnace",
 	tiles = {
-		mini_core.sheet("node",4,0),
-		mini_core.sheet("node",4,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0),
-		mini_core.sheet("node",6,0).."^"..mini_core.sheet("node",7,3)
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",3,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0),
+		mini_core.sheet("node",5,0).."^"..mini_core.sheet("node",7,3)
 	},
 	paramtype2 = "facedir",
+	paramtype = "light",
 	light_source = 8,
-	drop = "mini_furnaces:deep_furnace",
-	groups = {cracky=2, level = 1, not_in_creative_inventory=1},
+	drop = "mini_nodes:furnace",
+	groups = {cracky=3, not_in_creative_inventory=1},
 	on_timer = furnace_node_timer,
+	sounds = mini_core.sounds.dig_hard,
 	can_dig = can_dig,
 })

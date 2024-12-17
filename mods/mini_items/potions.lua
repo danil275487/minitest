@@ -1,4 +1,4 @@
-core.register_craftitem("mini_potions:bottle", {
+core.register_craftitem("mini_items:bottle", {
 	description = "Bottle",
 	inventory_image = mini_core.sheet('item',0,3),
 	liquids_pointable = true,
@@ -6,10 +6,10 @@ core.register_craftitem("mini_potions:bottle", {
 		local node = core.get_node(pointed_thing.under)
 		local inv = user:get_inventory()
 		if core.get_item_group(node.name, "water") == 1 then
-			if node.name == "mini_liquids:water_source" or node.name == "mini_liquids:water_flowing" then
-				inv:add_item("main", ItemStack("mini_potions:water_bottle"))
-			elseif node.name == "mini_liquids:river_water_source" or node.name == "mini_liquids:river_water_flowing" then
-				inv:add_item("main", ItemStack("mini_potions:river_water_bottle"))
+			if node.name == "mini_nodes:water_source" or node.name == "mini_nodes:water_flowing" then
+				inv:add_item("main", ItemStack("mini_items:water_bottle"))
+			elseif node.name == "mini_nodes:river_water_source" or node.name == "mini_nodes:river_water_flowing" then
+				inv:add_item("main", ItemStack("mini_items:river_water_bottle"))
 			end
 			itemstack:take_item()
 			return itemstack
@@ -19,29 +19,33 @@ core.register_craftitem("mini_potions:bottle", {
 	end
 })
 
-core.register_craftitem("mini_potions:water_bottle", {
+--function mini_core.register_potion()
+
+core.register_craftitem("mini_items:water_bottle", {
 	description = "Bottle with Water",
 	inventory_image = mini_core.sheet('item',5,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:water_bottle "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:water_bottle "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:river_water_bottle", {
+core.register_craftitem("mini_items:river_water_bottle", {
 	description = "Bottle with River Water",
 	inventory_image = mini_core.sheet('item',5,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
+		local hp = user:get_hp()
+		user:set_hp(hp+5)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:river_water_bottle "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:river_water_bottle "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:heal_potion", {
+core.register_craftitem("mini_items:heal_potion", {
 	description = "Healing Potion",
 	inventory_image = mini_core.sheet('item',1,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -49,12 +53,12 @@ core.register_craftitem("mini_potions:heal_potion", {
 		user:set_hp(hp+10)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:heal_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:heal_potion "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:speed_potion", {
+core.register_craftitem("mini_items:speed_potion", {
 	description = "Speed Potion",
 	inventory_image = mini_core.sheet('item',2,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -70,12 +74,12 @@ core.register_craftitem("mini_potions:speed_potion", {
 		end, user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:speed_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:speed_potion "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:jump_potion", {
+core.register_craftitem("mini_items:jump_potion", {
 	description = "Jump Potion",
 	inventory_image = mini_core.sheet('item',3,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -91,12 +95,12 @@ core.register_craftitem("mini_potions:jump_potion", {
 		end, user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:jump_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:jump_potion "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:river_heal_potion", {
+core.register_craftitem("mini_items:river_heal_potion", {
 	description = "Healing Potion",
 	inventory_image = mini_core.sheet('item',1,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -104,12 +108,12 @@ core.register_craftitem("mini_potions:river_heal_potion", {
 		user:set_hp(hp+15)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:river_heal_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:river_heal_potion "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:river_speed_potion", {
+core.register_craftitem("mini_items:river_speed_potion", {
 	description = "Speed Potion",
 	inventory_image = mini_core.sheet('item',2,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -125,12 +129,12 @@ core.register_craftitem("mini_potions:river_speed_potion", {
 		end, user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:river_speed_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:river_speed_potion "..count-1
 	end
 })
 
-core.register_craftitem("mini_potions:river_jump_potion", {
+core.register_craftitem("mini_items:river_jump_potion", {
 	description = "Jump Potion",
 	inventory_image = mini_core.sheet('item',3,3).."^"..mini_core.sheet('item',0,3),
 	on_use = function(itemstack,user)
@@ -146,7 +150,7 @@ core.register_craftitem("mini_potions:river_jump_potion", {
 		end, user)
 		local count = itemstack:get_count()
 		local inv = user:get_inventory()
-		inv:add_item("main", "mini_potions:bottle")
-		return "mini_potions:jump_potion "..count-1
+		inv:add_item("main", "mini_items:bottle")
+		return "mini_items:jump_potion "..count-1
 	end
 })

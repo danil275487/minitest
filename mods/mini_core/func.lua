@@ -69,15 +69,17 @@ function mini_core.is_bushy()
 	end
 end
 
---Register a stairs and slab node for given node
-function mini_core.register_stair_and_slab(subname, recipeitem, groups, tiles, description, texture_alpha)
-	core.register_node("mini_stairs:"..subname.."_stair", {
-		description = description.." Stairs",
+--Register a stairs and slab node for given node, carried over from mini_stairs
+function mini_core.register_stair_and_slab(node)
+	node_def = core.registered_nodes[node]
+	core.register_node(node.."_stair", {
+		description = node_def.description.." Stairs",
 		drawtype = "nodebox",
-		tiles = tiles,
+		tiles = node_def.tiles,
 		paramtype = "light",
 		paramtype2 = "facedir",
-		groups = groups,
+		groups = node_def.groups,
+		sounds = node_def.sounds,
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -86,24 +88,24 @@ function mini_core.register_stair_and_slab(subname, recipeitem, groups, tiles, d
 			},
 		},
 	})
-	core.register_node("mini_stairs:"..subname.."_slab", {
-		description = description.." Slab",
+	core.register_node(node.."_slab", {
+		description = node_def.description.." Slab",
 		drawtype = "nodebox",
-		tiles = tiles,
+		tiles = node_def.tiles,
 		paramtype = "light",
-		groups = groups,
+		groups = node_def.groups,
+		sounds = node_def.sounds,
 		node_box = {
 			type = "fixed",
 			fixed = {
 				{-0.5, -0.5, -0.5, 0.5, 0.0, 0.5},
 			},
 		},
-		use_texture_alpha = texture_alpha
 	})
 
 	if recipeitem then
 		core.register_craft({
-			output = "mini_stairs:"..subname.."_stair",
+			output = def.node.."_stair",
 			recipe = {
 				{"", "", recipeitem},
 				{"", recipeitem, recipeitem},
@@ -111,7 +113,7 @@ function mini_core.register_stair_and_slab(subname, recipeitem, groups, tiles, d
 			},
 		})
 		core.register_craft({
-			output = "mini_stairs:"..subname.."_stair",
+			output = def.node.."_stair",
 			recipe = {
 				{recipeitem,"",""},
 				{recipeitem, recipeitem,""},
@@ -119,10 +121,48 @@ function mini_core.register_stair_and_slab(subname, recipeitem, groups, tiles, d
 			},
 		})
 		core.register_craft({
-			output = "mini_stairs:"..subname.."_slab",
+			output = def.node.."slab",
 			recipe = {
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
 	end
+end
+
+--Furnace formspecs, carried over from mini_furnace
+function mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
+	return mini_core.formspec_wrapper([[
+		size[8.25,8.75]
+		real_coordinates[true]
+		background9[0,0;0,0;mini_formspec_bg.png;true;12]
+		bgcolor[#00000080;true]
+		listcolors[#787878ff;#505050ff]
+		list[context;src;2.35,0.5;1,1;]
+		list[context;fuel;2.35,3;1,1;]
+		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png^[lowpart:${fuel_pct}:mini_furnace_ui_fire.png]
+		image[3.60,1.75;1,1;mini_inv_arrow.png^[lowpart:${item_pct}:mini_inv_arrow_full.png^[transformR270]
+		list[context;dst;4.85,1.75;1,1;]
+		list[current_player;main;0.5,4.5;6,2;6]
+		list[current_player;main;0.5,7.25;6,1;0]
+	]],{
+		fuel_pct = fuel_percent,
+		item_pct = item_percent
+	})
+end
+
+function mini_core.get_furnace_inactive_formspec()
+	return [[
+		size[8.25,8.75]
+		real_coordinates[true]
+		background9[0,0;0,0;mini_formspec_bg.png;true;12]
+		bgcolor[#00000080;true]
+		listcolors[#787878ff;#505050ff]
+		list[context;src;2.35,0.5;1,1;]
+		list[context;fuel;2.35,3;1,1;]
+		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png]
+		image[3.60,1.75;1,1;mini_inv_arrow.png^[transformR270]
+		list[context;dst;4.85,1.75;1,1;]
+		list[current_player;main;0.5,4.5;6,2;6]
+		list[current_player;main;0.5,7.25;6,1;0]
+	]]
 end

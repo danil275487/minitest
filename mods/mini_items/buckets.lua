@@ -1,19 +1,14 @@
-mini_core.liquids = {}
+mini_core.buckets = {}
+mini_core.buckets.liquids = {}
 
-function mini_core.register_liquid(source, flowing, itemname, inventory_image, name,
-		groups, force_renew)
-	mini_core.liquids[source] = {
-		source = source,
-		flowing = flowing,
-		itemname = itemname,
-		force_renew = force_renew,
-	}
-	mini_core.liquids[flowing] = mini_core.liquids[source]
+function mini_core.register_liquid(def)
+	mini_core.buckets.liquids[def.node] = def
+	mini_core.buckets.liquids[core.registered_nodes[def.node].liquid_alternative_flowing] = def
 
-	if itemname ~= nil then
-		core.register_craftitem(":"..itemname, {
-			description = name,
-			inventory_image = inventory_image,
+	if def.itemname ~= nil then
+		core.register_craftitem(def.itemname, {
+			description = def.name,
+			inventory_image = def.inventory_image,
 			stack_max = 1,
 			liquids_pointable = true,
 			on_place = function(itemstack, user, pointed_thing)
@@ -55,14 +50,14 @@ function mini_core.register_liquid(source, flowing, itemname, inventory_image, n
 					end
 				end
 
-				core.set_node(lpos, {name = source})
-				return ItemStack("mini_buckets:bucket")
+				core.set_node(lpos, {name = def.node})
+				return ItemStack("mini_items:bucket")
 			end
 		})
 	end
 end
 
-core.register_craftitem("mini_buckets:bucket", {
+core.register_craftitem("mini_items:bucket", {
 	description = "Bucket",
 	inventory_image = mini_core.sheet('item',4,0),
 	liquids_pointable = true,
@@ -76,12 +71,12 @@ core.register_craftitem("mini_buckets:bucket", {
 		end
 		-- Check if pointing to a liquid source
 		local node = core.get_node(pointed_thing.under)
-		local liquiddef = mini_core.liquids[node.name]
+		local liquiddef = mini_core.buckets.liquids[node.name]
 		local item_count = user:get_wielded_item():get_count()
 
 		if liquiddef ~= nil
 		and liquiddef.itemname ~= nil
-		and node.name == liquiddef.source then
+		and node.name == liquiddef.node then
 
 			-- default set to return filled bucket
 			local giving_back = liquiddef.itemname
@@ -100,7 +95,7 @@ core.register_craftitem("mini_buckets:bucket", {
 				end
 
 				-- set to return empty buckets minus 1
-				giving_back = "mini_buckets:bucket "..tostring(item_count-1)
+				giving_back = "mini_items:bucket "..tostring(item_count-1)
 
 			end
 
@@ -126,26 +121,23 @@ core.register_craftitem("mini_buckets:bucket", {
 	end
 })
 
-mini_core.register_liquid(
-	"mini_liquids:water_source",
-	"mini_liquids:water_flowing",
-	"mini_buckets:water_bucket",
-	mini_core.sheet('item',5,0),
-	"Water Bucket"
-)
+mini_core.register_liquid({
+	node = "mini_nodes:water_source",
+	itemname = "mini_items:water_bucket",
+	inventory_image= mini_core.sheet('item',5,0),
+	name = "Water Bucket"
+})
 
-mini_core.register_liquid(
-	"mini_liquids:river_water_source",
-	"mini_liquids:river_water_flowing",
-	"mini_buckets:river_water_bucket",
-	mini_core.sheet('item',6,0),
-	"River Water Bucket"
-)
+mini_core.register_liquid({
+	node = "mini_nodes:river_water_source",
+	itemname = "mini_items:river_water_bucket",
+	inventory_image= mini_core.sheet('item',6,0),
+	name = "River Water Bucket"
+})
 
-mini_core.register_liquid(
-	"mini_liquids:lava_source",
-	"mini_liquids:lava_flowing",
-	"mini_buckets:lava_bucket",
-	mini_core.sheet('item',7,0),
-	"Lava Bucket"
-)
+mini_core.register_liquid({
+	node = "mini_nodes:lava_source",
+	itemname = "mini_items:lava_bucket",
+	inventory_image= mini_core.sheet('item',7,0),
+	name = "Lava Bucket"
+})

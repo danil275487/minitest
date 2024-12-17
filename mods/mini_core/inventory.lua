@@ -34,8 +34,8 @@ end)
 
 core.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "" and fields.creative and core.is_creative_enabled(player) then
-		core.show_formspec(player:get_player_name(), "mini_inventory:creative", mini_core.get_creative_formspec(1))
+		core.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.get_creative_formspec(1))
 	end
 end)
 
-dofile(core.get_modpath('mini_inventory')..'/creative.lua')
+mini_core.load_file("creative_inv")

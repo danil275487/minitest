@@ -1,9 +1,18 @@
 mini_core = {}
 
+--Helper function for shorter file loading
+function mini_core.load_file(file)
+	dofile(core.get_modpath(core.get_current_modname()).."/"..file..".lua")
+end
+
 --Load .lua files
-dofile(core.get_modpath("mini_core") .. "/func.lua")
-dofile(core.get_modpath("mini_core") .. "/hand.lua")
-dofile(core.get_modpath("mini_core") .. "/sounds.lua")
+mini_core.load_file("func")
+mini_core.load_file("inventory")
+mini_core.load_file("creative_inv")
+mini_core.load_file("hand")
+mini_core.load_file("sounds")
+mini_core.load_file("basic_flat_mapgen")
+mini_core.load_file("compat")
 
 --Set up player related stuff and sky
 core.register_on_joinplayer(function(player)

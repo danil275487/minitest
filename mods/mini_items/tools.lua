@@ -88,7 +88,7 @@ local sticks = {
 
 for i,v in pairs(heads) do
 	for i2,v2 in pairs(sticks) do
-		core.register_tool("mini_tools:"..v.name.."_pick_"..v2.name.."_stick", {
+		core.register_tool("mini_items:"..v.name.."_pick_"..v2.name.."_stick", {
 			description = v.description.." Pickaxe",
 			inventory_image = mini_core.sheet('item',i2-1,4).."^"..mini_core.sheet('item',i-1,5),
 			wear_color = {
@@ -112,7 +112,7 @@ for i,v in pairs(heads) do
 				},
 			},
 		})
-		core.register_tool("mini_tools:"..v.name.."_axe_"..v2.name.."_stick", {
+		core.register_tool("mini_items:"..v.name.."_axe_"..v2.name.."_stick", {
 			description = v.description.." Axe",
 			inventory_image = mini_core.sheet('item',i2-1,4).."^"..mini_core.sheet('item',i-1,6),
 			wear_color = {

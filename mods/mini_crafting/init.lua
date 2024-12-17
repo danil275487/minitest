@@ -250,7 +250,7 @@ for k,v in pairs(materials) do
 	})
 end
 
-local materials = {
+local tool_materials = {
 	"stone",
 	"deep_stone",
 	"iron",
@@ -259,40 +259,42 @@ local materials = {
 	"crystal"
 }
 
-for i in pairs(materials) do
+for _,v in pairs(tool_materials) do
+	for _,v2 in pairs(tool_materials) do
 		core.register_craft({
-			output = "mini_tools:"..i.."_pick_"..i.."_stick",
+			output = "mini_items:"..v.."_pick_"..v2.."_stick",
 			recipe = {
-				{"mini_items:"..i.."_pick_head"},
-				{"mini_items:"..i.."_stick"},
+				{"mini_items:"..v.."_pick_head"},
+				{"mini_items:"..v2.."_stick"},
 			}
 		})
 		core.register_craft({
-			output = "mini_tools:"..i.."_axe_"..i.."_stick",
+			output = "mini_items:"..v.."_axe_"..v2.."_stick",
 			recipe = {
-				{"mini_items:"..i.."_axe_head"},
-				{"mini_items:"..i.."_stick"},
+				{"mini_items:"..v.."_axe_head"},
+				{"mini_items:"..v2.."_stick"},
 			}
 		})
+		--[[
 		core.register_craft({
-			output = "mini_tools:"..i.."_hoe_"..i.."_stick",
+			output = "mini_items:"..i.."_hoe_"..i.."_stick",
 			recipe = {
 				{"mini_items:"..i.."_hoe_head"},
 				{"mini_items:"..i.."_stick"},
 			}
 		})
-
+--]]
 		core.register_craft({
-			output = "mini_tools:"..i.."_pick_wood_stick",
+			output = "mini_items:"..v.."_pick_wood_stick",
 			recipe = {
-				{"mini_items:"..i.."_pick_head"},
+				{"mini_items:"..v.."_pick_head"},
 				{"mini_items:stick"},
 			}
 		})
 		core.register_craft({
-			output = "mini_tools:"..i.."_axe_wood_stick",
+			output = "mini_items:"..v.."_axe_wood_stick",
 			recipe = {
-				{"mini_items:"..i.."_axe_head"},
+				{"mini_items:"..v.."_axe_head"},
 				{"mini_items:stick"},
 			}
 		})
@@ -304,6 +306,7 @@ for i in pairs(materials) do
 				{"mini_items:stick"},
 			}
 		})--]]
+	end
 end
 
 local potions = {
@@ -317,14 +320,14 @@ for k,v in pairs(potions) do
 		output = "mini_potions:"..v.output,
 		recipe = {
 			{"mini_nodes:"..v.material},
-			{"mini_potions:water_bottle"},
+			{"mini_items:water_bottle"},
 		}
 	})
 	core.register_craft({
 		output = "mini_potions:river_"..v.output,
 		recipe = {
 			{"mini_nodes:"..v.material},
-			{"mini_potions:river_water_bottle"},
+			{"mini_items:river_water_bottle"},
 		}
 	})
 end
