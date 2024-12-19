@@ -1,5 +1,5 @@
 # [![Minitest](misc/readme_logo.png)](https://github.com/danil275487/minitest)
-[*Download*](https://github.com/danil275487/minitest/archive/refs/heads/main.zip)
+[*Download*](https://github.com/danil275487/minitest/archive/refs/heads/main.zip) | [*Discord*](https://discord.gg/6QvVxxsv6n)
 
 
 ![](misc/readme_screenshots.png)
@@ -15,12 +15,12 @@ The ingame colors and textures mostly use the 16 color palette taken from the [C
 
 ## Features roadmap
 ### for the near future
-- [ ] Make the game use tilesheets
-- [ ] Tidy up most of the code 
+- [x] Make the game use tilesheets
+- [x] Tidy up most of the code 
 - [ ] Redo many item names
-- [ ] Refactor the mod structure (make it less modular, what was I smoking back then)
+- [x] Refactor the mod structure (make it less modular, what was I smoking back then)
 - [ ] Add a crafting book
-- [ ] Add basic sounds
+- [x] Add basic sounds
 - [ ] Add mobs and enemies
 - [ ] Rewrite and redesign aspects like farming and hunger (aka not steal them from MTG and stamina mod)
 - [ ] Get it ready for ContentDB? :3
