@@ -41,14 +41,13 @@ end
 
 --Grow sapling
 function mini_core.grow_sapling(pos)
-	if not can_grow(pos) then
-		core.get_node_timer(pos):start(math.random(60,480))
+	if not mini_core.can_grow(pos) then
 		return
 	end
 	local node = core.get_node(pos)
-	if node.name == "mini_farming:oak_sapling" then
+	if node.name == "mini_nodes:oak_sapling" then
 		core.remove_node(pos)
-		core.place_schematic({x = pos.x-3, y = pos.y-1, z = pos.z-3}, mini_core.mts("tree"), "random", nil, false)
+		core.place_schematic({x = pos.x-5, y = pos.y-1, z = pos.z-5}, mini_core.mts("tree"), "random", nil, false)
 	end
 end
 
@@ -71,7 +70,7 @@ end
 
 --Register a stairs and slab node for given node, carried over from mini_stairs
 function mini_core.register_stair_and_slab(node)
-	node_def = core.registered_nodes[node]
+	local node_def = core.registered_nodes[node]
 	core.register_node(node.."_stair", {
 		description = node_def.description.." Stairs",
 		drawtype = "nodebox",
@@ -102,41 +101,35 @@ function mini_core.register_stair_and_slab(node)
 			},
 		},
 	})
-
-	if recipeitem then
-		core.register_craft({
-			output = def.node.."_stair",
-			recipe = {
-				{"", "", recipeitem},
-				{"", recipeitem, recipeitem},
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-		core.register_craft({
-			output = def.node.."_stair",
-			recipe = {
-				{recipeitem,"",""},
-				{recipeitem, recipeitem,""},
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-		core.register_craft({
-			output = def.node.."slab",
-			recipe = {
-				{recipeitem, recipeitem, recipeitem},
-			},
-		})
-	end
+	core.register_craft({
+		output = node.."_stair",
+		recipe = {
+			{"", "", node},
+			{"", node, node},
+			{node, node, node},
+		},
+	})
+	core.register_craft({
+		output = node.."_stair",
+		recipe = {
+			{node,"",""},
+			{node, node,""},
+			{node, node, node},
+		},
+	})
+	core.register_craft({
+		output = node.."slab",
+		recipe = {
+			{node, node, node},
+		},
+	})
 end
 
 --Furnace formspecs, carried over from mini_furnace
 function mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
 	return mini_core.formspec_wrapper([[
+		formspec_version[8]
 		size[8.25,8.75]
-		real_coordinates[true]
-		background9[0,0;0,0;mini_formspec_bg.png;true;12]
-		bgcolor[#00000080;true]
-		listcolors[#787878ff;#505050ff]
 		list[context;src;2.35,0.5;1,1;]
 		list[context;fuel;2.35,3;1,1;]
 		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png^[lowpart:${fuel_pct}:mini_furnace_ui_fire.png]
@@ -152,11 +145,8 @@ end
 
 function mini_core.get_furnace_inactive_formspec()
 	return [[
+		formspec_version[8]
 		size[8.25,8.75]
-		real_coordinates[true]
-		background9[0,0;0,0;mini_formspec_bg.png;true;12]
-		bgcolor[#00000080;true]
-		listcolors[#787878ff;#505050ff]
 		list[context;src;2.35,0.5;1,1;]
 		list[context;fuel;2.35,3;1,1;]
 		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png]

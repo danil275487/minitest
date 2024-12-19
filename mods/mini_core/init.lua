@@ -42,6 +42,16 @@ core.register_on_joinplayer(function(player)
 		size = 50
 	},
 	}, 0)
+	player:set_formspec_prepend(mini_core.formspec_wrapper([[
+		background9[0,0;0,0;${bg};true;8]
+		listcolors[#787878ff;#505050ff;#787878ff;#7869c4ff;#ffffffff]
+		style_type[button:default;border=false;bgimg=${bg};bgimg_middle=8,8]
+		style_type[button:pressed;border=false;bgimg=${btn_active};bgimg_middle=8,8]
+	]],
+	{
+		bg = mini_core.sheet("ui",0,0,6,1).."^[resize:24x24",
+		btn_active = mini_core.sheet("ui",1,0,6,1).."^[resize:24x24"
+	}))
 	--physics
 	player:set_physics_override({
 		sneak_glitch = true

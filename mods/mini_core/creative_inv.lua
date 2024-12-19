@@ -12,27 +12,29 @@ local inv_creative = core.create_detached_inventory("creative", {
 })
 local max_page = 1
 local ipp = 5
---		label[1.75,6.75;Page: ${page} / ${max_page}]
 function mini_core.get_creative_formspec(page)
 	local start = 0 + (page-1)*ipp
 	return mini_core.formspec_wrapper([[
+		formspec_version[8]
 		size[8.25,9.25]
-		real_coordinates[true]
-		background9[0,0.75;8.25,8.5;mini_formspec_bg.png;false;12]
-		bgcolor[#00000080;true]
-		style_type[button;border=false;bgimg=mini_formspec_bg.png;bgimg_pressed=mini_formspec_bg_dark.png;bgimg_middle=12,12]
-		listcolors[#787878ff;#505050ff]
 		list[detached:creative;main;0.5,1.25;5,5;${start}]
 		button[6.75,1.25;1,1;inv_creative_prev;\/\\]
+		background9[6.75,2.25;1,4;${bg_dark};false;8]
+		label[0,1;${scrubber_pos}]
+		background9[6.75,${scrubber_pos}; 1,0.75;${bg};false;12]
 		button[6.75,6.25;1,1;inv_creative_next;\\\/]
 		list[current_player;main;0.5,7.75;6,1;0]
 		field[0,0;0,0;internal_paginator;;${page}]
-		button[0,0;2,0.75;inventory;Inventory]
-		button[2,0;2,0.75;creative;Creative]
+		background9[0,0;8.25,0.75;${bg_dark};false;8]
+		button[0,0;4,0.75;inventory;Inventory]
+		button[4,0;3.5,0.75;creative;Creative]
 	]], {
+		bg = mini_core.sheet("ui",0,0,6,1).."^[resize:24x24",
+		bg_dark = mini_core.sheet("ui",2,0,6,1).."^[resize:24x24",
 		start = start,
 		page = page,
-		max_page = max_page
+		max_page = max_page,
+		scrubber_pos = 2.25+(5.5-2.25)*(page-1)/(max_page-1)
 	})
 end
 
@@ -100,3 +102,4 @@ core.register_on_mods_loaded(function()
 		inv_creative:add_item("main", items[i])
 	end
 end)
+
