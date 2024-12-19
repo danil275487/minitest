@@ -2,8 +2,8 @@ function mini_core.get_inventory_formspec(playername)
 	local creative_button = ""
 	if core.is_creative_enabled(playername) then
 		creative_button = [[
-			button[0,0;4,0.75;inventory;Inventory]
-			button[4,0;3.5,0.75;creative;Creative]
+			button[0,0;3,0.75;inventory;Inventory]
+			button[3,0;3,0.75;creative;Creative]
 		]]
 	end
 	return mini_core.formspec_wrapper([[

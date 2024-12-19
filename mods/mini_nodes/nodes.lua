@@ -106,11 +106,8 @@ core.register_node("mini_nodes:crafting_bench", {
 		player:get_inventory():set_width("craft", 3)
 		player:get_inventory():set_size("craft", 9)
 		local form = [[
+		formspec_version[8]
 		size[8.25,8.75]
-		real_coordinates[true]
-		background9[0,0;0,0;mini_formspec_bg.png;true;12]
-		bgcolor[#00000080;true]
-		listcolors[#787878ff;#505050ff]
 		list[current_player;main;0.5,4.5;6,2;6]
 		list[current_player;main;0.5,7.25;6,1;0]
 		list[current_player;craft;1.125,0.5;3,3;]
@@ -342,9 +339,11 @@ core.register_node("mini_nodes:oak_sapling", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	on_timer = grow_sapling,
 	sounds = mini_core.sounds.dig_soft,
 	groups = { snappy = 2, dig_immediate = 3, attached_node = 1, sapling = 1 },
+	on_timer = function(pos)
+		mini_core.grow_sapling(pos)
+	end,
 	on_construct = function(pos)
 		core.get_node_timer(pos):start(math.random(1, 1)) --the hell?
 	end,
