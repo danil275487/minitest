@@ -168,7 +168,7 @@ core.register_craft({
 core.register_craft({
 	output = "mini_nodes:torch",
 	recipe = {
-		{"mini_items:coal"},
+		{"mini_items:coal_lump"},
 		{"mini_items:stick"},
 	}
 })
