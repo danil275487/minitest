@@ -4,7 +4,15 @@ function mini_core.mts(name)
 end
 
 --Helper function for tilesheets
-function mini_core.sheet(sheet, x,y, w,h, esc) -- w/h is used for animation, esc is for texmods
+--[[
+	sheet = sheet to use, see mini_assets/textures/sheets/ (string)
+			(example: "node" -> mini_node_sheet.png)
+	x,y = position of tile (int)
+	w,h = size of tilesheet in tiles (int, opt)
+	esc = should texmod be escaped? (bool, opt)
+		  used in combination with other texmods
+]]
+function mini_core.sheet(sheet, x,y, w,h, esc)
 	w = w or 8
 	h = h or 8
 	if esc then
@@ -22,6 +30,42 @@ function mini_core.formspec_wrapper(formspec, variables)
 	end
 	return retval
 end
+
+--Fake list-style grid of items
+--[[
+	x,y = position (int)
+	w,h = size, scaled according to row/column amount (int)
+	r,c = row/column (int)
+	i = items (table)
+	t = should tooltips be added? (bool, opt)
+	b = should backgrounds be added? (colorspec, opt)
+	s = spacing between each cell
+]]
+function mini_core.item_grid(x,y, w,h, r,c, i, t,b,s)
+	local elements, idx = {}, 1
+	s = s or 1.25
+	i = type(i) == "string" and {i} or i
+	for gy = 1, c * s, s do
+		for gx = 1, r * s, s do
+			if idx > #i then break end
+			i[idx] = i[idx] or ""
+
+			local elem_x = (x + gx - 1)+(w/r)-1
+			local elem_y = (y + gy - 1)
+
+			if b then
+				elements[#elements + 1] = "box["..(x + gx - 1)..","..(y + gy - 1)..";"..w/r..","..h/c..";"..b.."]"
+			end
+			if t then
+				elements[#elements + 1] = "tooltip["..(x + gx - 1)..","..(y + gy - 1)..";"..w/r..","..h/c..";"..ItemStack(i[idx]):get_description().."]"
+			end
+			elements[#elements + 1] = "item_image["..elem_x..","..elem_y..";1,1;"..i[idx].."]"
+			idx = idx + 1
+		end
+	end
+	return table.concat(elements, "\n")
+end
+
 
 --Tree growing
 function mini_core.can_grow(pos)
@@ -155,4 +199,42 @@ function mini_core.get_furnace_inactive_formspec()
 		list[current_player;main;0.5,4.5;6,2;6]
 		list[current_player;main;0.5,7.25;6,1;0]
 	]]
+end
+
+function tprint (t, s)
+	for k, v in pairs(t) do
+		local kfmt = '["' .. tostring(k) ..'"]'
+		if type(k) ~= 'string' then
+			kfmt = '[' .. k .. ']'
+		end
+		local vfmt = '"'.. tostring(v) ..'"'
+		if type(v) == 'table' then
+			tprint(v, (s or '')..kfmt)
+		else
+			if type(v) ~= 'string' then
+				vfmt = tostring(v)
+			end
+			print(type(t)..(s or '')..kfmt..' = '..vfmt)
+		end
+	end
+end
+
+--Taken from https://gist.github.com/NFrid/2b4b62900d68f68d30f4ba82fbeeb02d
+function dump(o, tbs, tb)
+  tb = tb or 0
+  tbs = tbs or '  '
+  if type(o) == 'table' then
+	local s = '{'
+	if (next(o)) then s = s .. '\n' else return s .. '}' end
+	tb = tb + 1
+	for k,v in pairs(o) do
+	  if type(k) ~= 'number' then k = '"' .. k .. '"' end
+	  s = s .. tbs:rep(tb) .. '[' .. k .. '] = ' .. dump(v, tbs, tb)
+	  s = s .. ',\n'
+	end
+	tb = tb - 1
+	return s .. tbs:rep(tb) .. '}'
+  else
+	return tostring(o)
+  end
 end

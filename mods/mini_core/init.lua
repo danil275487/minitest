@@ -175,10 +175,17 @@ core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, po
 end
 )
 
+local starter_items = {
+	"mini_items:stone_axe_wood_stick",
+	"mini_items:recipe_book"
+}
+
 core.register_on_newplayer(function(player)
 	local inv = player:get_inventory()
-	if not inv:contains_item("main", "mini_tools:stone_axe_wood_stick") then
-		inv:add_item("main", "mini_tools:stone_axe_wood_stick")
+	for i,v in pairs(starter_items) do
+		if not inv:contains_item("main", v) then
+			inv:add_item("main", v)
+		end
 	end
 end)
 
