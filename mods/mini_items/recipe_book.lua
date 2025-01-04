@@ -7,7 +7,7 @@ local function get_context(name)
 end
 
 core.register_on_leaveplayer(function(player)
-	_contexts[player:get_player_name()] = nil
+	contexts[player:get_player_name()] = nil
 end)
 
 --The formspec
