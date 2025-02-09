@@ -13,7 +13,7 @@ end)
 --The formspec
 function mini_core.show_recipe_book_formspec(page)
 	local recipe = mini_core.registered_recipes[page]
-	local method_image = ""
+	local method_image
 	if recipe.method == "normal" then
 		method_image = "mini_inv_arrow.png"
 	else

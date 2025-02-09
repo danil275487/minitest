@@ -122,7 +122,7 @@ local function furnace_node_timer(pos, elapsed)
 		if dst_full then
 			item_state =  "100% (output full)"
 		else
-			item_state =  "@1%", item_percent
+			item_state =  "@1%"..item_percent
 		end
 	else
 		if srclist and not srclist[1]:is_empty() then
@@ -139,14 +139,14 @@ local function furnace_node_timer(pos, elapsed)
 	if fuel_totaltime ~= 0 then
 		active = true
 		local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
-		fuel_state =  "@1%", fuel_percent
+		fuel_state =  "@1%"..fuel_percent
 		formspec = mini_core.get_furnace_active_formspec(fuel_percent, item_percent)
 		swap_node(pos, "mini_nodes:deep_furnace_active")
 		-- make sure timer restarts automatically
 		result = true
 	else
 		if fuellist and not fuellist[1]:is_empty() then
-			fuel_state =  "@1%", 0
+			fuel_state =  "@1%"..0
 		end
 		formspec = mini_core.get_furnace_inactive_formspec()
 		swap_node(pos, "mini_nodes:deep_furnace")
@@ -157,7 +157,7 @@ local function furnace_node_timer(pos, elapsed)
 
 
 	local infotext = "Deep Stone Furnace"
-	
+
 	--
 	-- Set meta values
 	--
@@ -208,8 +208,7 @@ core.register_node("mini_nodes:deep_furnace", {
 	on_metadata_inventory_take = function(pos)
 		-- check whether the furnace is empty or not.
 		core.get_node_timer(pos):start(1.0)
-	end,
-	can_dig = can_dig
+	end
 })
 
 core.register_node("mini_nodes:deep_furnace_active", {

@@ -16,7 +16,9 @@ if core.get_mapgen_setting('mg_name') == "singlenode" then
 						z = minp.z + z
 					}
 					local posi = area:index(pos.x, pos.y, pos.z)
-					if (pos.x >= -31000 and pos.x <= 31000) and (pos.z >= -31000 and pos.z <= 31000) and (pos.y >= -31000 and pos.y <= -1) then
+					if (pos.x >= -31000 and pos.x <= 31000)
+						and (pos.z >= -31000 and pos.z <= 31000)
+						and (pos.y >= -31000 and pos.y <= -1) then
 						data[posi] = core.get_content_id(node)
 					end
 				end

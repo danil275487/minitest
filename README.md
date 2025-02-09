@@ -19,7 +19,7 @@ The ingame colors and textures mostly use the 16 color palette taken from the [C
 - [ ] Redesign the inventory
 - [ ] Rewrite and redesign aspects like farming and hunger (aka not steal them from MTG and stamina mod)
 - [ ] Add better sounds
-- [ ] Visual change for nodes :^)
+- [ ] More visual effects
 - [ ] Texture redesigns
 - [ ] Add mobs and enemies?
 - [ ] Redo many item names?

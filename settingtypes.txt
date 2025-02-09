@@ -1,11 +1,11 @@
-# Allow Minitest to override your settings. Will fall back to using the games minetest.conf. This should be turned on for servers, as Luanti does not send the games minetest.conf to clients.
-mini_override_settings (Override settings) bool false
-
 # Gives leaves a bushy 3D model. Requires a beefy computer.
 mini_bushy_leaves (Bushy leaves) bool false
 
 # Raises the hotbar and replaces health/bubbles with bars, and moves the minimap.
 mini_change_hud (Modify HUD) bool true
+
+# Allow the game to override your FOV for immersion.
+mini_change_fov (Override FOV) bool true
 
 # The node used in the simple singlenode flat world. Defaults to Stone.
 mini_flat_node (Singlenode flat world node) string mini_nodes:stone

@@ -107,7 +107,7 @@ core.register_node("mini_nodes:river_water_source", {
 core.register_node("mini_nodes:river_water_flowing", {
 	description = "River Water",
 	drawtype = "flowingliquid",
- 	special_tiles = {
+	special_tiles = {
 		{
 			name = mini_core.sheet('node',6,1,8,2),
 			backface_culling = false,

@@ -105,8 +105,8 @@ for i,v in pairs(heads) do
 				max_drop_level=0,
 				groupcaps={
 					cracky={
-						times=v.times, 
-						uses=v2.durability+(v.durability/5), 
+						times=v.times,
+						uses=v2.durability+(v.durability/5),
 						maxlevel=v.level
 					},
 				},

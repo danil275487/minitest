@@ -14,6 +14,7 @@ mini_core.load_file("sounds")
 mini_core.load_file("basic_flat_mapgen")
 mini_core.load_file("compat")
 
+
 --Set up player related stuff and sky
 core.register_on_joinplayer(function(player)
 	player:set_properties({
@@ -23,7 +24,9 @@ core.register_on_joinplayer(function(player)
 		collisionbox = { -0.4375, 0, -0.4375, 0.4375, 1.875, 0.4375 },
 		eye_height = 1.75,
 	})
-	player:set_fov(65, false)
+	if core.settings:get_bool("mini_change_fov") == true then
+		player:set_fov(65, false)
+	end
 	player:hud_set_hotbar_image("mini_hotbar.png")
 	player:hud_set_hotbar_selected_image("mini_hotbar_selected.png")
 	player:set_minimap_modes({
@@ -64,13 +67,13 @@ core.register_on_joinplayer(function(player)
 		sky_color = {
 			day_sky = "#67b6bd",
 			day_horizon = "#67b6bd",
-			
+
 			dawn_sky = "#7869c4",
 			dawn_horizon = "#7869c4",
-			
+
 			night_sky = "#40318d",
 			night_horizon = "#40318d",
-			
+
 			indoors = "#787878",
 		},
 		fog = {
@@ -90,13 +93,12 @@ core.register_on_joinplayer(function(player)
 		scale = "0.1",
 	})
 	player:set_clouds({
-		density = 0.3,
+		density = 0.5,
 		color = "#ffffffff",
 		shadow = "#9f9f9f",
 		height = 250,
 		thickness = 48,
 		speed = {x=5,z=3},
-		density = 0.5
 	})
 	player:set_lighting({
 		saturation = 1,
@@ -168,7 +170,7 @@ if core.settings:get_bool("mini_change_hud", true) then
 end
 
 --Infinite materials in creative
-core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+core.register_on_placenode(function(placer)
 	if placer and placer:is_player() then
 		return core.is_creative_enabled(placer:get_player_name())
 	end
@@ -182,7 +184,7 @@ local starter_items = {
 
 core.register_on_newplayer(function(player)
 	local inv = player:get_inventory()
-	for i,v in pairs(starter_items) do
+	for _,v in pairs(starter_items) do
 		if not inv:contains_item("main", v) then
 			inv:add_item("main", v)
 		end
@@ -190,7 +192,7 @@ core.register_on_newplayer(function(player)
 end)
 
 --Drop items on death
-core.register_on_dieplayer(function(entity, reason)
+core.register_on_dieplayer(function(entity)
 	if entity:is_player() then
 		local inv = entity:get_inventory()
 		local player_name = entity:get_player_name()

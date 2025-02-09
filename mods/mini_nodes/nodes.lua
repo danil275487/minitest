@@ -102,7 +102,7 @@ core.register_node("mini_nodes:crafting_bench", {
 		local meta = core.get_meta(pos)
 		meta:set_string("infotext", "Crafting Bench")
 	end,
-	on_rightclick = function(pos, node, player, itemstack)
+	on_rightclick = function(player)
 		player:get_inventory():set_width("craft", 3)
 		player:get_inventory():set_size("craft", 9)
 		local form = [[
@@ -162,26 +162,26 @@ core.register_node("mini_nodes:apple_leaves", {
 local flat_nodes = {
 	{
 		name = "twig",
-		description = "Twig", 
+		description = "Twig",
 	},
 	{
 		name = "rocks",
-		description = "Rock", 
+		description = "Rock",
 		inventory_image = mini_core.sheet("item",0,0)
 	},
 	{
 		name = "red_flower",
-		description = "Flower", 
+		description = "Flower",
 		waving = 1
 	},
 	{
 		name = "blue_flower",
-		description = "Flower", 
+		description = "Flower",
 		waving = 1
 	},
 	{
 		name = "white_flower",
-		description = "Flower", 
+		description = "Flower",
 		waving = 1
 	},
 }
