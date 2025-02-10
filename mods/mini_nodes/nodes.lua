@@ -133,7 +133,8 @@ core.register_node("mini_nodes:oak_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"mini_nodes:oak_sapling"},rarity = 7},
+			{items = {"mini_nodes:oak_sapling"},rarity = 10},
+			{items = {"mini_nodes:twig"},rarity = 10},
 		}
 	},
 })
@@ -153,7 +154,8 @@ core.register_node("mini_nodes:apple_leaves", {
 	drop = {
 		max_items = 2,
 		items = {
-			{items = {"mini_nodes:oak_sapling"},rarity = 7},
+			{items = {"mini_nodes:oak_sapling"},rarity = 10},
+			{items = {"mini_nodes:twig"},rarity = 10},
 			{items = {"mini_items:apple"},rarity = 1},
 		}
 	}
