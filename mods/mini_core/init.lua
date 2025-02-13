@@ -170,7 +170,7 @@ if core.settings:get_bool("mini_change_hud", true) then
 end
 
 --Infinite materials in creative
-core.register_on_placenode(function(placer)
+core.register_on_placenode(function(_, _, placer)
 	if placer and placer:is_player() then
 		return core.is_creative_enabled(placer:get_player_name())
 	end
