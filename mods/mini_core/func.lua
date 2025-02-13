@@ -218,23 +218,3 @@ function tprint (t, s)
 		end
 	end
 end
-
---Taken from https://gist.github.com/NFrid/2b4b62900d68f68d30f4ba82fbeeb02d
-function dump(o, tbs, tb)
-  tb = tb or 0
-  tbs = tbs or '  '
-  if type(o) == 'table' then
-	local s = '{'
-	if (next(o)) then s = s .. '\n' else return s .. '}' end
-	tb = tb + 1
-	for k,v in pairs(o) do
-	  if type(k) ~= 'number' then k = '"' .. k .. '"' end
-	  s = s .. tbs:rep(tb) .. '[' .. k .. '] = ' .. dump(v, tbs, tb)
-	  s = s .. ',\n'
-	end
-	tb = tb - 1
-	return s .. tbs:rep(tb) .. '}'
-  else
-	return tostring(o)
-  end
-end
