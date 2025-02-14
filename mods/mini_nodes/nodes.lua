@@ -102,7 +102,7 @@ core.register_node("mini_nodes:crafting_bench", {
 		local meta = core.get_meta(pos)
 		meta:set_string("infotext", "Crafting Bench")
 	end,
-	on_rightclick = function(player)
+	on_rightclick = function(_, _, player)
 		player:get_inventory():set_width("craft", 3)
 		player:get_inventory():set_size("craft", 9)
 		local form = [[
