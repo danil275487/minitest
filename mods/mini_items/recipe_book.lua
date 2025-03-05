@@ -13,6 +13,7 @@ end)
 --The formspec
 function mini_core.show_recipe_book_formspec(page)
 	local recipe = mini_core.registered_recipes[page]
+	core.debug(recipe.width)
 	local method_image
 	if recipe.method == "normal" then
 		method_image = "mini_inv_arrow.png"
@@ -26,14 +27,28 @@ function mini_core.show_recipe_book_formspec(page)
 		label[0,0.25;page: ${page}]
 		image[0,4;1,1;${method_image}]
 		${input}
-		${output}
+
 		button[0,5;1,1;back;<]
 		button[6,5;1,1;forward;>]
 	]], {
 		method_image = method_image,
 		page = page.."/"..#mini_core.registered_recipes,
-		input = mini_core.item_grid(0,1,3,3,recipe.width,3,recipe.items, _, _, 1),
-		output = mini_core.item_grid(3.75,1,1,1,1,1, recipe.output, _, _, 1),
+		input = mini_core.item_grid({
+					x = 0, y = 0.2,
+					r = recipe.width, c = 3,
+					tooltips = true,
+					background = "green",
+					spacing = 1.5,
+					items = recipe.items
+				}),
+-- 		output = mini_core.item_grid({
+-- 					 x = 3.75, y = 1,
+-- 					 r = 1, c = 1,
+-- 					 tooltips = true,
+-- 					 background = _,
+-- 					 spacing = 1,
+-- 					 items = recipe.output
+-- 				 }),
 	})
 end
 

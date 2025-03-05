@@ -299,30 +299,30 @@ for _,v in pairs(tool_materials) do
 				{"mini_items:"..i.."_stick"},
 			}
 		})
---]]
-		core.register_craft({
-			output = "mini_items:"..v.."_pick_wood_stick",
-			recipe = {
-				{"mini_items:"..v.."_pick_head"},
-				{"mini_items:stick"},
-			}
-		})
-		core.register_craft({
-			output = "mini_items:"..v.."_axe_wood_stick",
-			recipe = {
-				{"mini_items:"..v.."_axe_head"},
-				{"mini_items:stick"},
-			}
-		})
-		--[[
-		core.register_craft({
-			output = "mini_tools:"..i.."_hoe_wood_stick",
-			recipe = {
-				{"mini_items:"..i.."_hoe_head"},
-				{"mini_items:stick"},
-			}
-		})--]]
+	--]]
 	end
+	core.register_craft({
+		output = "mini_items:"..v.."_pick_wood_stick",
+		recipe = {
+			{"mini_items:"..v.."_pick_head"},
+			{"mini_items:stick"},
+		}
+	})
+	core.register_craft({
+		output = "mini_items:"..v.."_axe_wood_stick",
+		recipe = {
+			{"mini_items:"..v.."_axe_head"},
+			{"mini_items:stick"},
+		}
+	})
+	--[[
+	core.register_craft({
+	output = "mini_tools:"..i.."_hoe_wood_stick",
+	recipe = {
+	{"mini_items:"..i.."_hoe_head"},
+	{"mini_items:stick"},
+	}
+	})--]]
 end
 
 local potions = {

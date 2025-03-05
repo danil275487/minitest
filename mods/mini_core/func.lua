@@ -34,35 +34,36 @@ end
 --Fake list-style grid of items
 --[[
 	x,y = position (int)
-	w,h = size, scaled according to row/column amount (int)
 	r,c = row/column (int)
-	i = items (table)
-	t = should tooltips be added? (bool, opt)
-	b = should backgrounds be added? (colorspec, opt)
-	s = spacing between each cell
+	tooltips = should tooltips be added? (bool, opt)
+	background = should backgrounds be added? (colorspec, opt)
+	spacing = spacing between each cell
+	items = items (table)
 ]]
-function mini_core.item_grid(x,y, w,h, r,c, i, t,b,s)
+function mini_core.item_grid(param)
 	local elements, idx = {}, 1
-	s = s or 1.25
-	i = type(i) == "string" and {i} or i
-	for gy = 1, c * s, s do
-		for gx = 1, r * s, s do
-			if idx > #i then break end
-			i[idx] = i[idx] or ""
-
-			local elem_x = (x + gx - 1)+(w/r)-1
-			local elem_y = (y + gy - 1)
-
-			if b then
-				elements[#elements + 1] = "box["..(x + gx - 1)..","..(y + gy - 1)..";"..w/r..","..h/c..";"..b.."]"
+	param.spacing = param.spacing or 1.25
+	param.items = type(param.items) == "string" and {param.items} or param.items
+	elements[1] = "container["..param.x..","..param.y.."]"
+	elements[2] = "box[0,0.2;"..(param.r+((param.spacing-1)*(param.r-1)))..","..(param.c+((param.spacing-1)*(param.c-1)))..";red]"
+	for gy = 1, param.c * param.spacing, param.spacing do
+		for gx = 1, param.r * param.spacing, param.spacing do
+			if idx > #param.items then break end
+			param.items[idx] = param.items[idx] or ""
+			local xpos = param.x+gx-1
+			local ypos = param.y+gy-1
+			local desc = ItemStack(param.items[idx]):get_description()
+			if param.background then
+				elements[#elements+1] = "box["..xpos..","..ypos..";1,1;"..param.background.."]"
 			end
-			if t then
-				elements[#elements + 1] = "tooltip["..(x + gx - 1)..","..(y + gy - 1)..";"..w/r..","..h/c..";"..ItemStack(i[idx]):get_description().."]"
+			if param.tooltips == true then
+				elements[#elements+1] = "tooltip["..xpos..","..ypos..";1,1;"..desc.."]"
 			end
-			elements[#elements + 1] = "item_image["..elem_x..","..elem_y..";1,1;"..i[idx].."]"
+			elements[#elements+1] = "item_image["..xpos..","..ypos..";1,1;"..param.items[idx].."]"
 			idx = idx + 1
 		end
 	end
+	elements[#elements+1] = "container_end[]"
 	return table.concat(elements, "\n")
 end
 
@@ -199,22 +200,4 @@ function mini_core.get_furnace_inactive_formspec()
 		list[current_player;main;0.5,4.5;6,2;6]
 		list[current_player;main;0.5,7.25;6,1;0]
 	]]
-end
-
-function tprint (t, s)
-	for k, v in pairs(t) do
-		local kfmt = '["' .. tostring(k) ..'"]'
-		if type(k) ~= 'string' then
-			kfmt = '[' .. k .. ']'
-		end
-		local vfmt = '"'.. tostring(v) ..'"'
-		if type(v) == 'table' then
-			tprint(v, (s or '')..kfmt)
-		else
-			if type(v) ~= 'string' then
-				vfmt = tostring(v)
-			end
-			print(type(t)..(s or '')..kfmt..' = '..vfmt)
-		end
-	end
 end
