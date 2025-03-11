@@ -7,7 +7,7 @@ end
 
 --Load .lua files
 mini_core.load_file("func")
-mini_core.load_file("inventory")
+mini_core.load_file("formspecs")
 mini_core.load_file("creative_inv")
 mini_core.load_file("hand")
 mini_core.load_file("sounds")
@@ -17,6 +17,13 @@ mini_core.load_file("compat")
 
 --Set up player related stuff and sky
 core.register_on_joinplayer(function(player)
+	--properties
+	player:get_inventory():set_width("main", 6)
+	player:get_inventory():set_size("main", 18)
+	player:hud_set_hotbar_itemcount(6)
+	player:set_inventory_formspec(mini_core.formspecs.inventory(player:get_player_name()))
+	player:hud_set_hotbar_image("mini_hotbar.png")
+	player:hud_set_hotbar_selected_image("mini_hotbar_selected.png")
 	player:set_properties({
 		visual = "upright_sprite",
 		textures = {"mini_player.png", "mini_player_back.png" },
@@ -27,8 +34,6 @@ core.register_on_joinplayer(function(player)
 	if core.settings:get_bool("mini_change_fov") == true then
 		player:set_fov(65, false)
 	end
-	player:hud_set_hotbar_image("mini_hotbar.png")
-	player:hud_set_hotbar_selected_image("mini_hotbar_selected.png")
 	player:set_minimap_modes({
 	{
 		type = "off",
@@ -55,6 +60,7 @@ core.register_on_joinplayer(function(player)
 		bg = mini_core.sheet("ui",0,0,6,1).."^[resize:24x24",
 		btn_active = mini_core.sheet("ui",1,0,6,1).."^[resize:24x24"
 	}))
+
 	--physics
 	player:set_physics_override({
 		sneak_glitch = true
@@ -125,6 +131,13 @@ core.register_on_joinplayer(function(player)
 	})
 end)
 
+--handle inventory tab buttons
+core.register_on_player_receive_fields(function(player, formname, fields)
+	if formname == "" and fields.creative and core.is_creative_enabled(player) then
+		core.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.formspecs.creative(1, 2, 5))
+	end
+end)
+
 --move around the hud a bit
 local huds = {
 	health = {
@@ -177,6 +190,7 @@ core.register_on_placenode(function(_, _, placer)
 end
 )
 
+--give player items on spawn
 local starter_items = {
 	"mini_items:stone_axe_wood_stick",
 	"mini_items:recipe_book"
