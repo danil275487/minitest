@@ -105,16 +105,7 @@ core.register_node("mini_nodes:crafting_bench", {
 	on_rightclick = function(_, _, player)
 		player:get_inventory():set_width("craft", 3)
 		player:get_inventory():set_size("craft", 9)
-		local form = [[
-		formspec_version[8]
-		size[8.25,8.75]
-		list[current_player;main;0.5,4.5;6,2;6]
-		list[current_player;main;0.5,7.25;6,1;0]
-		list[current_player;craft;1.125,0.5;3,3;]
-		image[4.875,1.75;1,1;mini_inv_arrow.png^[transformR270]
-		list[current_player;craftpreview;6.125,1.75;1,1;]
-		]]
-		core.show_formspec(player:get_player_name(), "main", form)
+		core.show_formspec(player:get_player_name(), "main", mini_core.formspecs.crafting_table())
 	end,
 })
 
