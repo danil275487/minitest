@@ -75,6 +75,16 @@ function mini_core.formspecs.crafting_table()
 	]]
 end
 
+function mini_core.formspecs.chest()
+	return [[
+		formspec_version[8]
+		size[8.25,8.75]
+		list[current_player;main;0.5,4.5;6,2;6]
+		list[current_player;main;0.5,7.25;6,1;0]
+		list[current_name;main;0.5,0.5;6,3;]
+	]]
+end
+
 function mini_core.formspecs.furnace()
 	return [[
 		formspec_version[8]

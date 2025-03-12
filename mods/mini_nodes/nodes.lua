@@ -342,6 +342,33 @@ core.register_node("mini_nodes:oak_sapling", {
 	end,
 })
 
+core.register_node("mini_nodes:chest", {
+	description = "Chest",
+	tiles ={
+		mini_core.sheet("node",1,2),
+		mini_core.sheet("node",1,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",5,2),
+		mini_core.sheet("node",4,2)
+		},
+	paramtype2 = "facedir",
+	groups = { choppy=3 },
+	sounds = mini_core.sounds.dig_hard,
+	on_construct = function(pos)
+		local meta = core.get_meta(pos)
+		meta:set_string("formspec", mini_core.formspecs.chest())
+		meta:set_string("infotext", "Chest")
+		local inv = meta:get_inventory()
+		inv:set_size("main", 6*3)
+	end,
+	can_dig = function(pos,player)
+		local meta = core.get_meta(pos);
+		local inv = meta:get_inventory()
+		return inv:is_empty("main")
+	end
+})
+
 core.register_node("mini_nodes:torch", {
 	description = "Torch",
 	drawtype = "plantlike",
