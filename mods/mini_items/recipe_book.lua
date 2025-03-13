@@ -10,51 +10,9 @@ core.register_on_leaveplayer(function(player)
 	contexts[player:get_player_name()] = nil
 end)
 
---The formspec
-function mini_core.show_recipe_book_formspec(page)
-	local recipe = mini_core.registered_recipes[page]
-	core.debug(recipe.width)
-	local method_image
-	if recipe.method == "normal" then
-		method_image = "mini_inv_arrow.png"
-	else
-		method_image = "mini_furnace_ui_fire_bg.png"
-	end
-	return mini_core.formspec_wrapper([[
-		formspec_version[8]
-		size[7,6]
-		no_prepend[]
-		label[0,0.25;page: ${page}]
-		image[0,4;1,1;${method_image}]
-		${input}
-
-		button[0,5;1,1;back;<]
-		button[6,5;1,1;forward;>]
-	]], {
-		method_image = method_image,
-		page = page.."/"..#mini_core.registered_recipes,
-		input = mini_core.item_grid({
-					x = 0, y = 0.2,
-					r = recipe.width, c = 3,
-					tooltips = true,
-					background = "green",
-					spacing = 1.5,
-					items = recipe.items
-				}),
--- 		output = mini_core.item_grid({
--- 					 x = 3.75, y = 1,
--- 					 r = 1, c = 1,
--- 					 tooltips = true,
--- 					 background = _,
--- 					 spacing = 1,
--- 					 items = recipe.output
--- 				 }),
-	})
-end
-
 --Formspec navigation
 core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "mini_items:recipe_book_ui" and fields.quit == nil then
+	if formname == "mini_items:recipe_book" and fields.quit == nil then
 		local context = get_context(player:get_player_name())
 		if fields.back then
 			context.page = context.page - 1
@@ -68,7 +26,7 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 		if context.page >= #mini_core.registered_recipes then
 			context.page = #mini_core.registered_recipes
 		end
-		core.show_formspec(player:get_player_name(),"mini_items:recipe_book_ui",mini_core.show_recipe_book_formspec(context.page))
+		core.show_formspec(player:get_player_name(),"mini_items:recipe_book",mini_core.formspecs.recipe_book(context.page))
 	end
 end)
 
@@ -82,6 +40,6 @@ core.register_craftitem("mini_items:recipe_book", {
 	end,
 	on_place = function(itemstack, user)
 		get_context(user:get_player_name()).page = get_context(user:get_player_name()).page or 1
-		core.show_formspec(user:get_player_name(),"mini_items:recipe_book_ui",mini_core.show_recipe_book_formspec(get_context(user:get_player_name()).page))
+		core.show_formspec(user:get_player_name(),"mini_items:recipe_book",mini_core.formspecs.recipe_book(get_context(user:get_player_name()).page))
 	end
 })
