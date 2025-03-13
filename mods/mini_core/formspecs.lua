@@ -1,5 +1,6 @@
 mini_core.formspecs = {}
 
+--global formspec prepend
 function mini_core.formspecs.prepend()
 	return mini_core.formspec_wrapper([[
 		background9[0,0;0,0;${bg};true;8]
@@ -12,6 +13,7 @@ function mini_core.formspecs.prepend()
 	})
 end
 
+--inventory formspecs
 function mini_core.formspecs.inventory(player)
 	local creative_button = ""
 	if core.is_creative_enabled(playername) then
@@ -63,6 +65,7 @@ function mini_core.formspecs.creative(page, max_page, ipp)
 	})
 end
 
+--node formspecs
 function mini_core.formspecs.crafting_table()
 	return [[
 		formspec_version[8]
@@ -85,6 +88,7 @@ function mini_core.formspecs.chest()
 	]]
 end
 
+ --furnace formspecs
 function mini_core.formspecs.furnace()
 	return [[
 		formspec_version[8]
@@ -116,6 +120,7 @@ function mini_core.formspecs.furnace_active(fuel_percent, item_percent)
 	})
 end
 
+--item formspecss
 function mini_core.formspecs.recipe_book(page)
 	local recipe = mini_core.registered_recipes[page]
 	core.debug(recipe.width)

@@ -1,0 +1,3 @@
+[submodule "mods/mini_deps/fslib"]
+	path = mods/mini_deps/fslib
+	url = https://github.com/appgurueu/fslib
