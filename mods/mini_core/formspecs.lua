@@ -13,29 +13,28 @@ function mini_core.formspecs.prepend()
 	})
 end
 
---inventory formspecs
+--inventory formspec
 function mini_core.formspecs.inventory(player)
-	local creative_button = ""
-	if core.is_creative_enabled(playername) then
-		creative_button = [[
-			background9[0,0;8.25,0.75;${bg_dark};false;8]
-			button[0,0;3,0.75;inventory;Inventory]
-			button[3,0;3,0.75;creative;Creative]
-		]]
+	local creative_buttons, sub = {}, 0.75
+	if core.is_creative_enabled(player) then
+		sub = 0
+		creative_buttons = {
+			{"background9", {0,0}; {8.25,0.75}; mini_core.sheet("ui",2,0,6,1).."^[resize:24x24", false, 8},
+			{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
+			{"button", {3,0}; {3,0.75}; "creative", "Creative"},
+		}
 	end
-	return mini_core.formspec_wrapper([[
-		formspec_version[8]
-		size[8.25,8.25,true]
-		list[current_player;main;0.5,4;6,2;6]
-		list[current_player;main;0.5,6.75;6,1;0]
-		list[current_player;craft;1.75,1.25;2,1;]
-		list[current_player;craft;1.75,2.50;2,1;3]
-		image[4.25,1.875;1,1;mini_inv_arrow.png^[transformR270]
-		list[current_player;craftpreview;5.5,1.875;1,1;]
-		${tabs}
-	]], {
-		bg_dark = mini_core.sheet("ui",2,0,6,1).."^[resize:24x24",
-		tabs = creative_button
+	return fslib.build_formspec({
+		{"formspec_version", 8},
+		{"size", {8.25, 8.25-sub}},
+		{"list", "current_player", "main", {0.5, 4-sub}; {6, 2}; 6},
+		{"list", "current_player", "main", {0.5, 6.75-sub}; {6, 1}},
+		{"listring"},
+		{"list", "current_player", "craft", {1.75, 1.25-sub}; {2, 1}},
+		{"list", "current_player", "craft", {1.75, 2.50-sub}; {2, 1}; 3},
+		{"image", {4.25, 1.875-sub}; {1, 1}; "mini_inv_arrow.png^[transformR270"},
+		{"list", "current_player", "craftpreview", {5.5, 1.875-sub}; {1, 1}},
+		unpack(creative_buttons)
 	})
 end
 

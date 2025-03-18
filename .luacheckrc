@@ -28,7 +28,9 @@ read_globals = {
 
 globals = {
 	"core",
+	"minetest",
 	"mini_core",
+	"fslib",
 	"gamedata",
 	os = { fields = { "tempfolder" } },
 	"_",
