@@ -32,7 +32,7 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 		if page > max_page then
 			page = max_page
 		end
-		core.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.formspecs.creative(page, max_page, ipp))
+		fslib.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.formspecs.creative(page, max_page, ipp))
 	end
 end)
 

@@ -124,10 +124,45 @@ end)
 
 --handle inventory tab buttons
 core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "" and fields.creative and core.is_creative_enabled(player) then
-		core.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.formspecs.creative(1, 2, 5))
+	if formname == "" and fields.creative then
+		local page, max_page, ipp = 1, 2, 5
+		local function show_formspec()
+			fslib.show_formspec(player, mini_core.formspecs.creative(page, max_page, ipp),
+			function(fields)
+				local page = fields.internal_paginator
+				if fields.inv_creative_prev then
+					page = page - 1
+					show_formspec()
+				end
+				if fields.inv_creative_next then
+					page = page + 1
+					show_formspec()
+				end
+			end)
+		end
+		show_formspec()
 	end
 end)
+
+core.register_chatcommand("counter", {
+    func = function(name)
+        local counter = 0
+        local function show_formspec()
+            fslib.show_formspec(core.get_player_by_name(name), {
+                {"size", {4, 1, false}},
+                {"real_coordinates", true},
+                {"label", {0.25, 0.5}; "Counter: " .. counter},
+                {"button", {3, 0}; {1, 1}; "increase"; "+"},
+            }, function(fields)
+                if fields.increase then
+                    counter = counter + 1
+                    show_formspec()
+                end
+            end)
+        end
+        show_formspec()
+    end,
+})
 
 --move around the hud a bit
 local huds = {

@@ -47,6 +47,7 @@ function mini_core.formspecs.creative(page, max_page, ipp)
 		{"list", "detached:creative", "main", {0.5, 1.25}; {5, 5}, start},
 		{"list", "current_player", "main", {0.5, 7.75}; {6, 1}},
 		{"listring"},
+		{"field", {0,0}; {0,0}; "internal_paginator";"";page},
 		{"button", {6.75, 1.25}; {1, 1}; "inv_creative_prev", "/\\"},
 		{"button", {6.75, 6.25}; {1, 1}; "inv_creative_next", "\\/"},
 		{"background9", {6.75, 2.25}; {1,4}; bg_dark, false, 8},
