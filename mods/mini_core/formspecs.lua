@@ -60,56 +60,56 @@ end
 
 --node formspecs
 function mini_core.formspecs.crafting_table()
-	return [[
-		formspec_version[8]
-		size[8.25,8.75]
-		list[current_player;main;0.5,4.5;6,2;6]
-		list[current_player;main;0.5,7.25;6,1;0]
-		list[current_player;craft;1.125,0.5;3,3;]
-		image[4.875,1.75;1,1;mini_inv_arrow.png^[transformR270]
-		list[current_player;craftpreview;6.125,1.75;1,1;]
-	]]
+	return fslib.build_formspec({
+		{"formspec_version", 8},
+		{"size", {8.25, 8.75}},
+		{"list", "current_player", "main", {0.5, 4.5}; {6, 2}; 6},
+		{"list", "current_player", "main", {0.5, 7.25}; {6, 1}},
+		{"list", "current_player", "craft", {1.125, 0.5}; {3, 3}},
+		{"image", {4.875, 1.75}; {1, 1}; "mini_inv_arrow.png^[transformR270"},
+		{"list", "current_player", "craftpreview", {6.125, 1.75}; {1, 1}},
+	})
 end
 
 function mini_core.formspecs.chest()
-	return [[
-		formspec_version[8]
-		size[8.25,8.75]
-		list[current_player;main;0.5,4.5;6,2;6]
-		list[current_player;main;0.5,7.25;6,1;0]
-		list[current_name;main;0.5,0.5;6,3;]
-	]]
+	return fslib.build_formspec({
+		{"formspec_version", 8},
+		{"size", {8.25, 8.75}},
+		{"list", "current_player", "main", {0.5, 4.5}; {6, 2}; 6},
+		{"list", "current_player", "main", {0.5, 7.25}; {6, 1}},
+		{"list", "current_name", "main", {0.5, 0.5}; {6, 3}},
+	})
 end
 
  --furnace formspecs
 function mini_core.formspecs.furnace()
-	return [[
-		formspec_version[8]
-		size[8.25,8.75]
-		list[context;src;2.35,0.5;1,1;]
-		list[context;fuel;2.35,3;1,1;]
-		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png]
-		image[3.60,1.75;1,1;mini_inv_arrow.png^[transformR270]
-		list[context;dst;4.85,1.75;1,1;]
-		list[current_player;main;0.5,4.5;6,2;6]
-		list[current_player;main;0.5,7.25;6,1;0]
-	]]
+	return fslib.build_formspec({
+		{"formspec_version", 8},
+		{"size", {8.25,8.75}},
+		{"list", "current_player", "main", {0.5,4.5}; {6,2}; 6},
+		{"list", "current_player", "main", {0.5,7.25}; {6,1}},
+		{"list", "context", "fuel", {2.35,3}; {1,1}},
+		{"list", "context", "src", {2.35,0.5}; {1,1}},
+		{"list", "context", "dst", {4.85,1.75}; {1,1}},
+		{"image", {2.35,1.75}; {1,1}; "mini_furnace_ui_fire_bg.png"},
+		{"image", {3.60,1.75}; {1,1}; "mini_inv_arrow.png^[transformR270"},
+	})
 end
 
 function mini_core.formspecs.furnace_active(fuel_percent, item_percent)
-	return mini_core.formspec_wrapper([[
-		formspec_version[8]
-		size[8.25,8.75]
-		list[context;src;2.35,0.5;1,1;]
-		list[context;fuel;2.35,3;1,1;]
-		image[2.35,1.75;1,1;mini_furnace_ui_fire_bg.png^[lowpart:${fuel_pct}:mini_furnace_ui_fire.png]
-		image[3.60,1.75;1,1;mini_inv_arrow.png^[lowpart:${item_pct}:mini_inv_arrow_full.png^[transformR270]
-		list[context;dst;4.85,1.75;1,1;]
-		list[current_player;main;0.5,4.5;6,2;6]
-		list[current_player;main;0.5,7.25;6,1;0]
-	]],{
-		fuel_pct = fuel_percent,
-		item_pct = item_percent
+	local fire_img = "mini_furnace_ui_fire_bg.png^[lowpart:"..fuel_percent..":mini_furnace_ui_fire.png"
+	local arrow_img = "mini_inv_arrow.png^[lowpart:"..item_percent..":mini_inv_arrow_full.png^[transformR270]"
+
+	return fslib.build_formspec({
+		{"formspec_version", 8},
+		{"size", {8.25,8.75}},
+		{"list", "current_player", "main", {0.5,4.5}; {6,2}; 6},
+		{"list", "current_player", "main", {0.5,7.25}; {6,1}},
+		{"list", "context", "fuel", {2.35,3}; {1,1}},
+		{"list", "context", "src", {2.35,0.5}; {1,1}},
+		{"list", "context", "dst", {4.85,1.75}; {1,1}},
+		{"image", {2.35,1.75}; {1,1}; fire_img},
+		{"image", {3.60,1.75}; {1,1}; arrow_img},
 	})
 end
 
