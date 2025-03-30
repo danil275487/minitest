@@ -22,13 +22,15 @@ function mini_core.sheet(sheet, x,y, w,h, esc)
 	end
 end
 
---Simple formspec wrapper that does variable substitution
-function mini_core.formspec_wrapper(formspec, variables)
-	local retval = formspec
-	for k,v in pairs(variables) do
-		retval = retval:gsub("${"..k.."}", v)
+--because 9patches are stupid as shit
+function mini_core.tile_image(image, w, h, r, c)
+	local elements = {}
+	for x=0,r-1 do
+		for y=0,c-1 do
+			table.insert(elements, w*x..","..h*y.."="..image)
+		end
 	end
-	return retval
+	return "([combine:"..r*w.."x"..h*c..":"..table.concat(elements, ":")..")"
 end
 
 --Fake list-style grid of items
