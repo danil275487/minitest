@@ -6,8 +6,8 @@ local bg_gray = mini_core.sheet("ui",1,0).."^[resize:32x32"
 local bg_yellow = mini_core.sheet("ui",5,0).."^[resize:32x32"
 local bg_blue = mini_core.sheet("ui",7,0).."^[resize:32x32"
 
-local fold_yellow = mini_core.tile_image(mini_core.sheet("ui",0,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 14)
-local fold_blue = mini_core.tile_image(mini_core.sheet("ui",1,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 14)
+local fold_yellow = mini_core.tile_image(mini_core.sheet("ui",0,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 16)
+local fold_blue = mini_core.tile_image(mini_core.sheet("ui",1,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 16)
 local page_flip = mini_core.sheet("ui",3,1, 4,4)
 local arrow_book = mini_core.sheet("ui",2,1, 4,4)
 local fire_book = mini_core.sheet("ui",2,2, 4,4)
@@ -128,53 +128,58 @@ end
 
 --item formspecss
 function mini_core.formspecs.recipe_book(page)
+	local w, h = 12, 8+4/8
 	local function gen_page(side, recipe)
-		local desc = core.registered_items[recipe.output].description
-		local form = {
-			{"container", {4/8+(side*5),4/8}},
-			{"hypertext", {0,1/8}; {4,6/8}; "itemname", "<global color=#574200 size=16 halign=center valign=top><b>"..desc.."</b>"},
-			{"hypertext", {1,5+4/8}; {2,4/8}; "page", "<global color=#574200 size=16 halign=center valign=bottom>"..page+side.."/"..#mini_core.registered_recipes},
-		}
-
-		if recipe.type == "normal" then
-			form[#form+1] = {"image", {1+4/8,4/8}; {1,1}; arrow_book}
-		else
-			form[#form+1] = {"image", {1+4/8,5}; {1,1}; fire_book}
-		end
-
-		form[#form+1] = {"container_end"}
-		if recipe then
-			core.debug(dump(recipe))
+		if recipe ~= nil then
+			local w, h = (w/2)-6/8, h-1
+			local desc = core.registered_items[recipe.output].description
+			local button_name, button_desc, button_tex, button_off = "prev", "Previous", "", -1
+			if side%2 == 1 then
+				button_name, button_desc, button_tex, button_off = "next", "Next", "^[transformFX", 1
+			end
+			local hyper = "<global color=#574200 size=16 halign=center valign=middle>"
+			local form = {
+				{"container", {4/8+(side*(w+4/8)),4/8}},
+				{"hypertext", {0,0}; {w,1}; "itemname", hyper.."<b>"..desc.."</b>"},
+				{"hypertext", {1,h-6/8}; {w-2,1-2/8}; "page", hyper..page+side.."/"..#mini_core.registered_recipes},
+				{"style", button_name; "border=false"},
+				{"tooltip", button_name; button_desc.." page", "#bfce72", "#574200"},
+				{"image_button", {((w-1)*side)+button_off/8,(h-1)+1/8}; {1,1}; page_flip..button_tex, button_name, ""}
+			}
+			if recipe.type == "normal" then
+				form[#form+1] = {"image", {(w/2)-(3+2/8)/2,1-1/8}; {3+2/8,3+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {w/2-4/8,4+2/8}; {1,1}; arrow_book.."^[transformFY"}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,5+3/8}; {1+2/8,1+2/8}; bg_yellow, 8}
+			else
+				form[#form+1] = {"hypertext", {w/2+4/8,h/2-3/8}; {2,1}; "itemname", hyper..""..recipe.width.." sec."}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)+1+4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)-1-4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {w/2-4/8,h/2-4/8}; {1,1}; fire_book}
+				--form[#form+1] = {"box", {w/2+4/8,h/2-3/8}; {2,1}; "#ffffff"}
+			end
+			form[#form+1] = {"container_end"}
 			return form
 		end
-		core.debug("recipe", recipe.output, "on side", side, "returned nil")
+
+		core.debug("recipe on side", side, "returned nil")
 		return {}
 	end
-
 	local form = {
 		{"formspec_version", 8},
-		{"size", {10, 7}},
-		{"no_prepend"},
+		{"size", {w, h}},
 		{"background9", {0,0}; {0,0}; bg_blue, true, 8},
-		{"background9", {5,0}; {4/8,7}; fold_blue},
-		{"background9", {5-4/8,0}; {4/8,7}; fold_blue.."^[transformR180"},
+		{"background9", {w/2,0}; {4/8,h}; fold_blue},
+		{"background9", {(w/2)-4/8,0}; {4/8,h}; fold_blue.."^[transformR180"},
 		{"background9", {3/8,3/8}; {0,0}; bg_yellow, true, 8},
-		{"background9", {5,3/8}; {4/8,6+2/8}; fold_yellow},
-		{"background9", {5-4/8,3/8}; {4/8,6+2/8}; fold_yellow.."^[transformR180"},
-		{"style", "prev"; "border=false"},
-		{"style", "next"; "border=false"},
-		{"tooltip", "prev"; "Previous page", "#bfce72", "#574200"},
-		{"tooltip", "next"; "Next page", "#bfce72", "#574200"},
-		{"image_button", {3/8,6-3/8}; {1,1}; page_flip, "prev", ""},
-		{"image_button", {9-3/8,6-3/8}; {1,1}; page_flip.."^[transformFX", "next", ""},
+		{"background9", {w/2,3/8}; {4/8,(h-1)+2/8}; fold_yellow},
+		{"background9", {(w/2)-4/8,3/8}; {4/8,(h-1)+2/8}; fold_yellow.."^[transformR180"},
 	}
-
 	for _,v in pairs(gen_page(0, mini_core.registered_recipes[page])) do
 		form[#form+1] = v
 	end
 	for _,v in pairs(gen_page(1, mini_core.registered_recipes[page+1])) do
 		form[#form+1] = v
 	end
-
+	core.debug(fslib.build_formspec(form))
 	return fslib.build_formspec(form)
 end

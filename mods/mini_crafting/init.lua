@@ -6,7 +6,6 @@ core.register_on_mods_loaded(function()
 		if core.get_all_craft_recipes(k) ~= nil then
 			for i,v2 in ipairs(core.get_all_craft_recipes(k)) do
 				if v2.output ~= "" then
-					v2.width = v2.method == "cooking" and 1 or v2.width
 					table.insert(mini_core.registered_recipes, v2)
 				end
 			end
