@@ -1,13 +1,17 @@
 mini_core.formspecs = {}
 
---images
-local bg_dark = mini_core.sheet("ui",0,0).."^[resize:32x32"
-local bg_gray = mini_core.sheet("ui",1,0).."^[resize:32x32"
-local bg_yellow = mini_core.sheet("ui",5,0).."^[resize:32x32"
-local bg_blue = mini_core.sheet("ui",7,0).."^[resize:32x32"
+local size = 64
+core.debug(size)
+core.debug(size/4)
 
-local fold_yellow = mini_core.tile_image(mini_core.sheet("ui",0,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 16)
-local fold_blue = mini_core.tile_image(mini_core.sheet("ui",1,1, 8,8, true).."\\^[resize\\:32x32", 32,32, 1, 16)
+--images
+local bg_dark = mini_core.sheet("ui",0,0).."^[resize:"..size.."x"..size
+local bg_gray = mini_core.sheet("ui",1,0).."^[resize:"..size.."x"..size
+local bg_yellow = mini_core.sheet("ui",5,0).."^[resize:"..size.."x"..size
+local bg_blue = mini_core.sheet("ui",7,0).."^[resize:"..size.."x"..size
+
+local fold_yellow = mini_core.tile_image(mini_core.sheet("ui",0,1, 8,8, true).."\\^[resize\\:"..size.."x"..size, size,size, 1, 15)
+local fold_blue = mini_core.tile_image(mini_core.sheet("ui",1,1, 8,8, true).."\\^[resize\\:"..size.."x"..size, size,size, 1, 17)
 local page_flip = mini_core.sheet("ui",3,1, 4,4)
 local arrow_book = mini_core.sheet("ui",2,1, 4,4)
 local fire_book = mini_core.sheet("ui",2,2, 4,4)
@@ -21,10 +25,10 @@ local fire_full = mini_core.sheet("ui",1,2, 4,4, true)
 --global formspec prepend
 function mini_core.formspecs.prepend()
 	return fslib.build_formspec({
-		{"background9", {0,0}; {0,0}; bg_gray, true, 8},
+		{"background9", {0,0}; {0,0}; bg_gray, true, size/4},
 		{"listcolors", "#787878ff", "#505050ff", "#00000000", "#7869c4ff", "#ffffffff"},
-		{"style_type", "button:default"; "border=false"; "bgimg="..bg_gray; "bgimg_middle=8,8"},
-		{"style_type", "button:pressed"; "border=false"; "bgimg="..bg_blue; "bgimg_middle=8,8"}
+		{"style_type", "button:default"; "border=false"; "bgimg="..bg_gray; "bgimg_middle="..(size/4)..","..size/4},
+		{"style_type", "button:pressed"; "border=false"; "bgimg="..bg_blue; "bgimg_middle="..(size/4)..","..size/4},
 	})
 end
 
@@ -34,7 +38,7 @@ function mini_core.formspecs.inventory(player)
 	if core.is_creative_enabled(player) then
 		sub = 0
 		creative_buttons = {
-			{"background9", {0,0}; {8.25,0.75}; bg_dark, false, 8},
+			{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
 			{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
 			{"button", {3,0}; {3,0.75}; "creative", "Creative"},
 		}
@@ -64,9 +68,9 @@ function mini_core.formspecs.creative(page, max_page, ipp)
 		{"field", {0,0}; {0,0}; "internal_paginator";"";page},
 		{"button", {6.75, 1.25}; {1, 1}; "inv_creative_prev", "/\\"},
 		{"button", {6.75, 6.25}; {1, 1}; "inv_creative_next", "\\/"},
-		{"background9", {6.75, 2.25}; {1,4}; bg_dark, false, 8},
-		{"background9", {6.75, scrubber_pos}; {1,0.75}; bg_gray, false, 8},
-		{"background9", {0,0}; {8.25,0.75}; bg_dark, false, 8},
+		{"background9", {6.75, 2.25}; {1,4}; bg_dark, false, size/4},
+		{"background9", {6.75, scrubber_pos}; {1,0.75}; bg_gray, false, size/4},
+		{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
 		{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
 		{"button", {3,0}; {3,0.75}; "creative", "Creative"},
 	})
@@ -147,13 +151,13 @@ function mini_core.formspecs.recipe_book(page)
 				{"image_button", {((w-1)*side)+button_off/8,(h-1)+1/8}; {1,1}; page_flip..button_tex, button_name, ""}
 			}
 			if recipe.type == "normal" then
-				form[#form+1] = {"image", {(w/2)-(3+2/8)/2,1-1/8}; {3+2/8,3+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {(w/2)-(3+2/8)/2,1-1/8}; {3+2/8,3+2/8}; bg_yellow, size/4}
 				form[#form+1] = {"image", {w/2-4/8,4+2/8}; {1,1}; arrow_book.."^[transformFY"}
-				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,5+3/8}; {1+2/8,1+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,5+3/8}; {1+2/8,1+2/8}; bg_yellow, size/4}
 			else
 				form[#form+1] = {"hypertext", {w/2+4/8,h/2-3/8}; {2,1}; "itemname", hyper..""..recipe.width.." sec."}
-				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)+1+4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, 8}
-				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)-1-4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, 8}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)+1+4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, size/4}
+				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)-1-4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, size/4}
 				form[#form+1] = {"image", {w/2-4/8,h/2-4/8}; {1,1}; fire_book}
 				--form[#form+1] = {"box", {w/2+4/8,h/2-3/8}; {2,1}; "#ffffff"}
 			end
@@ -167,10 +171,10 @@ function mini_core.formspecs.recipe_book(page)
 	local form = {
 		{"formspec_version", 8},
 		{"size", {w, h}},
-		{"background9", {0,0}; {0,0}; bg_blue, true, 8},
+		{"background9", {0,0}; {0,0}; bg_blue, true, size/4},
 		{"background9", {w/2,0}; {4/8,h}; fold_blue},
 		{"background9", {(w/2)-4/8,0}; {4/8,h}; fold_blue.."^[transformR180"},
-		{"background9", {3/8,3/8}; {0,0}; bg_yellow, true, 8},
+		{"background9", {3/8,3/8}; {0,0}; bg_yellow, true, size/4},
 		{"background9", {w/2,3/8}; {4/8,(h-1)+2/8}; fold_yellow},
 		{"background9", {(w/2)-4/8,3/8}; {4/8,(h-1)+2/8}; fold_yellow.."^[transformR180"},
 	}
