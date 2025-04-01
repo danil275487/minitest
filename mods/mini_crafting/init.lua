@@ -11,6 +11,13 @@ core.register_on_mods_loaded(function()
 			end
 		end
 	end
+	table.sort(mini_core.registered_recipes, function(a,b)
+		if a.type == b.type then
+			return a.output < b.output
+		else
+			return a.type > b.type
+		end
+	end)
 end)
 
 core.register_craft({

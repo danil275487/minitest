@@ -135,39 +135,40 @@ end
 function mini_core.formspecs.recipe_book(page)
 	local w, h = 12, 8+4/8
 	local function gen_page(side, recipe)
+		recipe = recipe or {output="",width=0,type=""}
+		local w, h = (w/2)-6/8, h-1
+		local desc = ItemStack(recipe.output):get_description()
+		local button_name, button_desc, button_tex, button_off = "prev", "Previous", "", -1
+		if side%2 == 1 then
+			button_name, button_desc, button_tex, button_off = "next", "Next", "^[transformFX", 1
+		end
+		local hyper = "<global color=#574200 size=16 halign=center valign=middle>"
+		local form = {
+			{"container", {4/8+(side*(w+4/8)),4/8}},
+			{"hypertext", {0,0}; {w,1}; "itemname", hyper.."<b>"..desc.."</b>"},
+			{"hypertext", {1,h-6/8}; {w-2,1-2/8}; "page", hyper..page+side.."/"..#mini_core.registered_recipes},
+			{"style", button_name; "border=false"},
+			{"tooltip", button_name; button_desc.." page", "#bfce72", "#574200"},
+			{"image_button", {((w-1)*side)+button_off/8,(h-1)+1/8}; {1,1}; page_flip..button_tex, button_name, ""},
+			{"image_button", {((w-1)*side)+button_off/8,(h-2)+1/8}; {1,1}; page_flip..button_tex, "reset", ""}
+		}
 		if recipe ~= nil then
-			local w, h = (w/2)-6/8, h-1
-			local desc = core.registered_items[recipe.output].description
-			local button_name, button_desc, button_tex, button_off = "prev", "Previous", "", -1
-			if side%2 == 1 then
-				button_name, button_desc, button_tex, button_off = "next", "Next", "^[transformFX", 1
-			end
-			local hyper = "<global color=#574200 size=16 halign=center valign=middle>"
-			local form = {
-				{"container", {4/8+(side*(w+4/8)),4/8}},
-				{"hypertext", {0,0}; {w,1}; "itemname", hyper.."<b>"..desc.."</b>"},
-				{"hypertext", {1,h-6/8}; {w-2,1-2/8}; "page", hyper..page+side.."/"..#mini_core.registered_recipes},
-				{"style", button_name; "border=false"},
-				{"tooltip", button_name; button_desc.." page", "#bfce72", "#574200"},
-				{"image_button", {((w-1)*side)+button_off/8,(h-1)+1/8}; {1,1}; page_flip..button_tex, button_name, ""}
-			}
 			if recipe.type == "normal" then
 				form[#form+1] = {"image", {(w/2)-(3+2/8)/2,1-1/8}; {3+2/8,3+2/8}; bg_yellow, size/4}
 				form[#form+1] = {"image", {w/2-4/8,4+2/8}; {1,1}; arrow_book.."^[transformFY"}
 				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,5+3/8}; {1+2/8,1+2/8}; bg_yellow, size/4}
-			else
+			elseif recipe.type == "cooking" then
 				form[#form+1] = {"hypertext", {w/2+4/8,h/2-3/8}; {2,1}; "itemname", hyper..""..recipe.width.." sec."}
 				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)+1+4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, size/4}
 				form[#form+1] = {"image", {(w/2)-(1+2/8)/2,(h/2)-1-4/8-(1+2/8)/2}; {1+2/8,1+2/8}; bg_yellow, size/4}
 				form[#form+1] = {"image", {w/2-4/8,h/2-4/8}; {1,1}; fire_book}
 				--form[#form+1] = {"box", {w/2+4/8,h/2-3/8}; {2,1}; "#ffffff"}
+			else
+				core.debug("type unknown!")
 			end
 			form[#form+1] = {"container_end"}
-			return form
 		end
-
-		core.debug("recipe on side", side, "returned nil")
-		return {}
+		return form
 	end
 	local form = {
 		{"formspec_version", 8},
@@ -179,12 +180,14 @@ function mini_core.formspecs.recipe_book(page)
 		{"background9", {w/2,3/8}; {4/8,(h-1)+2/8}; fold_yellow},
 		{"background9", {(w/2)-4/8,3/8}; {4/8,(h-1)+2/8}; fold_yellow.."^[transformR180"},
 	}
+	page = page+1
+
 	for _,v in pairs(gen_page(0, mini_core.registered_recipes[page])) do
 		form[#form+1] = v
 	end
 	for _,v in pairs(gen_page(1, mini_core.registered_recipes[page+1])) do
 		form[#form+1] = v
 	end
-	core.debug(fslib.build_formspec(form))
+	--core.debug(fslib.build_formspec(form))
 	return fslib.build_formspec(form)
 end
