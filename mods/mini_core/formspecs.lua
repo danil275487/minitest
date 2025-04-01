@@ -1,8 +1,9 @@
 mini_core.formspecs = {}
 
-local size = 64
-core.debug(size)
-core.debug(size/4)
+local size = 32
+if core.settings:get_bool("mini_hidpi") == true then
+	size = 64
+end
 
 --images
 local bg_dark = mini_core.sheet("ui",0,0).."^[resize:"..size.."x"..size

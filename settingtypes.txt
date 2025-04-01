@@ -7,5 +7,8 @@ mini_change_hud (Modify HUD) bool true
 # Allow the game to override your FOV for immersion.
 mini_change_fov (Override FOV) bool true
 
+# Makes UI borders thicker (useful for mobile/high-DPI screens)
+mini_hidpi (HiDPI mode) bool false
+
 # The node used in the simple singlenode flat world. Defaults to Stone.
 mini_flat_node (Singlenode flat world node) string mini_nodes:stone
