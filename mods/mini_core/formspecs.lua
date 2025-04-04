@@ -57,20 +57,17 @@ function mini_core.formspecs.inventory(player)
 	})
 end
 
-function mini_core.formspecs.creative(page, max_page, ipp)
-	local start = 0 + (page-1)*ipp
-	local scrubber_pos = 2.25+(5.5-2.25)*(page-1)/(max_page-1)
+function mini_core.formspecs.creative()
 	return fslib.build_formspec({
 		{"formspec_version", 8},
 		{"size", {8.25, 9.25}},
-		{"list", "detached:creative", "main", {0.5, 1.25}; {5, 5}, start},
+		{"scrollbaroptions", "smallstep="..(10+2/8)*2, "largestep=50", "thumbsize=1", "arrows=show"},
+		{"scroll_container", {0.5, 1.25}; {6,6}; "list_scroll", "vertical", (1+2/8)/40, 0},
+		{"list", "detached:creative", "main", {0, 0}; {5, (#mini_core.creative_items/5)+1}},
+		{"scroll_container_end"},
+		{"scrollbar", {6.75, 1.25}, {1, 6}, "vertical", "list_scroll", "0"},
 		{"list", "current_player", "main", {0.5, 7.75}; {6, 1}},
 		{"listring"},
-		{"field", {0,0}; {0,0}; "internal_paginator";"";page},
-		{"button", {6.75, 1.25}; {1, 1}; "inv_creative_prev", "/\\"},
-		{"button", {6.75, 6.25}; {1, 1}; "inv_creative_next", "\\/"},
-		{"background9", {6.75, 2.25}; {1,4}; bg_dark, false, size/4},
-		{"background9", {6.75, scrubber_pos}; {1,0.75}; bg_gray, false, size/4},
 		{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
 		{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
 		{"button", {3,0}; {3,0.75}; "creative", "Creative"},

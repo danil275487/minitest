@@ -11,33 +11,8 @@ local inv_creative = core.create_detached_inventory("creative", {
 	end,
 })
 
-local max_page = 1
-local ipp = 5
-
-core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "mini_core:creative" and fields.quit == nil and fields.creative == nil then
-		if fields.inventory then
-			core.show_formspec(player:get_player_name(), "", mini_core.formspecs.inventory(player:get_player_name()))
-			return
-		end
-		local page = fields.internal_paginator
-		if fields.inv_creative_prev then
-			page = page - 1
-		elseif fields.inv_creative_next then
-			page = page + 1
-		end
-		if page < 1 then
-			page = 1
-		end
-		if page > max_page then
-			page = max_page
-		end
-		fslib.show_formspec(player:get_player_name(), "mini_core:creative", mini_core.formspecs.creative(page, max_page, ipp))
-	end
-end)
-
 core.register_on_mods_loaded(function()
-	local items = {}
+	mini_core.creative_items = {}
 	for itemstring, def in pairs(core.registered_items) do
 		if itemstring ~= ""
 		and itemstring ~= "unknown"
@@ -45,7 +20,7 @@ core.register_on_mods_loaded(function()
 		and itemstring ~= "air"
 		and itemstring ~= "worldedit:placeholder"
 		and def.groups.not_in_creative_inventory ~= 1 then
-			table.insert(items, itemstring)
+			table.insert(mini_core.creative_items, itemstring)
 		end
 	end
 	--[[ Items should be sorted in this order
@@ -71,11 +46,10 @@ core.register_on_mods_loaded(function()
 			return item1 < item2
 		end
 	end
-	table.sort(items, compare)
-	inv_creative:set_size("main", #items)
-	max_page = math.ceil(#items / ipp)
-	for i=1, #items do
-		inv_creative:add_item("main", items[i])
+	table.sort(mini_core.creative_items, compare)
+	inv_creative:set_size("main", #mini_core.creative_items)
+	for i=1, #mini_core.creative_items do
+		inv_creative:add_item("main", mini_core.creative_items[i])
 	end
 end)
 

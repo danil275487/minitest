@@ -123,24 +123,26 @@ core.register_on_joinplayer(function(player)
 end)
 
 --handle inventory tab buttons
+local function handle_inventory_formspec(fields, player)
+	if fields.inventory then
+		fslib.show_formspec(player, mini_core.formspecs.inventory(player), function(fields)
+			if fields.creative then
+				handle_inventory_formspec(fields, player)
+			end
+		end)
+	end
+	if fields.creative then
+		fslib.show_formspec(player, mini_core.formspecs.creative(1,2,5), function(fields)
+			if fields.inventory then
+				handle_inventory_formspec(fields, player)
+			end
+		end)
+	end
+end
+
 core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "" and fields.creative then
-		local page, max_page, ipp = 1, 2, 5
-		local function show_formspec()
-			fslib.show_formspec(player, mini_core.formspecs.creative(page, max_page, ipp),
-			function(fields)
-				local page = fields.internal_paginator
-				if fields.inv_creative_prev then
-					page = page - 1
-					show_formspec()
-				end
-				if fields.inv_creative_next then
-					page = page + 1
-					show_formspec()
-				end
-			end)
-		end
-		show_formspec()
+	if formname == "" then
+		handle_inventory_formspec(fields, player)
 	end
 end)
 
