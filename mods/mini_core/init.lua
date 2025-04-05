@@ -122,30 +122,6 @@ core.register_on_joinplayer(function(player)
 	})
 end)
 
---handle inventory tab buttons
-local function handle_inventory_formspec(fields, player)
-	if fields.inventory then
-		fslib.show_formspec(player, mini_core.formspecs.inventory(player), function(fields)
-			if fields.creative then
-				handle_inventory_formspec(fields, player)
-			end
-		end)
-	end
-	if fields.creative then
-		fslib.show_formspec(player, mini_core.formspecs.creative(1,2,5), function(fields)
-			if fields.inventory then
-				handle_inventory_formspec(fields, player)
-			end
-		end)
-	end
-end
-
-core.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "" then
-		handle_inventory_formspec(fields, player)
-	end
-end)
-
 core.register_chatcommand("counter", {
     func = function(name)
         local counter = 0
