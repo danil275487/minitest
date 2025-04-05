@@ -22,6 +22,11 @@ local arrow_full = mini_core.sheet("ui",1,1, 4,4, true)
 local fire = mini_core.sheet("ui",0,2, 4,4)
 local fire_full = mini_core.sheet("ui",1,2, 4,4, true)
 
+local creative_tabs = {
+	{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
+	{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
+	{"button", {3-1/8,0}; {3,0.75}; "creative", "Creative"},
+}
 
 --global formspec prepend
 function mini_core.formspecs.prepend()
@@ -35,16 +40,11 @@ end
 
 --inventory formspec
 function mini_core.formspecs.inventory(player)
-	local creative_buttons, sub = {}, 0.75
+	local sub = 0.75
 	if core.is_creative_enabled(player) then
 		sub = 0
-		creative_buttons = {
-			{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
-			{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
-			{"button", {3,0}; {3,0.75}; "creative", "Creative"},
-		}
 	end
-	return fslib.build_formspec({
+	local form = {
 		{"formspec_version", 8},
 		{"size", {8.25, 8.25-sub}},
 		{"list", "current_player", "main", {0.5, 4-sub}; {6, 2}; 6},
@@ -53,12 +53,15 @@ function mini_core.formspecs.inventory(player)
 		{"list", "current_player", "craft", {1.75, 2.50-sub}; {2, 1}; 3},
 		{"image", {4.25, 1.875-sub}; {1, 1}; arrow.."^[transformR270"},
 		{"list", "current_player", "craftpreview", {5.5, 1.875-sub}; {1, 1}},
-		unpack(creative_buttons)
-	})
+	}
+	for _,v in pairs(creative_tabs) do
+		form[#form+1] = v
+	end
+	return fslib.build_formspec(form)
 end
 
 function mini_core.formspecs.creative()
-	return fslib.build_formspec({
+	local form = {
 		{"formspec_version", 8},
 		{"size", {8.25, 9.25}},
 		{"scrollbaroptions", "smallstep="..(10+2/8)*2, "largestep=50", "thumbsize=1", "arrows=show"},
@@ -67,11 +70,12 @@ function mini_core.formspecs.creative()
 		{"scroll_container_end"},
 		{"scrollbar", {6.75, 1.25}, {1, 6}, "vertical", "list_scroll", "0"},
 		{"list", "current_player", "main", {0.5, 7.75}; {6, 1}},
-		{"listring"},
-		{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
-		{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
-		{"button", {3,0}; {3,0.75}; "creative", "Creative"},
-	})
+		{"listring", "current_player", "detached:creative"},
+	}
+	for _,v in pairs(creative_tabs) do
+		form[#form+1] = v
+	end
+	return fslib.build_formspec(form)
 end
 
 --node formspecs
