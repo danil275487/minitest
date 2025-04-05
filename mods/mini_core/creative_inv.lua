@@ -56,27 +56,20 @@ end)
 
 --handle inventory tab buttons
 local function handle_inventory_formspec(fields, player)
-	local scroll = 0
-
-	if fields.inventory then
+	if fields.inventor then
 		fslib.show_formspec(player, mini_core.formspecs.inventory(player), function(fields)
 			if fields.creative then
 				handle_inventory_formspec(fields, player)
 			end
 		end)
 	end
-	if fields.creative then
-		fslib.show_formspec(player, mini_core.formspecs.creative(#creative_items, scroll), function(fields)
-			core.debug(scroll)
-			core.debug(dump(fields))
+	if fields.creative or fields.list_scroll then
+		fslib.show_formspec(player, mini_core.formspecs.creative(#creative_items, core.explode_scrollbar_event(fields.list_scroll).value), function(fields)
+			if fields.list_scroll then
+				handle_inventory_formspec(fields, player)
+			end
 			if fields.inventory then
 				handle_inventory_formspec(fields, player)
-				end
-			if fields.scroll_down then
-				scroll = scroll + (10+2/8)*2
-			end
-			if fields.scroll_up then
-				scroll = scroll - (10+2/8)*2
 			end
 		end)
 	end
@@ -87,3 +80,5 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 		handle_inventory_formspec(fields, player)
 	end
 end)
+
+

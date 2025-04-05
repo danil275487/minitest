@@ -17,7 +17,7 @@ local page_flip = mini_core.sheet("ui",3,1, 4,4)
 local arrow_book = mini_core.sheet("ui",2,1, 4,4)
 local fire_book = mini_core.sheet("ui",2,2, 4,4)
 
-local scroll_arrow = mini_core.sheet("ui",3,2, 4,4)
+local scrubber = mini_core.sheet("ui",3,2, 4,4)
 local arrow = mini_core.sheet("ui",0,1, 4,4)
 local arrow_full = mini_core.sheet("ui",1,1, 4,4, true)
 local fire = mini_core.sheet("ui",0,2, 4,4)
@@ -62,12 +62,14 @@ function mini_core.formspecs.inventory(player)
 end
 
 function mini_core.formspecs.creative(item_amount, scroll)
+	core.debug(math.floor(item_amount/5)*2)
+	local max_scroll = 62
 	local form = {
 		{"formspec_version", 8},
 		{"size", {8.25, 9.25}},
 		{"set_focus", "list_scroll", "true"},
-		{"scrollbaroptions", "smallstep="..(10+2/8)*2, "largestep=200"},
-		{"scroll_container", {0.5, 1.25}; {6,6}; "list_scroll", "vertical", (1+2/8)/40, 0},
+		{"scrollbaroptions", "smallstep=1"}, --(10+2/8)*2
+		{"scroll_container", {0.5, 1.25}; {6,6}; "list_scroll", "vertical", 0.5+1/8, 0}, --(1+2/8)/40
 		{"list", "detached:creative", "main", {0, 0}; {5, (item_amount/5)+1}},
 		{"scroll_container_end"},
 		{"scrollbar", {6.75, 1.25}, {1, 6}, "vertical", "list_scroll", scroll},
@@ -76,6 +78,8 @@ function mini_core.formspecs.creative(item_amount, scroll)
 		{"label",  {7, 1.75}, "/\\"},
 		{"image",  {6.75, 6.25}, {1, 1}, bg_gray, (size/4)},
 		{"label",  {7, 6.75}, "\\/"},
+		{"image",  {6.75, 2.25+3*(scroll/max_scroll)}, {1, 1}, bg_dark, (size/4)},
+		{"image",  {6.75, 2.25+3*(scroll/max_scroll)}, {1, 1}, scrubber},
 		{"list", "current_player", "main", {0.5, 7.75}; {6, 1}},
 		{"listring", "detached:creative", "main"},
 		{"listring", "current_player", "main"},
