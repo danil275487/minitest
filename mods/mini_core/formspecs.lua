@@ -23,11 +23,14 @@ local arrow_full = mini_core.sheet("ui",1,1, 4,4, true)
 local fire = mini_core.sheet("ui",0,2, 4,4)
 local fire_full = mini_core.sheet("ui",1,2, 4,4, true)
 
-local creative_tabs = {
-	{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
-	{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
-	{"button", {3-1/8,0}; {3,0.75}; "creative", "Creative"},
-}
+local creative_tabs = {}
+if core.is_creative_enabled(player) then
+	creative_tabs = {
+		{"background9", {0,0}; {8.25,0.75}; bg_dark, false, size/4},
+		{"button", {0,0}; {3,0.75}; "inventory", "Inventory"},
+		{"button", {3-1/8,0}; {3,0.75}; "creative", "Creative"},
+	}
+end
 
 --global formspec prepend
 function mini_core.formspecs.prepend()
