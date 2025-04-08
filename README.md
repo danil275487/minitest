@@ -24,7 +24,7 @@ To install Minitest, download this repository (either via the big green **Code**
 
 ## Features roadmap (in somewhat particular order)
 
-- [ ] Transition formspecs to use [LMD's fslib](https://content.luanti.org/packages/LMD/fslib/)
+- [x] Transition formspecs to use [LMD's fslib](https://content.luanti.org/packages/LMD/fslib/)
 - [ ] Finish the recipe book
 - [ ] More visual effects
 - [ ] Better sound effects
