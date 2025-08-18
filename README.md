@@ -1,3 +1,7 @@
+# **THIS PROJECT HAS MOVED TO GITLAB FOR VARIOUS MICROSOFT-RELATED REASONS!
+# **IF YOU WISH TO CONTRIBUTE, PLEASE HEAD OVER TO https://gitlab.com/danil275487/minitest**
+# **THIS REPOSITORY WILL RECEIVE NO FURTHER COMMITS!**
+
 # [![Minitest](misc/readme_logo.png)](https://github.com/danil275487/minitest)
 [*Download*](https://github.com/danil275487/minitest/archive/refs/heads/main.zip) | [*Discord*](https://discord.gg/6QvVxxsv6n) | <span title="Not yet!">*ContentDB*</span> | <span title="Not yet!">*Website*</span>
 ###### If you wish to support the game, join the Discord server. Feedback is extremely important for me.
